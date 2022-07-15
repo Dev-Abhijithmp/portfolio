@@ -1,13 +1,25 @@
-
 import './App.css';
 import './index.css'
-
+import Navbar from './navbar';
+import { Routes, Route } from "react-router-dom";
+import Home from './homepage';
+import Products from './products';
+import Contactus from './contactus';
+import About from './about';
 function App() {
+
   return (
-    <div className="py-12 bg-white">
-      <p className='ml-16 text-lg leading-6 font-medium text-blue-900'>welcome</p>
-      
-    </div>
+    <>
+     <Navbar />
+     <Routes>
+      <Route path='/' element={<Home/>}/>
+      <Route path='home' element={<Home/>} />
+      <Route path='products' element={<Products/>}/>
+      <Route path='about' element={<About/>}/>
+      <Route path='contactus' element={<Contactus/>}/>
+     </Routes>
+     </>
+    
   );
 }
 
