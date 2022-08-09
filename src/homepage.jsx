@@ -1,9 +1,27 @@
-import './index.css';
+import "./index.css";
 function Home(params) {
-return(
-    <div className="flex justify-center items-center h-96">
-        <img src="" alt="" srcset="" />
+  return (
+    <div className="h-max ">
+      <div className="h-56 my-11"></div>
+
+      <div className="flex">
+        <img
+          src={require("./abhijith.png")}
+          alt="profile"
+          srcset={require("./abhijith.png")}
+          className="w-96 h-max mx-7"
+        />
+        
+        <div>
+            <div className="text-8xl font-serif"> <p className="text-black">Hi,I'M</p><p className="text-blue-900">ABHIJITH</p></div>
+            
+        <p>i'm professional flutter developer</p>
+        </div>
+       
+    
+       
+      </div>
     </div>
-);   
+  );
 }
-export default Home
+export default Home;

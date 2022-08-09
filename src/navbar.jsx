@@ -5,34 +5,28 @@ import { NavLink } from "react-router-dom";
 function Navbar() {
   return (
 
-     <nav className="flex   h-12 justify-between">
-      <div className="mx-3 p-3 text-2xl text-#041C32 font-serif text-cyan-700">Abhijith</div>
-     
+     <nav className="flex items-start  justify-between  h-8 mb-6" >
+      <div className="mx-5 p-3 text-2xl text-#041C32 font-serif text-cyan-700">Abhijith</div>
+        
 
-     <div className="flex items-center">
+     <div className=" flex justify-start">
      <NavLink
        to="/home"
-       className={({isActive})=>`text-black hover:bg-green-300 hover:text-white block  rounded-md text-base font-medium py-2 px-2 m-4 font-serif ${isActive?'bg-green-300':''}`}
+       className={({isActive})=>`text-blue-900 text-2xl hover:text-green-600 block  rounded-md text-base font-medium py-2 px-2 m-4 font-serif ${isActive?'text-blue-900 text-2xl':''}`}
      >
        Home
      </NavLink>
 
      <NavLink
        to="/about"
-       className={({isActive})=>`text-black hover:bg-green-300 hover:text-white block  rounded-md text-base font-medium py-2 px-2 m-4 font-serif ${isActive?'bg-green-300':''}`}
+       className={({isActive})=>`text-blue-900 text-2xl hover:text-green-600 block  rounded-md text-base font-medium py-2 px-2 m-4 font-serif ${isActive?'text-blue-900 text-2xl':''}`}
      >
        About
-     </NavLink>
-     <NavLink
-       to="/products"
-       className={({isActive})=>`text-black hover:bg-green-300 hover:text-white block  rounded-md text-base font-medium py-2 px-2 m-4 font-serif ${isActive?'bg-green-300':''}`}
-     >
-       Products
      </NavLink>
 
      <NavLink
        to="/contactus"
-       className={({isActive})=>`text-black hover:bg-green-300 hover:text-white block  rounded-md text-base font-medium py-2 px-2 m-4 font-serif ${isActive?'bg-green-300':''}`}
+       className={({isActive})=>`text-blue-900 text-2xl hover:text-green-600 block  rounded-md text-base font-medium py-2 px-2 m-4 font-serif ${isActive?'text-blue-900 text-2xl':''}`}
      >
        Contact us
      </NavLink>
