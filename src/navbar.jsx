@@ -23,6 +23,12 @@ function Navbar() {
      >
        About
      </NavLink>
+     <NavLink
+       to="/projects"
+       className={({isActive})=>`text-blue-900 text-2xl hover:text-green-600 block  rounded-md text-base font-medium py-2 px-2 m-4 font-serif ${isActive?'text-blue-900 text-2xl':''}`}
+     >
+       Projects
+     </NavLink>
 
      <NavLink
        to="/contactus"

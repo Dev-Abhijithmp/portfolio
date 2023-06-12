@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.nameClass {
+    margin-left: 10px;
+    width: auto;
+    height: 2rem;
+    border: 2px solid #68a1d7;
+    border-radius:3rem;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
