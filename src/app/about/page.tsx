@@ -10,11 +10,32 @@ import {
   NextJsIcon,
 } from "../../components/TechIcons";
 
+interface Skill {
+  name: string;
+  level: string;
+  desc: string;
+  badge: string;
+}
+
+interface SkillCategory {
+  category: string;
+  title: string;
+  icon: "compose" | "flutter" | "audio" | "nextjs" | "iot";
+  skills: Skill[];
+}
+
+interface TimelineEvent {
+  year: string;
+  role: string;
+  desc: string;
+  tech: string[];
+}
+
 export default function AboutPage() {
   const { darkMode } = useTheme();
-  const [activeCategory, setActiveCategory] = useState("All");
+  const [activeCategory, setActiveCategory] = useState<string>("All");
 
-  const skillCategories = [
+  const skillCategories: SkillCategory[] = [
     {
       category: "Kotlin & Android Native",
       title: "Modern Android, Kotlin & Jetpack Compose",
@@ -142,7 +163,7 @@ export default function AboutPage() {
     },
   ];
 
-  const timelineEvents = [
+  const timelineEvents: TimelineEvent[] = [
     {
       year: "Present",
       role: "Lead Systems & Android Engineer",

@@ -9,13 +9,27 @@ import {
   ShopifyIcon,
 } from "../../components/TechIcons";
 
+interface Project {
+  id: number;
+  title: string;
+  category: string;
+  allCategories?: string[];
+  description: string;
+  architecture: string;
+  tags: string[];
+  icon: string;
+  badgeType?: "compose" | "flutter" | "nextjs" | "ai";
+  featured: boolean;
+  metrics?: string;
+}
+
 export default function ProjectsPage() {
   const { darkMode } = useTheme();
-  const [selectedCategory, setSelectedCategory] = useState("All");
-  const [searchQuery, setSearchQuery] = useState("");
-  const [activeModalProject, setActiveModalProject] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState<string>("All");
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [activeModalProject, setActiveModalProject] = useState<Project | null>(null);
 
-  const realProjects = [
+  const realProjects: Project[] = [
     {
       id: 1,
       title: "Verbo / SoundPulse VoIP Suite & Next.js Portal",
@@ -96,7 +110,7 @@ export default function ProjectsPage() {
     },
   ];
 
-  const categories = [
+  const categories: string[] = [
     "All",
     "Kotlin & Compose",
     "Flutter & Mobile",

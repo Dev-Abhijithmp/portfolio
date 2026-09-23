@@ -1,12 +1,20 @@
 "use client";
 
-import { useState } from "react";
+import { useState, ChangeEvent, FormEvent } from "react";
 import { useTheme } from "../../components/ThemeContext";
-import { KotlinIcon, ComposeIcon } from "../../components/TechIcons";
+import { KotlinIcon } from "../../components/TechIcons";
+
+interface FormDataState {
+  name: string;
+  email: string;
+  phone: string;
+  projectType: string;
+  message: string;
+}
 
 export default function ContactPage() {
   const { darkMode } = useTheme();
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormDataState>({
     name: "",
     email: "",
     phone: "",
@@ -14,10 +22,10 @@ export default function ContactPage() {
     message: "",
   });
 
-  const [submitted, setSubmitted] = useState(false);
-  const [toastMessage, setToastMessage] = useState("");
+  const [submitted, setSubmitted] = useState<boolean>(false);
+  const [toastMessage, setToastMessage] = useState<string>("");
 
-  const projectTypes = [
+  const projectTypes: string[] = [
     "Kotlin & Compose Native App",
     "Flutter & Supabase Mobile App",
     "Next.js & Shopify Web Platform",
@@ -26,20 +34,22 @@ export default function ContactPage() {
     "General Consultation",
   ];
 
-  const handleChange = (e) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   };
 
-  const handleCopy = (text, label) => {
+  const handleCopy = (text: string, label: string) => {
     navigator.clipboard.writeText(text);
     setToastMessage(`Copied ${label} to clipboard!`);
     setTimeout(() => setToastMessage(""), 3000);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmitted(true);
     setTimeout(() => {
@@ -278,7 +288,7 @@ export default function ContactPage() {
                 </label>
                 <textarea
                   name="message"
-                  rows="4"
+                  rows={4}
                   value={formData.message}
                   onChange={handleChange}
                   placeholder="Share details about your Android (Kotlin / Compose) app, Flutter mobile solution, Next.js web portal, or audio engine requirements..."

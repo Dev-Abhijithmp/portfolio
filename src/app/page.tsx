@@ -1,8 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
-import Image from "next/image";
+import React, { useState } from "react";
 import { useTheme } from "../components/ThemeContext";
 import ComposeShowcase from "../components/ComposeShowcase";
 import {
@@ -14,18 +13,44 @@ import {
   ShopifyIcon,
 } from "../components/TechIcons";
 
+interface TerminalLog {
+  cmd: string;
+  res: string;
+}
+
+interface TechBadge {
+  name: string;
+  highlight: boolean;
+}
+
+interface CoreDomain {
+  id: string;
+  title: string;
+  tag: string;
+  desc: string;
+  icon: string;
+  customIcon?: "compose" | "flutter" | "nextjs";
+  gradient: string;
+}
+
+interface QuickStat {
+  value: string;
+  label: string;
+  sub: string;
+}
+
 export default function Home() {
   const { darkMode } = useTheme();
-  const [selectedTech, setSelectedTech] = useState(null);
+  const [selectedTech, setSelectedTech] = useState<string | null>(null);
 
   // Terminal interactive state
-  const [terminalInput, setTerminalInput] = useState("");
-  const [terminalLogs, setTerminalLogs] = useState([
+  const [terminalInput, setTerminalInput] = useState<string>("");
+  const [terminalLogs, setTerminalLogs] = useState<TerminalLog[]>([
     { cmd: "whoami", res: "Abhijith M P — Senior Android, Mobile & Systems Engineer" },
     { cmd: "cat status.txt", res: "⚡ Available for high-impact Android (Kotlin/Compose), Flutter & Cloud projects." },
   ]);
 
-  const handleTerminalCmd = (cmdToRun) => {
+  const handleTerminalCmd = (cmdToRun?: string) => {
     const command = (cmdToRun || terminalInput).trim().toLowerCase();
     let response = "";
 
@@ -71,7 +96,7 @@ export default function Home() {
     setTerminalInput("");
   };
 
-  const coreDomains = [
+  const coreDomains: CoreDomain[] = [
     {
       id: "kotlin-compose",
       title: "Kotlin & Jetpack Compose / KMP",
@@ -109,7 +134,7 @@ export default function Home() {
     },
   ];
 
-  const techBadges = [
+  const techBadges: TechBadge[] = [
     { name: "Kotlin", highlight: true },
     { name: "Jetpack Compose", highlight: true },
     { name: "Flutter", highlight: true },
@@ -122,7 +147,7 @@ export default function Home() {
     { name: "Local LLMs (Ollama)", highlight: false },
   ];
 
-  const quickStats = [
+  const quickStats: QuickStat[] = [
     { value: "Kotlin & Compose", label: "Native Android Suite", sub: "Verbo Declarative Client" },
     { value: "Flutter + Supabase", label: "Fleet Logistics & OCR", sub: "DDTransport & Expense App" },
     { value: "Next.js + Shopify", label: "Web Portal & E-Commerce", sub: "Verbo Web & Japamala" },

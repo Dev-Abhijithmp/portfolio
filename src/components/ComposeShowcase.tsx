@@ -4,13 +4,16 @@ import React, { useState } from "react";
 import { useTheme } from "./ThemeContext";
 import { KotlinIcon, ComposeIcon } from "./TechIcons";
 
+type TabType = "preview" | "composeCode" | "kotlinEngine";
+type LatencyPresetType = "oboe-low" | "safe";
+
 export default function ComposeShowcase() {
   const { darkMode } = useTheme();
-  const [activeTab, setActiveTab] = useState("preview"); // 'preview' | 'composeCode' | 'kotlinEngine'
-  const [isAudioStreaming, setIsAudioStreaming] = useState(true);
-  const [latencyPreset, setLatencyPreset] = useState("oboe-low"); // 'oboe-low' (12ms) | 'safe' (48ms)
-  const [volumeLevel, setVolumeLevel] = useState(82);
-  const [copied, setCopied] = useState(false);
+  const [activeTab, setActiveTab] = useState<TabType>("preview");
+  const [isAudioStreaming, setIsAudioStreaming] = useState<boolean>(true);
+  const [latencyPreset, setLatencyPreset] = useState<LatencyPresetType>("oboe-low");
+  const [volumeLevel, setVolumeLevel] = useState<number>(82);
+  const [copied, setCopied] = useState<boolean>(false);
 
   const composeCode = `@Composable
 fun AudioBufferVisualizer(
@@ -100,7 +103,7 @@ fun AudioBufferVisualizer(
     }
 }`;
 
-  const handleCopyCode = (text) => {
+  const handleCopyCode = (text: string) => {
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2500);

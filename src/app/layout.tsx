@@ -1,9 +1,11 @@
+import type { Metadata, Viewport } from "next";
+import React from "react";
 import "./globals.css";
 import { ThemeProvider } from "../components/ThemeContext";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Abhijith M P | Senior Systems, Android & Mobile Engineer",
   description:
     "Engineering high-performance native Android apps with Kotlin & Jetpack Compose, Flutter & Supabase mobile platforms, Next.js web applications, and low-latency C++ audio engines (Google Oboe).",
@@ -24,12 +26,16 @@ export const metadata = {
   authors: [{ name: "Abhijith M P" }],
 };
 
-export const viewport = {
+export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en" className="dark" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>

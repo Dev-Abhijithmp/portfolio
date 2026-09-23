@@ -1,15 +1,20 @@
 "use client";
 
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
 
-const ThemeContext = createContext({
+export interface ThemeContextType {
+  darkMode: boolean;
+  toggleTheme: () => void;
+}
+
+const ThemeContext = createContext<ThemeContextType>({
   darkMode: true,
   toggleTheme: () => {},
 });
 
-export function ThemeProvider({ children }) {
-  const [darkMode, setDarkMode] = useState(true);
-  const [mounted, setMounted] = useState(false);
+export function ThemeProvider({ children }: { children: ReactNode }) {
+  const [darkMode, setDarkMode] = useState<boolean>(true);
+  const [mounted, setMounted] = useState<boolean>(false);
 
   useEffect(() => {
     setMounted(true);
@@ -17,7 +22,7 @@ export function ThemeProvider({ children }) {
     if (saved) {
       setDarkMode(saved === "dark");
     } else {
-      setDarkMode(true); // Default to dark mode for obsidian aesthetics
+      setDarkMode(true);
     }
   }, []);
 
@@ -40,6 +45,6 @@ export function ThemeProvider({ children }) {
   );
 }
 
-export function useTheme() {
+export function useTheme(): ThemeContextType {
   return useContext(ThemeContext);
 }

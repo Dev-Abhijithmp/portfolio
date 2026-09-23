@@ -6,19 +6,24 @@ import { useState } from "react";
 import { useTheme } from "./ThemeContext";
 import { KotlinIcon, ComposeIcon } from "./TechIcons";
 
+interface NavLinkItem {
+  href: string;
+  label: string;
+}
+
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const pathname = usePathname();
   const { darkMode, toggleTheme } = useTheme();
 
-  const navLinks = [
+  const navLinks: NavLinkItem[] = [
     { href: "/", label: "Home" },
     { href: "/about", label: "About & Skills" },
     { href: "/projects", label: "Projects" },
     { href: "/contactus", label: "Contact" },
   ];
 
-  const isActive = (href) => {
+  const isActive = (href: string): boolean => {
     if (href === "/") return pathname === "/";
     return pathname.startsWith(href);
   };

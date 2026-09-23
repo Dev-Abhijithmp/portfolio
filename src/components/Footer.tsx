@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import React from "react";
 import { useTheme } from "./ThemeContext";
 import { KotlinIcon, ComposeIcon, FlutterIcon, NextJsIcon } from "./TechIcons";
 
