@@ -2,65 +2,58 @@
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
 
-export type ColorPalette = "slate" | "forest";
+export type ThemeMode = "dark" | "light";
 
 export interface ThemeContextType {
   darkMode: boolean;
+  theme: ThemeMode;
   toggleTheme: () => void;
-  palette: ColorPalette;
-  setPalette: (p: ColorPalette) => void;
+  setTheme: (t: ThemeMode) => void;
+  palette: "slate";
 }
 
 const ThemeContext = createContext<ThemeContextType>({
   darkMode: true,
+  theme: "dark",
   toggleTheme: () => {},
+  setTheme: () => {},
   palette: "slate",
-  setPalette: () => {},
 });
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [darkMode, setDarkMode] = useState<boolean>(true);
-  const [palette, setPaletteState] = useState<ColorPalette>("slate");
+  const [theme, setThemeState] = useState<ThemeMode>("dark");
   const [mounted, setMounted] = useState<boolean>(false);
 
   useEffect(() => {
     setMounted(true);
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme) {
-      setDarkMode(savedTheme === "dark");
+    const savedTheme = localStorage.getItem("portfolio_theme") as ThemeMode | null;
+    if (savedTheme === "light" || savedTheme === "dark") {
+      setThemeState(savedTheme);
     } else {
-      setDarkMode(true);
-    }
-
-    const savedPalette = localStorage.getItem("portfolio_palette") as ColorPalette | null;
-    if (savedPalette === "forest" || savedPalette === "slate") {
-      setPaletteState(savedPalette);
-    } else {
-      setPaletteState("slate");
+      setThemeState("dark");
     }
   }, []);
 
   useEffect(() => {
     if (!mounted) return;
-    localStorage.setItem("theme", darkMode ? "dark" : "light");
-    if (darkMode) {
+    localStorage.setItem("portfolio_theme", theme);
+    document.documentElement.setAttribute("data-theme", theme);
+    document.documentElement.setAttribute("data-palette", "slate");
+    if (theme === "dark") {
       document.documentElement.classList.add("dark");
+      document.documentElement.classList.remove("light");
     } else {
       document.documentElement.classList.remove("dark");
+      document.documentElement.classList.add("light");
     }
-  }, [darkMode, mounted]);
+  }, [theme, mounted]);
 
-  useEffect(() => {
-    if (!mounted) return;
-    localStorage.setItem("portfolio_palette", palette);
-    document.documentElement.setAttribute("data-palette", palette);
-  }, [palette, mounted]);
-
-  const toggleTheme = () => setDarkMode((prev) => !prev);
-  const setPalette = (p: ColorPalette) => setPaletteState(p);
+  const toggleTheme = () => setThemeState((prev) => (prev === "dark" ? "light" : "dark"));
+  const setTheme = (t: ThemeMode) => setThemeState(t);
+  const darkMode = theme === "dark";
 
   return (
-    <ThemeContext.Provider value={{ darkMode, toggleTheme, palette, setPalette }}>
+    <ThemeContext.Provider value={{ darkMode, theme, toggleTheme, setTheme, palette: "slate" }}>
       {children}
     </ThemeContext.Provider>
   );
@@ -69,3 +62,4 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 export function useTheme(): ThemeContextType {
   return useContext(ThemeContext);
 }
+

@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { useTheme } from "./ThemeContext";
-import { KotlinIcon, ComposeIcon } from "./TechIcons";
 
 interface NavLinkItem {
   href: string;
@@ -14,7 +13,7 @@ interface NavLinkItem {
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const pathname = usePathname();
-  const { palette, setPalette } = useTheme();
+  const { darkMode, toggleTheme } = useTheme();
 
   const navLinks: NavLinkItem[] = [
     { href: "/", label: "Home" },
@@ -33,17 +32,13 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo Identity */}
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="flex items-center justify-center w-9 h-9 rounded-xl bg-[var(--accent-secondary)] border border-[var(--accent-secondary-border)] group-hover:border-[var(--accent-primary)] transition-colors duration-200 p-1.5 shadow-sm">
-              <KotlinIcon className="w-4 h-4 text-[var(--accent-primary)]" />
-            </div>
+          <Link href="/" className="flex items-center group">
             <div className="flex flex-col">
               <span className="font-heading font-bold text-sm sm:text-base tracking-tight text-[var(--text-primary)] group-hover:text-[var(--accent-primary)] transition-colors">
                 Abhijith M P
               </span>
-              <span className="text-[10px] font-mono tracking-wider text-[var(--accent-secondary-bright)] -mt-0.5 flex items-center gap-1 font-semibold">
-                <ComposeIcon className="w-2.5 h-2.5 text-[var(--accent-primary)]" />
-                Systems & Android
+              <span className="text-[10px] font-mono tracking-wider text-[var(--accent-secondary-bright)] -mt-0.5 font-semibold">
+                Software Engineer
               </span>
             </div>
           </Link>
@@ -70,41 +65,32 @@ export default function Navbar() {
             {/* Subtle Divider */}
             <div className="h-4 w-px mx-2 bg-[var(--border-medium)]"></div>
 
-            {/* Interactive Color Palette Selector */}
-            <div className="flex items-center bg-[var(--bg-card)] p-1 rounded-xl border border-[var(--border-medium)] shadow-sm gap-1">
-              <button
-                onClick={() => setPalette("slate")}
-                className={`px-3 py-1 text-[11px] font-mono font-bold rounded-lg flex items-center gap-1.5 transition-all duration-150 ${
-                  palette === "slate"
-                    ? "bg-[#FFA586] text-[#1b1e32] shadow-sm font-bold scale-102"
-                    : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-surface)]"
-                }`}
-                title="Palette 1: Slate (#242740), Steel (#384358), Coral (#FFA586), Teal (#285160)"
-              >
-                <span className="w-2.5 h-2.5 rounded-full bg-[#FFA586] border border-[#242740]/40"></span>
-                <span>Slate & Coral</span>
-              </button>
-
-              <button
-                onClick={() => setPalette("forest")}
-                className={`px-3 py-1 text-[11px] font-mono font-bold rounded-lg flex items-center gap-1.5 transition-all duration-150 ${
-                  palette === "forest"
-                    ? "bg-[#DAF1DE] text-[#051F20] shadow-sm font-bold scale-102"
-                    : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-surface)]"
-                }`}
-                title="Palette 2: Spruce (#051F20), Forest (#0B2B26), Pine (#235347), Sage (#8EB69B), Mint (#DAF1DE)"
-              >
-                <span className="w-2.5 h-2.5 rounded-full bg-[#8EB69B] border border-[#051F20]/40"></span>
-                <span>Nordic Forest</span>
-              </button>
-            </div>
+            {/* Theme Toggle Button (Dark / Light) */}
+            <button
+              onClick={toggleTheme}
+              className="h-9 px-3 rounded-xl border border-[var(--border-medium)] bg-[var(--bg-card)] hover:border-[var(--accent-primary)] text-xs font-semibold flex items-center gap-2 text-[var(--text-primary)] transition-all shadow-sm"
+              title={darkMode ? "Switch to Light Theme" : "Switch to Dark Theme"}
+              aria-label="Toggle Theme"
+            >
+              {darkMode ? (
+                <>
+                  <i className="fa-solid fa-sun text-[var(--accent-secondary-bright)] text-xs"></i>
+                  <span className="text-[11px] font-mono font-medium">Light</span>
+                </>
+              ) : (
+                <>
+                  <i className="fa-solid fa-moon text-[var(--accent-primary)] text-xs"></i>
+                  <span className="text-[11px] font-mono font-medium">Dark</span>
+                </>
+              )}
+            </button>
 
             {/* GitHub Profile */}
             <a
               href="https://github.com/Dev-Abhijithmp"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 ml-1 rounded-xl border border-[var(--border-medium)] bg-[var(--bg-card)] text-[var(--accent-secondary-bright)] hover:text-[var(--accent-primary)] hover:border-[var(--accent-primary)] transition-colors"
+              className="h-9 w-9 flex items-center justify-center rounded-xl border border-[var(--border-medium)] bg-[var(--bg-card)] text-[var(--accent-secondary-bright)] hover:text-[var(--accent-primary)] hover:border-[var(--accent-primary)] transition-colors shadow-sm"
               title="GitHub Profile (Dev-Abhijithmp)"
               aria-label="GitHub Profile"
             >
@@ -114,7 +100,7 @@ export default function Navbar() {
             {/* Primary Action Button */}
             <Link
               href="/contactus"
-              className="ml-2 px-3.5 py-1.5 bg-[var(--accent-primary)] hover:bg-[var(--accent-primary-hover)] text-[var(--accent-primary-text)] font-bold rounded-xl text-xs shadow-md transition duration-150 flex items-center gap-1.5"
+              className="h-9 ml-1 px-3.5 btn-primary-gradient text-[var(--accent-primary-text)] font-bold rounded-xl text-xs transition duration-150 flex items-center gap-1.5"
             >
               <i className="fa-solid fa-paper-plane text-[10px]"></i> Get in Touch
             </Link>
@@ -122,21 +108,21 @@ export default function Navbar() {
 
           {/* Mobile Actions */}
           <div className="md:hidden flex items-center gap-2">
-            {/* Mobile Palette Switcher Toggle */}
+            {/* Mobile Theme Toggle Button */}
             <button
-              onClick={() => setPalette(palette === "slate" ? "forest" : "slate")}
-              className="px-2.5 py-1 rounded-xl border border-[var(--border-medium)] bg-[var(--bg-card)] text-[10px] font-mono font-bold flex items-center gap-1 text-[var(--accent-primary)]"
-              title="Switch Color Palette"
+              onClick={toggleTheme}
+              className="h-9 w-9 flex items-center justify-center rounded-xl border border-[var(--border-medium)] bg-[var(--bg-card)] text-xs text-[var(--accent-primary)]"
+              title={darkMode ? "Switch to Light Theme" : "Switch to Dark Theme"}
+              aria-label="Toggle Theme"
             >
-              <span className={`w-2 h-2 rounded-full ${palette === "slate" ? "bg-[#FFA586]" : "bg-[#8EB69B]"}`}></span>
-              <span>{palette === "slate" ? "Slate Coral" : "Nordic Forest"}</span>
+              <i className={`fa-solid ${darkMode ? "fa-sun text-[var(--accent-secondary-bright)]" : "fa-moon text-[var(--accent-primary)]"}`}></i>
             </button>
 
             <a
               href="https://github.com/Dev-Abhijithmp"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-xl border border-[var(--border-medium)] bg-[var(--bg-card)] text-xs text-[var(--accent-secondary-bright)]"
+              className="h-9 w-9 flex items-center justify-center rounded-xl border border-[var(--border-medium)] bg-[var(--bg-card)] text-xs text-[var(--accent-secondary-bright)]"
               aria-label="GitHub Profile"
             >
               <i className="fa-brands fa-github"></i>
@@ -144,7 +130,7 @@ export default function Navbar() {
 
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-xl border border-[var(--border-medium)] bg-[var(--bg-card)] text-[var(--text-primary)]"
+              className="h-9 w-9 flex items-center justify-center rounded-xl border border-[var(--border-medium)] bg-[var(--bg-card)] text-[var(--text-primary)]"
               aria-label="Toggle Menu"
             >
               <i className={`fa-solid ${isOpen ? "fa-xmark" : "fa-bars"} text-xs`}></i>

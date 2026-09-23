@@ -137,11 +137,11 @@ export default function ProjectsPage() {
   });
 
   return (
-    <div className="min-h-screen py-12 px-6 relative">
+    <div className="min-h-screen py-12 px-6 relative ambient-glow-mesh">
       <div className="max-w-6xl mx-auto space-y-10 relative z-10">
         {/* Header */}
         <div className="text-center space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-[var(--accent-secondary)] border border-[var(--accent-secondary-border)] text-[var(--accent-primary)] text-xs font-semibold rounded-full uppercase tracking-wider shadow-sm">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-[var(--accent-secondary-subtle)] text-[var(--accent-primary)] text-xs font-semibold rounded-full uppercase tracking-wider shadow-sm">
             <ComposeIcon className="w-3.5 h-3.5 text-[var(--accent-primary)]" /> Engineered Systems & Products
           </div>
           <h2 className="text-4xl sm:text-5xl font-extrabold font-heading text-[var(--text-primary)]">Featured Projects & Systems</h2>
@@ -158,10 +158,10 @@ export default function ProjectsPage() {
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-150 flex items-center gap-1.5 shadow-sm ${
+                className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-150 flex items-center gap-1.5 ${
                   selectedCategory === cat
-                    ? "bg-[var(--accent-primary)] text-[var(--accent-primary-text)] font-bold scale-105"
-                    : "bg-[var(--bg-card)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)]"
+                    ? "btn-primary-gradient text-[var(--accent-primary-text)] font-bold scale-105"
+                    : "bg-[var(--bg-card)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)] shadow-sm"
                 }`}
               >
                 {cat === "Kotlin & Compose" && <ComposeIcon className="w-3.5 h-3.5 text-current" />}
@@ -180,7 +180,7 @@ export default function ProjectsPage() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search Kotlin, Flutter, Supabase, Next.js..."
-              className="w-full pl-9 pr-8 py-2 rounded-xl text-xs bg-[var(--bg-card)] text-[var(--text-primary)] placeholder-[var(--text-muted)] outline-none transition duration-150 shadow-sm focus:ring-1 focus:ring-[var(--accent-primary)]"
+              className="w-full pl-9 pr-8 py-2 rounded-xl text-xs bg-[var(--bg-card)] text-[var(--text-primary)] placeholder-[var(--text-muted)] outline-none transition duration-150 shadow-inner focus:ring-1 focus:ring-[var(--accent-primary)]"
             />
             {searchQuery && (
               <button
@@ -214,11 +214,11 @@ export default function ProjectsPage() {
               <div
                 key={project.id}
                 onClick={() => setActiveModalProject(project)}
-                className="p-7 rounded-3xl bg-[var(--bg-card)] hover:bg-[var(--bg-card-hover)] transition-all duration-200 flex flex-col justify-between cursor-pointer group relative shadow-xl hover:shadow-2xl hover:-translate-y-1"
+                className="p-7 rounded-3xl card-gradient flex flex-col justify-between cursor-pointer group relative"
               >
                 {/* Featured Badge */}
                 {project.featured && (
-                  <div className="absolute top-5 right-5 bg-[var(--accent-primary)] text-[var(--accent-primary-text)] text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-md flex items-center gap-1.5">
+                  <div className="absolute top-5 right-5 btn-primary-gradient text-[var(--accent-primary-text)] text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full flex items-center gap-1.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-primary-text)] animate-pulse"></span>
                     Featured Build
                   </div>
@@ -242,7 +242,7 @@ export default function ProjectsPage() {
                       )}
                     </div>
                     {project.metrics && (
-                      <span className={`text-[11px] font-mono font-bold px-2.5 py-1 rounded-lg flex items-center gap-1 ${
+                      <span className={`text-[11px] font-mono font-bold px-2.5 py-1 rounded-lg flex items-center gap-1 shadow-sm ${
                         project.themeStyle === "primary"
                           ? "bg-[var(--accent-secondary)] text-[var(--accent-secondary-bright)]"
                           : "bg-[var(--accent-primary-subtle)] text-[var(--accent-primary)]"
@@ -261,12 +261,12 @@ export default function ProjectsPage() {
                         {project.category}
                       </span>
                       {project.tags.includes("Next.js") && (
-                        <span className="text-[10px] font-mono font-bold text-[var(--accent-secondary-bright)] bg-[var(--accent-secondary)] px-2 py-0.5 rounded-md">
+                        <span className="text-[10px] font-mono font-bold text-[var(--accent-secondary-bright)] bg-[var(--accent-secondary)] px-2 py-0.5 rounded-md shadow-sm">
                           Next.js
                         </span>
                       )}
                       {project.tags.includes("Supabase Backend") && (
-                        <span className="text-[10px] font-mono font-bold text-[var(--accent-primary)] bg-[var(--accent-primary-subtle)] px-2 py-0.5 rounded-md">
+                        <span className="text-[10px] font-mono font-bold text-[var(--accent-primary)] bg-[var(--accent-primary-subtle)] px-2 py-0.5 rounded-md shadow-sm">
                           Supabase
                         </span>
                       )}
@@ -289,7 +289,7 @@ export default function ProjectsPage() {
                       return (
                         <span
                           key={tag}
-                          className={`px-2.5 py-0.5 text-[10px] font-mono rounded-lg font-semibold ${
+                          className={`px-2.5 py-0.5 text-[10px] font-mono rounded-lg font-semibold shadow-sm ${
                             isPrimary
                               ? "bg-[var(--accent-primary-subtle)] text-[var(--accent-primary)]"
                               : isSecondary
@@ -314,10 +314,10 @@ export default function ProjectsPage() {
         )}
       </div>
 
-      {/* Interactive Detail Modal */}
+      {/* Interactive Detail Modal with Palette Gradient & Ambient Lighting */}
       {activeModalProject && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fadeIn">
-          <div className="w-full max-w-2xl p-8 rounded-3xl bg-[var(--bg-card)] shadow-2xl space-y-6 relative transition-all duration-200 text-[var(--text-primary)]">
+          <div className="w-full max-w-2xl p-8 rounded-3xl card-gradient space-y-6 relative transition-all duration-200 text-[var(--text-primary)]">
             {/* Close Button */}
             <button
               onClick={() => setActiveModalProject(null)}
@@ -359,7 +359,7 @@ export default function ProjectsPage() {
               </div>
 
               {activeModalProject.architecture && (
-                <div className="p-4 rounded-2xl bg-[var(--bg-surface)] shadow-inner">
+                <div className="p-4 rounded-2xl surface-gradient">
                   <h4 className="font-bold text-[var(--accent-primary)] uppercase tracking-wider text-[11px] mb-1 flex items-center gap-1.5">
                     <i className="fa-solid fa-microchip"></i> System Architecture Highlights
                   </h4>
@@ -388,7 +388,7 @@ export default function ProjectsPage() {
             <div className="pt-2 flex justify-end">
               <button
                 onClick={() => setActiveModalProject(null)}
-                className="px-5 py-2.5 bg-[var(--accent-primary)] hover:bg-[var(--accent-primary-hover)] text-[var(--accent-primary-text)] font-bold rounded-xl text-xs transition shadow-md"
+                className="px-5 py-2.5 btn-primary-gradient text-[var(--accent-primary-text)] font-bold rounded-xl text-xs transition"
               >
                 Close Specification
               </button>

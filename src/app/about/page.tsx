@@ -197,11 +197,11 @@ export default function AboutPage() {
   );
 
   return (
-    <div className="min-h-screen py-12 px-6 relative">
+    <div className="min-h-screen py-12 px-6 relative ambient-glow-mesh">
       <div className="max-w-5xl mx-auto space-y-12 relative z-10">
         {/* Header */}
         <div className="text-center space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-[var(--accent-secondary)] border border-[var(--accent-secondary-border)] text-[var(--accent-primary)] text-xs font-semibold rounded-full uppercase tracking-wider shadow-sm">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-[var(--accent-secondary-subtle)] text-[var(--accent-primary)] text-xs font-semibold rounded-full uppercase tracking-wider shadow-sm">
             <KotlinIcon className="w-3.5 h-3.5 text-[var(--accent-primary)]" /> Engineer Profile & Competencies
           </div>
           <h2 className="text-4xl sm:text-5xl font-extrabold font-heading text-[var(--text-primary)]">About & Technical Expertise</h2>
@@ -210,8 +210,8 @@ export default function AboutPage() {
           </p>
         </div>
 
-        {/* Bio Highlights Card */}
-        <div className="p-8 rounded-3xl bg-[var(--bg-card)] transition-all duration-200 space-y-5 shadow-xl">
+        {/* Bio Highlights Card with Palette Gradient */}
+        <div className="p-8 rounded-3xl card-gradient space-y-5">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b pb-4 border-[var(--border-subtle)]">
             <h3 className="text-2xl font-bold font-heading text-[var(--text-primary)] flex items-center gap-2.5">
               <AndroidIcon className="w-6 h-6 text-[var(--accent-primary)]" />
@@ -274,10 +274,10 @@ export default function AboutPage() {
                 <button
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
-                  className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all duration-150 shadow-sm ${
+                  className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all duration-150 ${
                     activeCategory === cat
-                      ? "bg-[var(--accent-primary)] text-[var(--accent-primary-text)] font-bold scale-105"
-                      : "bg-[var(--bg-card)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)]"
+                      ? "btn-primary-gradient text-[var(--accent-primary-text)] font-bold scale-105"
+                      : "bg-[var(--bg-card)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)] shadow-sm"
                   }`}
                 >
                   {cat}
@@ -290,7 +290,7 @@ export default function AboutPage() {
             {filteredCategories.map((catGroup) => (
               <div
                 key={catGroup.title}
-                className="p-6 rounded-3xl bg-[var(--bg-card)] hover:bg-[var(--bg-card-hover)] transition-all duration-200 space-y-5 shadow-xl"
+                className="p-6 rounded-3xl card-gradient space-y-5"
               >
                 <div className="border-b pb-3.5 flex items-center justify-between border-[var(--border-subtle)]">
                   <div className="flex items-center gap-2.5">
@@ -368,7 +368,7 @@ export default function AboutPage() {
                   evt.colorType === "primary" ? "bg-[var(--accent-primary)]" : "bg-[var(--accent-secondary-bright)]"
                 }`}></div>
 
-                <div className="p-6 rounded-3xl bg-[var(--bg-card)] hover:bg-[var(--bg-card-hover)] transition-all duration-200 space-y-3 shadow-xl">
+                <div className="p-6 rounded-3xl card-gradient space-y-3">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                     <span className={`text-xs font-mono font-bold px-2.5 py-0.5 rounded-md inline-block w-max ${
                       evt.colorType === "primary"
@@ -390,7 +390,7 @@ export default function AboutPage() {
                       return (
                         <span
                           key={t}
-                          className={`text-[10px] font-mono px-2.5 py-0.5 rounded-lg font-semibold ${
+                          className={`text-[10px] font-mono px-2.5 py-0.5 rounded-lg font-semibold shadow-sm ${
                             isPrimary
                               ? "bg-[var(--accent-primary-subtle)] text-[var(--accent-primary)]"
                               : "bg-[var(--accent-secondary-subtle)] text-[var(--accent-secondary-bright)]"

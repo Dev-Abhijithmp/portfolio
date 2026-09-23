@@ -37,7 +37,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark" data-palette="slate" data-scroll-behavior="smooth" suppressHydrationWarning>
+    <html lang="en" className="dark" data-theme="dark" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
         <link
           rel="stylesheet"

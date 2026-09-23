@@ -63,10 +63,10 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen py-12 px-6 relative">
+    <div className="min-h-screen py-12 px-6 relative ambient-glow-mesh">
       {/* Toast Notification */}
       {toastMessage && (
-        <div className="fixed bottom-6 right-6 z-50 bg-[var(--accent-primary)] text-[var(--accent-primary-text)] px-5 py-3 rounded-2xl shadow-xl text-xs font-bold flex items-center gap-2">
+        <div className="fixed bottom-6 right-6 z-50 btn-primary-gradient text-[var(--accent-primary-text)] px-5 py-3 rounded-2xl text-xs font-bold flex items-center gap-2">
           <i className="fa-solid fa-circle-check"></i> {toastMessage}
         </div>
       )}
@@ -74,7 +74,7 @@ export default function ContactPage() {
       <div className="max-w-5xl mx-auto space-y-12 relative z-10">
         {/* Header */}
         <div className="text-center space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-[var(--accent-secondary)] border border-[var(--accent-secondary-border)] text-[var(--accent-primary)] text-xs font-semibold rounded-full uppercase tracking-wider shadow-sm">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-[var(--accent-secondary-subtle)] text-[var(--accent-primary)] text-xs font-semibold rounded-full uppercase tracking-wider shadow-sm">
             <KotlinIcon className="w-3.5 h-3.5 text-[var(--accent-primary)]" /> Start a Conversation
           </div>
           <h2 className="text-4xl sm:text-5xl font-extrabold font-heading text-[var(--text-primary)]">Let's Build Something Exceptional</h2>
@@ -86,7 +86,7 @@ export default function ContactPage() {
         <div className="grid md:grid-cols-2 gap-8">
           {/* Direct Contact Cards */}
           <div className="space-y-6">
-            <div className="p-8 rounded-3xl bg-[var(--bg-card)] transition-all duration-200 space-y-6 text-[var(--text-primary)] shadow-xl">
+            <div className="p-8 rounded-3xl card-gradient space-y-6 text-[var(--text-primary)]">
               <h3 className="text-2xl font-bold font-heading text-[var(--text-primary)]">Direct Contact</h3>
               <p className="text-xs sm:text-sm leading-relaxed text-[var(--text-secondary)]">
                 Click on any contact item below to instantly copy details to your clipboard.
@@ -96,7 +96,7 @@ export default function ContactPage() {
                 {/* Email Item (Coral Accent) */}
                 <div
                   onClick={() => handleCopy("111abhiabhi@gmail.com", "Email")}
-                  className="p-4 rounded-2xl bg-[var(--bg-surface)] hover:bg-[var(--bg-card-hover)] transition-all duration-150 cursor-pointer flex items-center justify-between group shadow-md"
+                  className="p-4 rounded-2xl surface-gradient hover:bg-[var(--bg-card-hover)] transition-all duration-150 cursor-pointer flex items-center justify-between group"
                 >
                   <div className="flex items-center gap-3.5">
                     <div className="w-10 h-10 rounded-xl bg-[var(--accent-primary-subtle)] text-[var(--accent-primary)] flex items-center justify-center text-base font-bold shadow-sm">
@@ -113,7 +113,7 @@ export default function ContactPage() {
                 {/* Phone Item (Teal/Sage Accent) */}
                 <div
                   onClick={() => handleCopy("+919497747142", "Phone number")}
-                  className="p-4 rounded-2xl bg-[var(--bg-surface)] hover:bg-[var(--bg-card-hover)] transition-all duration-150 cursor-pointer flex items-center justify-between group shadow-md"
+                  className="p-4 rounded-2xl surface-gradient hover:bg-[var(--bg-card-hover)] transition-all duration-150 cursor-pointer flex items-center justify-between group"
                 >
                   <div className="flex items-center gap-3.5">
                     <div className="w-10 h-10 rounded-xl bg-[var(--accent-secondary-subtle)] text-[var(--accent-secondary-bright)] flex items-center justify-center text-base font-bold shadow-sm">
@@ -132,7 +132,7 @@ export default function ContactPage() {
                   href="https://github.com/Dev-Abhijithmp"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-4 rounded-2xl bg-[var(--bg-surface)] hover:bg-[var(--bg-card-hover)] transition-all duration-150 flex items-center justify-between group shadow-md"
+                  className="p-4 rounded-2xl surface-gradient hover:bg-[var(--bg-card-hover)] transition-all duration-150 flex items-center justify-between group"
                 >
                   <div className="flex items-center gap-3.5">
                     <div className="w-10 h-10 rounded-xl bg-[var(--accent-primary-subtle)] text-[var(--accent-primary)] flex items-center justify-center text-base font-bold shadow-sm">
@@ -147,7 +147,7 @@ export default function ContactPage() {
                 </a>
 
                 {/* Location Item (Teal/Sage Accent) */}
-                <div className="p-4 rounded-2xl bg-[var(--bg-surface)] shadow-md">
+                <div className="p-4 rounded-2xl surface-gradient">
                   <div className="flex items-start gap-3.5">
                     <div className="w-10 h-10 rounded-xl bg-[var(--accent-secondary-subtle)] text-[var(--accent-secondary-bright)] flex items-center justify-center text-base font-bold mt-0.5 shadow-sm">
                       <i className="fa-solid fa-location-dot"></i>
@@ -167,7 +167,7 @@ export default function ContactPage() {
           </div>
 
           {/* Interactive Form Card */}
-          <div className="p-8 rounded-3xl bg-[var(--bg-card)] transition-all duration-200 space-y-6 text-[var(--text-primary)] shadow-xl">
+          <div className="p-8 rounded-3xl card-gradient space-y-6 text-[var(--text-primary)]">
             <h3 className="text-2xl font-bold font-heading text-[var(--text-primary)]">Send an Inquiry</h3>
 
             {submitted && (
@@ -187,10 +187,10 @@ export default function ContactPage() {
                       type="button"
                       key={type}
                       onClick={() => setFormData({ ...formData, projectType: type })}
-                      className={`px-3 py-1.5 rounded-xl text-[11px] font-semibold transition-all duration-150 shadow-sm ${
+                      className={`px-3 py-1.5 rounded-xl text-[11px] font-semibold transition-all duration-150 ${
                         formData.projectType === type
-                          ? "bg-[var(--accent-primary)] text-[var(--accent-primary-text)] font-bold scale-105"
-                          : "bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:bg-[var(--bg-card-hover)] hover:text-[var(--text-primary)]"
+                          ? "btn-primary-gradient text-[var(--accent-primary-text)] font-bold scale-105"
+                          : "bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:bg-[var(--bg-card-hover)] hover:text-[var(--text-primary)] shadow-sm"
                       }`}
                     >
                       {type}
@@ -260,7 +260,7 @@ export default function ContactPage() {
 
               <button
                 type="submit"
-                className="w-full py-3.5 bg-[var(--accent-primary)] hover:bg-[var(--accent-primary-hover)] text-[var(--accent-primary-text)] font-bold rounded-2xl shadow-lg transition duration-150 text-xs flex items-center justify-center gap-2"
+                className="w-full py-3.5 btn-primary-gradient text-[var(--accent-primary-text)] font-bold rounded-2xl text-xs flex items-center justify-center gap-2"
               >
                 <span>Send Message</span>
                 <i className="fa-solid fa-paper-plane text-xs"></i>
