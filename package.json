@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "deploy": "next build && gh-pages -d out -t"
+    "deploy": "next build && touch out/.nojekyll && gh-pages -d out -t"
   },
   "dependencies": {
     "next": "^16.3.6",
