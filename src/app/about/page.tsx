@@ -9,275 +9,476 @@ import {
   NextJsIcon,
 } from "../../components/TechIcons";
 
-interface Skill {
+interface CompetencyItem {
   name: string;
-  level: string;
-  desc: string;
-  badge: string;
+  detail: string;
+  appliedIn: string;
+  tag: string;
 }
 
-interface SkillCategory {
+interface CompetencyGroup {
   category: string;
   title: string;
-  icon: "compose" | "flutter" | "audio" | "nextjs" | "iot";
-  skills: Skill[];
-  colorType: "primary" | "secondary";
+  icon: "mobile" | "realtime" | "web" | "embedded" | "mdm" | "env";
+  items: CompetencyItem[];
+  themeStyle: "primary" | "secondary";
 }
 
-interface TimelineEvent {
-  year: string;
+interface WorkExperience {
+  period: string;
   role: string;
-  desc: string;
+  company: string;
+  location: string;
+  summary: string;
+  responsibilities: string[];
   tech: string[];
-  colorType: "primary" | "secondary";
+  themeStyle: "primary" | "secondary";
 }
 
 export default function AboutPage() {
   const [activeCategory, setActiveCategory] = useState<string>("All");
 
-  const skillCategories: SkillCategory[] = [
+  const experiences: WorkExperience[] = [
     {
-      category: "Kotlin & Android Native",
-      title: "Modern Android, Kotlin & Jetpack Compose",
-      icon: "compose",
-      colorType: "primary",
-      skills: [
-        {
-          name: "Kotlin 2.0+ & Coroutines",
-          level: "96%",
-          desc: "Idiomatic Kotlin, Structured Concurrency, StateFlow, SharedFlow & Flow transforms",
-          badge: "Kotlin Core",
-        },
-        {
-          name: "Jetpack Compose & Material 3",
-          level: "95%",
-          desc: "Declarative layouts, custom Modifiers, Canvas animations & Recomposition tuning",
-          badge: "Compose UI",
-        },
-        {
-          name: "Android Architecture & Jetpack",
-          level: "92%",
-          desc: "Clean Architecture, MVI / MVVM, Hilt & Koin DI, Room DB, WorkManager",
-          badge: "Architecture",
-        },
-        {
-          name: "Compose Multiplatform (KMP)",
-          level: "88%",
-          desc: "Code sharing between Android and Desktop / iOS with Kotlin Multiplatform",
-          badge: "KMP Multiplatform",
-        },
+      period: "April 2023 – Present",
+      role: "Frontend Developer",
+      company: "ScudNetworks",
+      location: "Ernakulam, Kerala, India",
+      summary: "Spearheading mobile, real-time communications, and enterprise device infrastructure across native Android and web platforms.",
+      responsibilities: [
+        "Architecting native Android VoIP client with Kotlin, Jetpack Compose, foreground services, and low-latency audio via Google Oboe C++ NDK.",
+        "Integrated PJSIP call handling, audio focus routing, and MQTT v5 (HiveMQ) signaling with phonetic callsign routing (Bravo, Charlie).",
+        "Engineered Enterprise MDM provisioning scripts (SafeUEM) and Single-App Kiosk mode lockouts deployed on RugGear ruggedized hardware.",
+        "Constructed management web portals and responsive interfaces with Next.js (App Router), TypeScript, Zustand, and Cloudflare Tunneling.",
+        "Built embedded Wi-Fi Channel State Information (CSI) sensing pipelines using ESP32 microcontrollers and the ESP-IDF framework.",
       ],
+      tech: [
+        "Kotlin",
+        "Jetpack Compose",
+        "PJSIP / VoIP",
+        "MQTT v5 (HiveMQ)",
+        "Next.js",
+        "TypeScript",
+        "Zustand",
+        "SafeUEM MDM",
+        "RugGear",
+        "ESP32 (ESP-IDF)",
+        "Oboe C++",
+      ],
+      themeStyle: "primary",
     },
     {
-      category: "Flutter & Cross-Platform",
-      title: "Flutter & Supabase Mobile Engineering",
-      icon: "flutter",
-      colorType: "secondary",
-      skills: [
+      period: "February 2022 – April 2023",
+      role: "Flutter Developer",
+      company: "Texol",
+      location: "Kochi, Kerala, India",
+      summary: "Engineered scalable cross-platform mobile applications for commercial clients, fleet logistics, and on-device processing.",
+      responsibilities: [
+        "Engineered production Flutter applications utilizing Provider, BLoC state management, and optimized WebViews.",
+        "Developed DDTransport, a commercial fleet dispatching and live route tracking platform with real-time Supabase PostgreSQL synchronization.",
+        "Implemented on-device financial transaction detector & OCR expense tracking engine with 100% offline privacy.",
+        "Bridged Flutter with native Android subsystem APIs using MethodChannels for Wi-Fi diagnostic routines and hardware telemetry.",
+      ],
+      tech: [
+        "Flutter",
+        "Dart",
+        "Provider",
+        "BLoC",
+        "Supabase",
+        "PostgreSQL",
+        "MethodChannels",
+        "MLKit OCR",
+        "WebViews",
+      ],
+      themeStyle: "secondary",
+    },
+  ];
+
+  const competencyGroups: CompetencyGroup[] = [
+    {
+      category: "Mobile",
+      title: "Mobile Development",
+      icon: "mobile",
+      themeStyle: "primary",
+      items: [
+        {
+          name: "Native Android & Jetpack Compose",
+          detail: "Modern declarative UI, Material 3, custom Layouts/Modifiers, state management, and Recomposition optimization.",
+          appliedIn: "Verbo VoIP Suite",
+          tag: "Compose UI",
+        },
+        {
+          name: "Kotlin, Coroutines & Flow",
+          detail: "Structured concurrency, StateFlow/SharedFlow, background thread dispatchers, and MVI/MVVM clean architecture.",
+          appliedIn: "Android Native Core",
+          tag: "Kotlin 2.0+",
+        },
+        {
+          name: "Android Foreground Services & Audio",
+          detail: "Uninterrupted background execution, notification channel binding, audio focus routing, and Google Oboe C++ NDK buffers.",
+          appliedIn: "Verbo Background Engine",
+          tag: "Foreground & Oboe",
+        },
         {
           name: "Flutter & Dart",
-          level: "94%",
-          desc: "Production mobile apps (DDTransport, Expense Tracker, WiFi Radar) with BLoC and Provider",
-          badge: "Flutter",
-        },
-        {
-          name: "Supabase & PostgreSQL Backend",
-          level: "91%",
-          desc: "Realtime databases, Row Level Security (RLS), Auth, fleet telemetry sync, and edge storage",
-          badge: "Supabase / BaaS",
-        },
-        {
-          name: "On-Device MLKit & OCR",
-          level: "88%",
-          desc: "100% offline financial SMS parsing and transaction receipt analysis engine",
-          badge: "On-Device ML",
+          detail: "Cross-platform mobile development with Provider and BLoC, native MethodChannels, custom painters, and WebViews.",
+          appliedIn: "DDTransport & OCR App",
+          tag: "Flutter",
         },
       ],
     },
     {
-      category: "Audio & Systems (C++)",
-      title: "Audio Engineering & Android NDK",
-      icon: "audio",
-      colorType: "primary",
-      skills: [
+      category: "Real-Time",
+      title: "Real-Time & Communications",
+      icon: "realtime",
+      themeStyle: "primary",
+      items: [
         {
-          name: "Android C/C++ Audio (Google Oboe)",
-          level: "90%",
-          desc: "Native JNI audio streams, sub-20ms low latency hardware buffers, OpenSL ES fallback",
-          badge: "NDK / C++",
+          name: "PJSIP & SIP Protocol Stack",
+          detail: "Session Initiation Protocol signaling, SDP negotiation, RTP audio packet streams, jitter buffers, and codec management.",
+          appliedIn: "VoIP Call Engine",
+          tag: "PJSIP / SIP",
         },
         {
-          name: "SIP & VoIP Protocols",
-          level: "86%",
-          desc: "Real-time call signaling, audio codecs (Opus, PCMU), jitter buffers, and stream sync",
-          badge: "VoIP Engine",
+          name: "MQTT v5 (HiveMQ)",
+          detail: "Low-overhead broker messaging, topic subscriptions, user presence discovery, and instant channel switching signaling.",
+          appliedIn: "Verbo Comms Signaling",
+          tag: "MQTT v5",
         },
         {
-          name: "Android Hardware & Wi-Fi APIs",
-          level: "88%",
-          desc: "WifiManager scan routines, RSSI signal diagnostics, and BLE GATT clients",
-          badge: "Hardware APIs",
-        },
-      ],
-    },
-    {
-      category: "Next.js & Cloud",
-      title: "Next.js Web & Shopify E-Commerce",
-      icon: "nextjs",
-      colorType: "secondary",
-      skills: [
-        {
-          name: "Next.js (App Router) & React",
-          level: "90%",
-          desc: "Full-stack SSR/ISR web portals, server actions, and Verbo web management dashboard",
-          badge: "Next.js",
+          name: "WebRTC & Audio Focus Routing",
+          detail: "Peer-to-peer media streams, audio routing across earpiece/speaker/Bluetooth SCO, and hardware call management.",
+          appliedIn: "Real-Time Audio",
+          tag: "WebRTC",
         },
         {
-          name: "Shopify Storefront & GraphQL",
-          level: "88%",
-          desc: "Headless e-commerce (Japamala) with Shopify Storefront API, cart state, and checkout flows",
-          badge: "Shopify Headless",
-        },
-        {
-          name: "Tailwind CSS & Design Systems",
-          level: "95%",
-          desc: "Sophisticated responsive architectural layouts, custom themes, and design tokens",
-          badge: "Design Systems",
+          name: "Phonetic Callsign System",
+          detail: "Radio-style phonetic callsign protocol (Bravo, Charlie, Delta) for channel assignments, user addressing, and audit logging.",
+          appliedIn: "Verbo Channel Logic",
+          tag: "Phonetic Protocol",
         },
       ],
     },
     {
-      category: "IoT & Edge AI",
-      title: "Embedded Systems & On-Device ML",
-      icon: "iot",
-      colorType: "primary",
-      skills: [
+      category: "MDM & Enterprise",
+      title: "Device Management & Kiosk",
+      icon: "mdm",
+      themeStyle: "primary",
+      items: [
         {
-          name: "ESP32 Firmware & Provisioning",
-          level: "84%",
-          desc: "BLE/Wi-Fi provisioning protocols, sensor telemetry, and hardware download tools",
-          badge: "ESP32",
+          name: "SafeUEM Android MDM",
+          detail: "Enterprise device enrollment, policy configuration, remote application distribution, and over-the-air firmware updates.",
+          appliedIn: "verbo_lite Deployments",
+          tag: "SafeUEM MDM",
         },
         {
-          name: "Local LLMs (Ollama, LiteRT)",
-          level: "86%",
-          desc: "On-device quantized AI execution, zero-cloud API dependency, private data inference",
-          badge: "Local AI",
+          name: "Single-App Kiosk Deployment",
+          detail: "Total hardware lockdown, suppression of system navigation, status bar blackout, and safe-mode boot prevention.",
+          appliedIn: "RugGear Devices",
+          tag: "Kiosk Mode",
+        },
+        {
+          name: "Automated Shell & PowerShell Scripting",
+          detail: "Custom batch provisioning scripts utilizing ADB command-line tools for zero-touch mass device setup.",
+          appliedIn: "Hardware Provisioning",
+          tag: "ADB Automation",
+        },
+        {
+          name: "RugGear Hardware Integration",
+          detail: "Push-to-Talk (PTT) physical button keycode interception, ruggedized acoustic hardware tuning, and drop-resilience testing.",
+          appliedIn: "Industrial Field Deployments",
+          tag: "RugGear",
+        },
+      ],
+    },
+    {
+      category: "Embedded",
+      title: "Embedded & Hardware",
+      icon: "embedded",
+      themeStyle: "secondary",
+      items: [
+        {
+          name: "ESP32 & ESP-IDF Framework",
+          detail: "Custom C/C++ firmware development on dual-core Espressif microcontrollers using the official ESP-IDF toolchain.",
+          appliedIn: "Wi-Fi Sensing Nodes",
+          tag: "ESP-IDF",
+        },
+        {
+          name: "Wi-Fi Channel State Information (CSI)",
+          detail: "Extracting raw physical-layer CSI subcarrier phase and amplitude matrices for non-invasive human presence sensing.",
+          appliedIn: "CSI Sensing Pipeline",
+          tag: "Wi-Fi CSI",
+        },
+        {
+          name: "LoRa & Bluetooth LE",
+          detail: "Long-range low-power sensor telemetry over LoRa, alongside BLE GATT services for mobile hardware provisioning.",
+          appliedIn: "Mesh Hardware",
+          tag: "LoRa & BLE",
+        },
+      ],
+    },
+    {
+      category: "Web & Backend",
+      title: "Web & Cloud Backend",
+      icon: "web",
+      themeStyle: "secondary",
+      items: [
+        {
+          name: "Next.js & TypeScript",
+          detail: "Full-stack server-side rendered (SSR) web applications with App Router, server actions, and strict TypeScript types.",
+          appliedIn: "Verbo Web & Japamala",
+          tag: "Next.js",
+        },
+        {
+          name: "Zustand & State Management",
+          detail: "Lightweight, decoupled state architecture for real-time dashboards, active channel indicators, and client caches.",
+          appliedIn: "Web Management Consoles",
+          tag: "Zustand",
+        },
+        {
+          name: "Supabase & PostgreSQL",
+          detail: "Relational database schema modeling, Row Level Security (RLS) multi-tenant policies, and real-time WebSocket subscriptions.",
+          appliedIn: "DDTransport Backend",
+          tag: "Supabase",
+        },
+        {
+          name: "Cloudflare Tunneling",
+          detail: "Secure zero-trust ingress networking routing local microservice streams directly to public endpoints without port forwarding.",
+          appliedIn: "Edge Telemetry",
+          tag: "Cloudflare",
+        },
+      ],
+    },
+    {
+      category: "Environment",
+      title: "Developer Environment",
+      icon: "env",
+      themeStyle: "secondary",
+      items: [
+        {
+          name: "macOS & Modern Terminal",
+          detail: "Daily driver on macOS running Ghostty & tmux terminal multiplexers with Zsh and Powerlevel10k prompt configuration.",
+          appliedIn: "Core Tooling",
+          tag: "Ghostty / tmux",
+        },
+        {
+          name: "Neovim & Git Workflows",
+          detail: "Modal keyboard-driven editing with custom LSP configurations, semantic code navigation, and strict feature-branch Git workflows.",
+          appliedIn: "Development Cycle",
+          tag: "Neovim / Git",
+        },
+        {
+          name: "Figma to Code",
+          detail: "Translating design systems, component tokens, and interactive UI micro-interactions directly into native Compose and Tailwind CSS.",
+          appliedIn: "UI Implementation",
+          tag: "Figma",
         },
       ],
     },
   ];
 
-  const timelineEvents: TimelineEvent[] = [
-    {
-      year: "Present",
-      role: "Lead Systems & Android Engineer",
-      desc: "Architecting the Verbo VoIP communication suite with Kotlin & Jetpack Compose, the Verbo Next.js web portal, low-latency Google Oboe C++ audio engines, and BLE provisioning to ESP32 microcontrollers.",
-      tech: ["Kotlin", "Jetpack Compose", "Next.js", "Oboe C++", "ESP32", "Supabase"],
-      colorType: "primary",
-    },
-    {
-      year: "2023 - 2024",
-      role: "Senior Mobile & Web Developer",
-      desc: "Developed the DDTransport fleet logistics platform with Flutter & Supabase real-time backend, the on-device OCR expense tracker in Flutter, and the Japamala headless Next.js Shopify e-commerce platform.",
-      tech: ["Flutter", "Supabase", "Next.js", "Shopify API", "MLKit OCR", "Dart"],
-      colorType: "secondary",
-    },
-    {
-      year: "2022",
-      role: "Full-Stack Web & Mobile Developer",
-      desc: "Constructed web dashboard platforms with React and Tailwind CSS, implemented microservice APIs, and published utility applications.",
-      tech: ["React.js", "Tailwind CSS", "JavaScript", "REST APIs", "SQLite"],
-      colorType: "primary",
-    },
-  ];
-
-  const filteredCategories = skillCategories.filter(
+  const filteredCompetencies = competencyGroups.filter(
     (c) => activeCategory === "All" || c.category === activeCategory
   );
 
   return (
     <div className="min-h-screen py-12 px-6 relative ambient-glow-mesh">
       <div className="max-w-5xl mx-auto space-y-12 relative z-10">
-        {/* Header */}
+        
+        {/* Header with Professional Summary */}
         <div className="text-center space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-[var(--accent-secondary-subtle)] text-[var(--accent-primary)] text-xs font-semibold rounded-full uppercase tracking-wider shadow-sm">
-            <KotlinIcon className="w-3.5 h-3.5 text-[var(--accent-primary)]" /> Engineer Profile & Competencies
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-[var(--accent-secondary-subtle)] text-[var(--accent-primary)] text-xs font-semibold rounded-full uppercase tracking-wider shadow-sm border border-[var(--glass-border)]">
+            Professional Profile & Engineering Background
           </div>
-          <h2 className="text-4xl sm:text-5xl font-extrabold font-heading text-[var(--text-primary)]">About & Technical Expertise</h2>
-          <p className="max-w-2xl mx-auto text-xs sm:text-sm text-[var(--text-secondary)]">
-            Specializing in modern Android with <strong className="text-[var(--accent-primary)] font-semibold">Kotlin & Jetpack Compose</strong>, cross-platform mobile with <strong className="text-[var(--accent-secondary-bright)] font-semibold">Flutter & Supabase</strong>, modern web with <strong className="text-[var(--text-primary)] font-semibold">Next.js & Shopify</strong>, and low-latency C++ audio engines.
+          <h1 className="text-4xl sm:text-5xl font-extrabold font-heading text-[var(--text-primary)]">
+            About & Experience
+          </h1>
+          <p className="max-w-3xl mx-auto text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
+            Mobile Software Developer with <strong className="text-[var(--accent-primary)] font-semibold">4 years of experience</strong> specializing in native Android (<strong className="text-[var(--text-primary)] font-semibold">Kotlin, Jetpack Compose</strong>) and cross-platform <strong className="text-[var(--accent-secondary-bright)] font-semibold">Flutter</strong> development. Proven expertise in building real-time communication systems, enterprise device management (MDM), and hardware-integrated applications.
           </p>
         </div>
 
-        {/* Bio Highlights Card with Palette Gradient */}
-        <div className="p-8 rounded-3xl card-gradient space-y-5">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b pb-4 border-[var(--border-subtle)]">
-            <h3 className="text-2xl font-bold font-heading text-[var(--text-primary)] flex items-center gap-2.5">
-              <AndroidIcon className="w-6 h-6 text-[var(--accent-primary)]" />
-              <span>Abhijith M P — Systems & Mobile Engineer</span>
-            </h3>
-            <span className="text-xs font-mono font-semibold px-3 py-1 rounded-full bg-[var(--accent-secondary)] text-[var(--accent-secondary-bright)] self-start sm:self-auto shadow-sm">
-              Ernakulam, Kerala, India
-            </span>
+        {/* Bio Summary & Education Card */}
+        <div className="grid md:grid-cols-3 gap-6">
+          {/* Main Professional Bio */}
+          <div className="md:col-span-2 p-7 rounded-3xl card-gradient space-y-4">
+            <div className="border-b pb-3 border-[var(--border-subtle)] flex items-center justify-between">
+              <h2 className="text-xl font-bold font-heading text-[var(--text-primary)] flex items-center gap-2.5">
+                <AndroidIcon className="w-5 h-5 text-[var(--accent-primary)]" />
+                <span>Abhijith M P</span>
+              </h2>
+              <span className="text-xs font-mono font-semibold px-2.5 py-0.5 rounded-full bg-[var(--accent-primary-subtle)] text-[var(--accent-primary)]">
+                4 Years Experience
+              </span>
+            </div>
+
+            <p className="leading-relaxed text-xs sm:text-sm text-[var(--text-secondary)]">
+              I specialize in bridging high-level declarative user interfaces with low-level systems architectures. My experience spans mission-critical native Android engineering with <strong className="text-[var(--accent-primary)] font-semibold">Kotlin & Jetpack Compose</strong>, low-latency audio via <strong className="text-[var(--accent-primary)] font-semibold">Google Oboe C++ NDK</strong>, real-time signaling with <strong className="text-[var(--accent-primary)] font-semibold">PJSIP & MQTT v5</strong>, and cross-platform mobile apps with <strong className="text-[var(--accent-secondary-bright)] font-semibold">Flutter & Supabase</strong>.
+            </p>
+
+            <p className="leading-relaxed text-xs sm:text-sm text-[var(--text-secondary)]">
+              Beyond standard application development, I have extensive hands-on expertise with <strong className="text-[var(--accent-primary)] font-semibold">Enterprise Device Management (SafeUEM MDM)</strong> deploying single-app kiosk lockdown environments on ruggedized <strong className="text-[var(--text-primary)] font-semibold">RugGear hardware</strong>, and embedded <strong className="text-[var(--accent-secondary-bright)] font-semibold">ESP32 Wi-Fi sensing</strong> pipelines capturing Channel State Information (CSI).
+            </p>
+
+            {/* Quick Badges */}
+            <div className="pt-2 flex flex-wrap gap-1.5">
+              {[
+                "Native Android",
+                "Jetpack Compose",
+                "Flutter & Dart",
+                "PJSIP / WebRTC",
+                "MQTT v5 (HiveMQ)",
+                "SafeUEM MDM",
+                "RugGear Kiosk",
+                "ESP32 (ESP-IDF)",
+                "Next.js & TypeScript",
+              ].map((b) => (
+                <span
+                  key={b}
+                  className="text-[10px] font-mono px-2.5 py-1 rounded-lg bg-[var(--accent-secondary-subtle)] text-[var(--accent-secondary-bright)] font-semibold border border-[var(--glass-border)]"
+                >
+                  #{b}
+                </span>
+              ))}
+            </div>
           </div>
 
-          <p className="leading-relaxed text-xs sm:text-sm text-[var(--text-secondary)]">
-            I am a mobile, systems, and full-stack software engineer driven by crafting production-grade software architectures. My core strength centers on <strong className="text-[var(--accent-primary)] font-semibold">Modern Android Engineering</strong> using <strong className="text-[var(--accent-primary)] font-semibold">Kotlin & Jetpack Compose</strong>, following clean MVI/MVVM design patterns, and asynchronous Coroutines/Flow pipelines.
-          </p>
+          {/* Education & Credentials Card */}
+          <div className="p-7 rounded-3xl card-gradient space-y-5 flex flex-col justify-between">
+            <div className="space-y-4">
+              <div className="border-b pb-3 border-[var(--border-subtle)]">
+                <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--accent-primary)]">
+                  Academic Degree
+                </span>
+                <h3 className="text-base font-bold text-[var(--text-primary)] mt-0.5">
+                  Master of Computer Applications (MCA)
+                </h3>
+                <p className="text-xs text-[var(--text-secondary)]">SNGIST Group of Institutions</p>
+              </div>
 
-          <p className="leading-relaxed text-xs sm:text-sm text-[var(--text-secondary)]">
-            Alongside native Android, I build scalable cross-platform mobile apps with <strong className="text-[var(--accent-secondary-bright)] font-semibold">Flutter & Supabase</strong> (DDTransport, Expense Tracker), modern web portals and headless e-commerce with <strong className="text-[var(--text-primary)] font-semibold">Next.js & Shopify</strong> (Japamala, Verbo Web), low-level audio streaming with <strong className="text-[var(--accent-primary)] font-semibold">Google Oboe C++ NDK</strong>, and embedded <strong className="text-[var(--accent-secondary-bright)] font-semibold">ESP32 IoT BLE</strong> device provisioning.
-          </p>
+              <div className="space-y-2">
+                <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--accent-secondary-bright)]">
+                  Languages Spoken
+                </span>
+                <div className="flex gap-2">
+                  <span className="text-xs px-2.5 py-1 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-subtle)] font-medium text-[var(--text-primary)]">
+                    English (Fluent)
+                  </span>
+                  <span className="text-xs px-2.5 py-1 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-subtle)] font-medium text-[var(--text-primary)]">
+                    Malayalam (Native)
+                  </span>
+                </div>
+              </div>
 
-          {/* Quick Technical Badges with rich palette styling */}
-          <div className="pt-2 flex flex-wrap gap-2">
-            {[
-              { name: "Kotlin 2.0+", type: "primary" },
-              { name: "Jetpack Compose", type: "primary" },
-              { name: "Coroutines StateFlow", type: "primary" },
-              { name: "Flutter & Dart", type: "secondary" },
-              { name: "Supabase Backend", type: "secondary" },
-              { name: "Next.js (App Router)", type: "secondary" },
-              { name: "Shopify Storefront", type: "secondary" },
-              { name: "Google Oboe C++", type: "primary" },
-              { name: "ESP32 BLE", type: "secondary" },
-              { name: "Ollama Local AI", type: "primary" },
-            ].map((badge) => (
-              <span
-                key={badge.name}
-                className={`text-[11px] font-mono px-3 py-1 rounded-xl font-bold shadow-sm ${
-                  badge.type === "primary"
-                    ? "bg-[var(--accent-primary-subtle)] text-[var(--accent-primary)]"
-                    : "bg-[var(--accent-secondary-subtle)] text-[var(--accent-secondary-bright)]"
-                }`}
+              <div className="space-y-2">
+                <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--accent-primary)]">
+                  Location & Availability
+                </span>
+                <p className="text-xs text-[var(--text-secondary)]">
+                  Ernakulam, Kerala, India • Open for high-impact mobile & systems roles globally.
+                </p>
+              </div>
+            </div>
+
+            <div className="pt-2">
+              <a
+                href="/contactus"
+                className="w-full py-2.5 btn-primary-gradient text-[var(--accent-primary-text)] font-bold rounded-xl text-xs flex items-center justify-center gap-1.5 shadow-md"
               >
-                {badge.name}
-              </span>
+                <span>Connect with Me</span>
+                <i className="fa-solid fa-arrow-right text-[10px]"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Work Experience Section */}
+        <div className="space-y-6 pt-2">
+          <div className="text-center space-y-1">
+            <h2 className="text-2xl sm:text-3xl font-bold font-heading text-[var(--text-primary)]">
+              Work Experience
+            </h2>
+            <p className="text-xs text-[var(--text-secondary)]">
+              Full-time production engineering roles spanning real-time mobile systems, MDM, and enterprise frontends.
+            </p>
+          </div>
+
+          <div className="relative border-l-2 border-[var(--border-subtle)] pl-6 ml-3 sm:ml-6 space-y-8">
+            {experiences.map((exp, idx) => (
+              <div key={idx} className="relative group">
+                {/* Timeline Node */}
+                <div className={`absolute -left-[31px] top-1.5 w-4 h-4 rounded-full border-4 border-[var(--bg-canvas)] transition-transform duration-200 ${
+                  exp.themeStyle === "primary" ? "bg-[var(--accent-primary)]" : "bg-[var(--accent-secondary-bright)]"
+                }`}></div>
+
+                <div className="p-7 rounded-3xl card-gradient space-y-4">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 border-b pb-3 border-[var(--border-subtle)]">
+                    <div>
+                      <h3 className="text-lg font-bold font-heading text-[var(--text-primary)]">
+                        {exp.role} <span className="text-[var(--accent-primary)]">@ {exp.company}</span>
+                      </h3>
+                      <p className="text-xs text-[var(--text-muted)] font-mono">{exp.location}</p>
+                    </div>
+                    <span className={`text-xs font-mono font-bold px-3 py-1 rounded-xl self-start sm:self-auto ${
+                      exp.themeStyle === "primary"
+                        ? "bg-[var(--accent-primary-subtle)] text-[var(--accent-primary)] border border-[var(--accent-primary-border)]"
+                        : "bg-[var(--accent-secondary-subtle)] text-[var(--accent-secondary-bright)] border border-[var(--accent-secondary-border)]"
+                    }`}>
+                      {exp.period}
+                    </span>
+                  </div>
+
+                  <p className="text-xs sm:text-sm font-medium text-[var(--text-primary)]">
+                    {exp.summary}
+                  </p>
+
+                  <ul className="space-y-2 text-xs text-[var(--text-secondary)]">
+                    {exp.responsibilities.map((resp, rIdx) => (
+                      <li key={rIdx} className="flex items-start gap-2">
+                        <span className="text-[var(--accent-primary)] mt-0.5">•</span>
+                        <span className="leading-relaxed">{resp}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="flex flex-wrap gap-1.5 pt-2">
+                    {exp.tech.map((t) => (
+                      <span
+                        key={t}
+                        className="text-[10px] font-mono px-2.5 py-0.5 rounded-lg bg-[var(--bg-surface)] text-[var(--text-secondary)] border border-[var(--glass-border)] font-semibold"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
         </div>
 
-        {/* Technical Skill Matrix */}
-        <div className="space-y-6">
+        {/* Contextual Technical Competencies (2026 Strategy #3) */}
+        <div className="space-y-6 pt-4">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <h3 className="text-2xl font-bold font-heading text-[var(--text-primary)]">Engineering Skill Matrix</h3>
-            <div className="flex flex-wrap gap-2">
-              {[
-                "All",
-                "Kotlin & Android Native",
-                "Flutter & Cross-Platform",
-                "Audio & Systems (C++)",
-                "Next.js & Cloud",
-                "IoT & Edge AI",
-              ].map((cat) => (
+            <div>
+              <h2 className="text-2xl sm:text-3xl font-bold font-heading text-[var(--text-primary)]">
+                Core Technical Competencies
+              </h2>
+              <p className="text-xs text-[var(--text-secondary)] mt-0.5">
+                Skills contextualized by real-world production application rather than detached percentage bars.
+              </p>
+            </div>
+
+            {/* Filter Pills */}
+            <div className="flex flex-wrap gap-1.5">
+              {["All", "Mobile", "Real-Time", "MDM & Enterprise", "Embedded", "Web & Backend", "Environment"].map((cat) => (
                 <button
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
-                  className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all duration-150 ${
+                  className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all duration-150 ${
                     activeCategory === cat
                       ? "btn-primary-gradient text-[var(--accent-primary-text)] font-bold scale-105"
-                      : "bg-[var(--bg-card)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)] shadow-sm"
+                      : "bg-[var(--bg-card)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)] border border-[var(--glass-border)] shadow-sm"
                   }`}
                 >
                   {cat}
@@ -287,63 +488,46 @@ export default function AboutPage() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
-            {filteredCategories.map((catGroup) => (
+            {filteredCompetencies.map((group) => (
               <div
-                key={catGroup.title}
-                className="p-6 rounded-3xl card-gradient space-y-5"
+                key={group.title}
+                className="p-6 rounded-3xl card-gradient space-y-4"
               >
-                <div className="border-b pb-3.5 flex items-center justify-between border-[var(--border-subtle)]">
-                  <div className="flex items-center gap-2.5">
-                    {catGroup.icon === "compose" ? (
-                      <ComposeIcon className="w-5 h-5 text-[var(--accent-primary)]" />
-                    ) : catGroup.icon === "flutter" ? (
-                      <FlutterIcon className="w-5 h-5 text-[var(--accent-secondary-bright)]" />
-                    ) : catGroup.icon === "nextjs" ? (
-                      <NextJsIcon className="w-5 h-5 text-[var(--accent-secondary-bright)]" />
-                    ) : (
-                      <i className={`fa-solid ${catGroup.icon === "audio" ? "fa-wave-square" : "fa-microchip"} text-[var(--accent-primary)] text-lg`}></i>
-                    )}
-                    <h4 className="font-bold text-sm sm:text-base text-[var(--text-primary)]">{catGroup.title}</h4>
+                <div className="border-b pb-3 flex items-center justify-between border-[var(--border-subtle)]">
+                  <div className="flex items-center gap-2">
+                    {group.icon === "mobile" && <AndroidIcon className="w-5 h-5 text-[var(--accent-primary)]" />}
+                    {group.icon === "realtime" && <i className="fa-solid fa-tower-broadcast text-[var(--accent-primary)] text-sm"></i>}
+                    {group.icon === "mdm" && <i className="fa-solid fa-shield-halved text-[var(--accent-primary)] text-sm"></i>}
+                    {group.icon === "embedded" && <i className="fa-solid fa-microchip text-[var(--accent-secondary-bright)] text-sm"></i>}
+                    {group.icon === "web" && <NextJsIcon className="w-5 h-5 text-[var(--accent-secondary-bright)]" />}
+                    {group.icon === "env" && <i className="fa-solid fa-terminal text-[var(--accent-secondary-bright)] text-sm"></i>}
+                    <h3 className="font-bold text-sm sm:text-base text-[var(--text-primary)] font-heading">
+                      {group.title}
+                    </h3>
                   </div>
-                  <span className={`text-[10px] font-mono uppercase px-2.5 py-0.5 rounded-md font-bold ${
-                    catGroup.colorType === "primary"
-                      ? "bg-[var(--accent-primary-subtle)] text-[var(--accent-primary)]"
-                      : "bg-[var(--accent-secondary-subtle)] text-[var(--accent-secondary-bright)]"
-                  }`}>
-                    {catGroup.category}
+                  <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded-md font-bold bg-[var(--accent-secondary-subtle)] text-[var(--accent-secondary-bright)]">
+                    {group.category}
                   </span>
                 </div>
 
-                <div className="space-y-4">
-                  {catGroup.skills.map((skill) => (
-                    <div key={skill.name} className="space-y-1.5">
-                      <div className="flex justify-between items-center text-xs font-medium">
-                        <span className="font-bold text-[var(--text-primary)] flex items-center gap-1.5">
-                          {skill.name}
+                <div className="space-y-3.5">
+                  {group.items.map((item) => (
+                    <div key={item.name} className="p-3.5 rounded-2xl bg-[var(--bg-surface)]/70 border border-[var(--glass-border)] space-y-1.5">
+                      <div className="flex justify-between items-start gap-2">
+                        <span className="font-bold text-xs text-[var(--text-primary)]">
+                          {item.name}
                         </span>
-                        <div className="flex items-center gap-2">
-                          <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[var(--accent-secondary)] text-[var(--accent-secondary-bright)] font-semibold shadow-sm">
-                            {skill.badge}
-                          </span>
-                          <span className={`font-mono font-bold ${
-                            catGroup.colorType === "primary" ? "text-[var(--accent-primary)]" : "text-[var(--accent-secondary-bright)]"
-                          }`}>{skill.level}</span>
-                        </div>
+                        <span className="text-[9px] font-mono px-2 py-0.5 rounded-md bg-[var(--accent-primary-subtle)] text-[var(--accent-primary)] font-bold shrink-0">
+                          {item.tag}
+                        </span>
                       </div>
-
-                      {/* Progress Bar with category color */}
-                      <div className="w-full rounded-full h-1.5 bg-[var(--bg-surface)] overflow-hidden">
-                        <div
-                          className={`h-1.5 rounded-full transition-all duration-500 ${
-                            catGroup.colorType === "primary" ? "bg-[var(--accent-primary)]" : "bg-[var(--accent-secondary-bright)]"
-                          }`}
-                          style={{ width: skill.level }}
-                        ></div>
-                      </div>
-
                       <p className="text-[11px] leading-relaxed text-[var(--text-secondary)]">
-                        {skill.desc}
+                        {item.detail}
                       </p>
+                      <div className="pt-0.5 flex items-center gap-1 text-[10px] font-mono text-[var(--accent-secondary-bright)]">
+                        <i className="fa-solid fa-arrow-turn-down text-[8px]"></i>
+                        <span>Applied in: <strong className="text-[var(--text-primary)]">{item.appliedIn}</strong></span>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -352,60 +536,6 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Career Evolution Timeline */}
-        <div className="space-y-6 pt-4">
-          <div className="text-center space-y-1">
-            <h3 className="text-2xl font-bold font-heading text-[var(--text-primary)]">Engineering Evolution</h3>
-            <p className="text-xs text-[var(--text-secondary)]">
-              Key milestones across Native Android, Cross-Platform Mobile, Web, and Systems tooling.
-            </p>
-          </div>
-
-          <div className="relative border-l-2 border-[var(--border-subtle)] pl-6 ml-4 sm:ml-8 space-y-8">
-            {timelineEvents.map((evt, idx) => (
-              <div key={idx} className="relative group">
-                <div className={`absolute -left-[31px] top-1.5 w-4 h-4 rounded-full border-4 border-[var(--bg-canvas)] transition-transform duration-200 ${
-                  evt.colorType === "primary" ? "bg-[var(--accent-primary)]" : "bg-[var(--accent-secondary-bright)]"
-                }`}></div>
-
-                <div className="p-6 rounded-3xl card-gradient space-y-3">
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-                    <span className={`text-xs font-mono font-bold px-2.5 py-0.5 rounded-md inline-block w-max ${
-                      evt.colorType === "primary"
-                        ? "bg-[var(--accent-primary-subtle)] text-[var(--accent-primary)]"
-                        : "bg-[var(--accent-secondary-subtle)] text-[var(--accent-secondary-bright)]"
-                    }`}>
-                      {evt.year}
-                    </span>
-                    <h4 className="text-base sm:text-lg font-bold font-heading text-[var(--text-primary)]">{evt.role}</h4>
-                  </div>
-
-                  <p className="text-xs sm:text-sm leading-relaxed text-[var(--text-secondary)]">
-                    {evt.desc}
-                  </p>
-
-                  <div className="flex flex-wrap gap-1.5 pt-1">
-                    {evt.tech.map((t) => {
-                      const isPrimary = t.includes("Kotlin") || t.includes("Compose") || t.includes("Oboe");
-                      return (
-                        <span
-                          key={t}
-                          className={`text-[10px] font-mono px-2.5 py-0.5 rounded-lg font-semibold shadow-sm ${
-                            isPrimary
-                              ? "bg-[var(--accent-primary-subtle)] text-[var(--accent-primary)]"
-                              : "bg-[var(--accent-secondary-subtle)] text-[var(--accent-secondary-bright)]"
-                          }`}
-                        >
-                          #{t}
-                        </span>
-                      );
-                    })}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </div>
   );

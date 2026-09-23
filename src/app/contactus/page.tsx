@@ -24,12 +24,13 @@ export default function ContactPage() {
   const [toastMessage, setToastMessage] = useState<string>("");
 
   const projectTypes: string[] = [
-    "Kotlin & Compose Native App",
-    "Flutter & Supabase Mobile App",
-    "Next.js & Shopify Web Platform",
-    "Google Oboe C++ Audio Engine",
-    "ESP32 IoT & Firmware",
-    "General Consultation",
+    "Native Android (Kotlin & Compose)",
+    "VoIP & PJSIP Real-Time Communications",
+    "Enterprise MDM & Kiosk Deployment (RugGear)",
+    "Cross-Platform Flutter & Supabase",
+    "ESP32 Embedded & Wi-Fi CSI Sensing",
+    "Next.js & Full-Stack Web Engineering",
+    "General Technical Consultation",
   ];
 
   const handleChange = (
