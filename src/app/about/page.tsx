@@ -211,13 +211,13 @@ export default function AboutPage() {
         </div>
 
         {/* Bio Highlights Card */}
-        <div className="p-8 rounded-3xl border border-[var(--border-medium)] bg-[var(--bg-card)] transition-all duration-200 space-y-5 shadow-sm">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b pb-4 border-[var(--border-medium)]">
+        <div className="p-8 rounded-3xl bg-[var(--bg-card)] transition-all duration-200 space-y-5 shadow-xl">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b pb-4 border-[var(--border-subtle)]">
             <h3 className="text-2xl font-bold font-heading text-[var(--text-primary)] flex items-center gap-2.5">
               <AndroidIcon className="w-6 h-6 text-[var(--accent-primary)]" />
               <span>Abhijith M P — Systems & Mobile Engineer</span>
             </h3>
-            <span className="text-xs font-mono font-semibold px-3 py-1 rounded-full bg-[var(--accent-secondary)] text-[var(--accent-secondary-bright)] border border-[var(--accent-secondary-border)] self-start sm:self-auto">
+            <span className="text-xs font-mono font-semibold px-3 py-1 rounded-full bg-[var(--accent-secondary)] text-[var(--accent-secondary-bright)] self-start sm:self-auto shadow-sm">
               Ernakulam, Kerala, India
             </span>
           </div>
@@ -246,10 +246,10 @@ export default function AboutPage() {
             ].map((badge) => (
               <span
                 key={badge.name}
-                className={`text-[11px] font-mono px-3 py-1 rounded-xl border font-bold ${
+                className={`text-[11px] font-mono px-3 py-1 rounded-xl font-bold shadow-sm ${
                   badge.type === "primary"
-                    ? "bg-[var(--accent-primary-subtle)] text-[var(--accent-primary)] border-[var(--accent-primary-border)]"
-                    : "bg-[var(--accent-secondary-subtle)] text-[var(--accent-secondary-bright)] border-[var(--accent-secondary-border)]"
+                    ? "bg-[var(--accent-primary-subtle)] text-[var(--accent-primary)]"
+                    : "bg-[var(--accent-secondary-subtle)] text-[var(--accent-secondary-bright)]"
                 }`}
               >
                 {badge.name}
@@ -274,10 +274,10 @@ export default function AboutPage() {
                 <button
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
-                  className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all duration-150 ${
+                  className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all duration-150 shadow-sm ${
                     activeCategory === cat
-                      ? "bg-[var(--accent-primary)] text-[var(--accent-primary-text)] shadow-md font-bold scale-105"
-                      : "bg-[var(--bg-card)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border-medium)] hover:border-[var(--accent-secondary-bright)]"
+                      ? "bg-[var(--accent-primary)] text-[var(--accent-primary-text)] font-bold scale-105"
+                      : "bg-[var(--bg-card)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)]"
                   }`}
                 >
                   {cat}
@@ -290,9 +290,9 @@ export default function AboutPage() {
             {filteredCategories.map((catGroup) => (
               <div
                 key={catGroup.title}
-                className="p-6 rounded-3xl border border-[var(--border-medium)] bg-[var(--bg-card)] transition-all duration-200 space-y-5 shadow-sm"
+                className="p-6 rounded-3xl bg-[var(--bg-card)] hover:bg-[var(--bg-card-hover)] transition-all duration-200 space-y-5 shadow-xl"
               >
-                <div className="border-b pb-3.5 flex items-center justify-between border-[var(--border-medium)]">
+                <div className="border-b pb-3.5 flex items-center justify-between border-[var(--border-subtle)]">
                   <div className="flex items-center gap-2.5">
                     {catGroup.icon === "compose" ? (
                       <ComposeIcon className="w-5 h-5 text-[var(--accent-primary)]" />
@@ -305,10 +305,10 @@ export default function AboutPage() {
                     )}
                     <h4 className="font-bold text-sm sm:text-base text-[var(--text-primary)]">{catGroup.title}</h4>
                   </div>
-                  <span className={`text-[10px] font-mono uppercase px-2.5 py-0.5 rounded-md font-bold border ${
+                  <span className={`text-[10px] font-mono uppercase px-2.5 py-0.5 rounded-md font-bold ${
                     catGroup.colorType === "primary"
-                      ? "bg-[var(--accent-primary-subtle)] text-[var(--accent-primary)] border-[var(--accent-primary-border)]"
-                      : "bg-[var(--accent-secondary-subtle)] text-[var(--accent-secondary-bright)] border-[var(--accent-secondary-border)]"
+                      ? "bg-[var(--accent-primary-subtle)] text-[var(--accent-primary)]"
+                      : "bg-[var(--accent-secondary-subtle)] text-[var(--accent-secondary-bright)]"
                   }`}>
                     {catGroup.category}
                   </span>
@@ -322,7 +322,7 @@ export default function AboutPage() {
                           {skill.name}
                         </span>
                         <div className="flex items-center gap-2">
-                          <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[var(--accent-secondary)] text-[var(--accent-secondary-bright)] border border-[var(--accent-secondary-border)] font-semibold">
+                          <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[var(--accent-secondary)] text-[var(--accent-secondary-bright)] font-semibold shadow-sm">
                             {skill.badge}
                           </span>
                           <span className={`font-mono font-bold ${
@@ -361,19 +361,19 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="relative border-l-2 border-[var(--border-medium)] pl-6 ml-4 sm:ml-8 space-y-8">
+          <div className="relative border-l-2 border-[var(--border-subtle)] pl-6 ml-4 sm:ml-8 space-y-8">
             {timelineEvents.map((evt, idx) => (
               <div key={idx} className="relative group">
                 <div className={`absolute -left-[31px] top-1.5 w-4 h-4 rounded-full border-4 border-[var(--bg-canvas)] transition-transform duration-200 ${
                   evt.colorType === "primary" ? "bg-[var(--accent-primary)]" : "bg-[var(--accent-secondary-bright)]"
                 }`}></div>
 
-                <div className="p-6 rounded-3xl border border-[var(--border-medium)] bg-[var(--bg-card)] hover:border-[var(--border-active)] transition-all duration-200 space-y-3 shadow-sm">
+                <div className="p-6 rounded-3xl bg-[var(--bg-card)] hover:bg-[var(--bg-card-hover)] transition-all duration-200 space-y-3 shadow-xl">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-                    <span className={`text-xs font-mono font-bold px-2.5 py-0.5 rounded-md inline-block w-max border ${
+                    <span className={`text-xs font-mono font-bold px-2.5 py-0.5 rounded-md inline-block w-max ${
                       evt.colorType === "primary"
-                        ? "bg-[var(--accent-primary-subtle)] text-[var(--accent-primary)] border-[var(--accent-primary-border)]"
-                        : "bg-[var(--accent-secondary-subtle)] text-[var(--accent-secondary-bright)] border-[var(--accent-secondary-border)]"
+                        ? "bg-[var(--accent-primary-subtle)] text-[var(--accent-primary)]"
+                        : "bg-[var(--accent-secondary-subtle)] text-[var(--accent-secondary-bright)]"
                     }`}>
                       {evt.year}
                     </span>
@@ -390,10 +390,10 @@ export default function AboutPage() {
                       return (
                         <span
                           key={t}
-                          className={`text-[10px] font-mono px-2.5 py-0.5 rounded-lg border font-semibold ${
+                          className={`text-[10px] font-mono px-2.5 py-0.5 rounded-lg font-semibold ${
                             isPrimary
-                              ? "bg-[var(--accent-primary-subtle)] text-[var(--accent-primary)] border-[var(--accent-primary-border)]"
-                              : "bg-[var(--accent-secondary-subtle)] text-[var(--accent-secondary-bright)] border-[var(--accent-secondary-border)]"
+                              ? "bg-[var(--accent-primary-subtle)] text-[var(--accent-primary)]"
+                              : "bg-[var(--accent-secondary-subtle)] text-[var(--accent-secondary-bright)]"
                           }`}
                         >
                           #{t}

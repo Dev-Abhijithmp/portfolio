@@ -3,32 +3,32 @@
 @tailwind utilities;
 
 :root {
-  /* Default: Palette 1 with Matte Obsidian Black background (#08090D) */
+  /* Default: Palette 1 on Matte Obsidian Black (#08090D) */
   --bg-canvas: #08090D;
   --bg-surface: #141624;
   --bg-card: #242740;
-  --bg-card-hover: #2c304f;
-  --border-subtle: rgba(56, 67, 88, 0.7);
-  --border-medium: #384358;
+  --bg-card-hover: #2b304e;
+  --border-subtle: rgba(56, 67, 88, 0.25);
+  --border-medium: rgba(56, 67, 88, 0.45);
   --border-active: #FFA586;
 
   /* Primary Accent: Warm Coral / Peach */
   --accent-primary: #FFA586;
   --accent-primary-hover: #ff936e;
   --accent-primary-text: #1b1e32;
-  --accent-primary-subtle: rgba(255, 165, 134, 0.18);
-  --accent-primary-border: rgba(255, 165, 134, 0.45);
+  --accent-primary-subtle: rgba(255, 165, 134, 0.16);
+  --accent-primary-border: rgba(255, 165, 134, 0.35);
 
   /* Secondary Accent: Deep Oceanic Slate Teal */
   --accent-secondary: #285160;
   --accent-secondary-hover: #326578;
   --accent-secondary-bright: #52B3D9;
-  --accent-secondary-subtle: rgba(40, 81, 96, 0.55);
-  --accent-secondary-border: rgba(82, 179, 217, 0.5);
+  --accent-secondary-subtle: rgba(40, 81, 96, 0.5);
+  --accent-secondary-border: rgba(82, 179, 217, 0.35);
 
   /* Tertiary Accent: Steel Slate */
   --accent-tertiary: #384358;
-  --accent-tertiary-subtle: rgba(56, 67, 88, 0.7);
+  --accent-tertiary-subtle: rgba(56, 67, 88, 0.5);
 
   /* High Legibility Typography */
   --text-primary: #F4F6FB;
@@ -40,25 +40,25 @@
   --bg-canvas: #08090D;
   --bg-surface: #141624;
   --bg-card: #242740;
-  --bg-card-hover: #2c304f;
-  --border-subtle: rgba(56, 67, 88, 0.7);
-  --border-medium: #384358;
+  --bg-card-hover: #2b304e;
+  --border-subtle: rgba(56, 67, 88, 0.25);
+  --border-medium: rgba(56, 67, 88, 0.45);
   --border-active: #FFA586;
 
   --accent-primary: #FFA586;
   --accent-primary-hover: #ff936e;
   --accent-primary-text: #1b1e32;
-  --accent-primary-subtle: rgba(255, 165, 134, 0.18);
-  --accent-primary-border: rgba(255, 165, 134, 0.45);
+  --accent-primary-subtle: rgba(255, 165, 134, 0.16);
+  --accent-primary-border: rgba(255, 165, 134, 0.35);
 
   --accent-secondary: #285160;
   --accent-secondary-hover: #326578;
   --accent-secondary-bright: #52B3D9;
-  --accent-secondary-subtle: rgba(40, 81, 96, 0.55);
-  --accent-secondary-border: rgba(82, 179, 217, 0.5);
+  --accent-secondary-subtle: rgba(40, 81, 96, 0.5);
+  --accent-secondary-border: rgba(82, 179, 217, 0.35);
 
   --accent-tertiary: #384358;
-  --accent-tertiary-subtle: rgba(56, 67, 88, 0.7);
+  --accent-tertiary-subtle: rgba(56, 67, 88, 0.5);
 
   --text-primary: #F4F6FB;
   --text-secondary: #C8D1DF;
@@ -66,32 +66,32 @@
 }
 
 [data-palette="forest"] {
-  /* Palette 2 with Matte Obsidian Black background (#08090D) */
+  /* Palette 2 on Matte Obsidian Black (#08090D) */
   --bg-canvas: #08090D;
   --bg-surface: #0a1815;
   --bg-card: #163832;
   --bg-card-hover: #1c473f;
-  --border-subtle: rgba(35, 83, 71, 0.8);
-  --border-medium: #235347;
+  --border-subtle: rgba(35, 83, 71, 0.25);
+  --border-medium: rgba(35, 83, 71, 0.45);
   --border-active: #8EB69B;
 
   /* Primary Accent: Pale Mint Cream */
   --accent-primary: #DAF1DE;
   --accent-primary-hover: #c5ebd0;
   --accent-primary-text: #051F20;
-  --accent-primary-subtle: rgba(218, 241, 222, 0.2);
-  --accent-primary-border: rgba(218, 241, 222, 0.45);
+  --accent-primary-subtle: rgba(218, 241, 222, 0.18);
+  --accent-primary-border: rgba(218, 241, 222, 0.35);
 
   /* Secondary Accent: Muted Sage Green */
   --accent-secondary: #8EB69B;
   --accent-secondary-hover: #9fc4ab;
   --accent-secondary-bright: #8EB69B;
   --accent-secondary-subtle: rgba(142, 182, 155, 0.25);
-  --accent-secondary-border: rgba(142, 182, 155, 0.5);
+  --accent-secondary-border: rgba(142, 182, 155, 0.35);
 
   /* Tertiary Accent: Pine Forest */
   --accent-tertiary: #235347;
-  --accent-tertiary-subtle: rgba(35, 83, 71, 0.7);
+  --accent-tertiary-subtle: rgba(35, 83, 71, 0.5);
 
   --text-primary: #DAF1DE;
   --text-secondary: #B8D8C3;
@@ -124,7 +124,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--border-medium);
+  background: var(--bg-card);
   border-radius: 9999px;
 }
 

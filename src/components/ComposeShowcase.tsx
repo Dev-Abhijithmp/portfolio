@@ -108,16 +108,16 @@ fun AudioBufferVisualizer(
   };
 
   return (
-    <div className="rounded-3xl border border-[var(--border-medium)] bg-[var(--bg-card)] transition-all duration-200 overflow-hidden shadow-xl">
+    <div className="rounded-3xl bg-[var(--bg-card)] transition-all duration-200 overflow-hidden shadow-2xl">
       {/* Component Header / Tabs */}
-      <div className="px-5 py-3.5 border-b border-[var(--border-medium)] bg-[var(--bg-surface)] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+      <div className="px-5 py-3.5 bg-[var(--bg-surface)] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-1.5">
             <span className="w-2.5 h-2.5 rounded-full bg-rose-500/90"></span>
             <span className="w-2.5 h-2.5 rounded-full bg-amber-500/90"></span>
             <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/90"></span>
           </div>
-          <div className="h-4 w-px bg-[var(--border-medium)]"></div>
+          <div className="h-4 w-px bg-[var(--bg-card)]"></div>
           <div className="flex items-center gap-2">
             <ComposeIcon className="w-4 h-4 text-[var(--accent-primary)]" />
             <span className="text-xs font-mono font-bold text-[var(--text-primary)]">
@@ -127,7 +127,7 @@ fun AudioBufferVisualizer(
         </div>
 
         {/* Tab Switchers */}
-        <div className="flex items-center gap-1 bg-[var(--bg-card)] p-1 rounded-xl border border-[var(--border-medium)] self-start sm:self-auto">
+        <div className="flex items-center gap-1 bg-[var(--bg-surface)] p-1 rounded-xl self-start sm:self-auto">
           <button
             onClick={() => setActiveTab("preview")}
             className={`px-3 py-1 rounded-lg text-xs font-semibold transition-all ${
@@ -166,7 +166,7 @@ fun AudioBufferVisualizer(
         <div className="p-6 md:p-8 grid md:grid-cols-12 gap-8 items-center">
           {/* Simulated Mobile Frame */}
           <div className="md:col-span-7 flex justify-center">
-            <div className="w-full max-w-sm rounded-[32px] p-4 border border-[var(--border-medium)] bg-[var(--bg-surface)] shadow-2xl relative">
+            <div className="w-full max-w-sm rounded-[32px] p-4 bg-[var(--bg-surface)] shadow-2xl relative">
               {/* Phone Camera Notch & Status Bar */}
               <div className="flex justify-between items-center px-4 pt-1 pb-3 text-[10px] text-[var(--accent-secondary-bright)] font-mono font-semibold">
                 <span>09:41</span>
@@ -178,7 +178,7 @@ fun AudioBufferVisualizer(
               </div>
 
               {/* Compose Simulated Material 3 Surface */}
-              <div className="bg-[var(--bg-card)] rounded-2xl p-5 border border-[var(--border-medium)] space-y-4 shadow-lg">
+              <div className="bg-[var(--bg-card)] rounded-2xl p-5 space-y-4 shadow-lg">
                 {/* Header */}
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2.5">

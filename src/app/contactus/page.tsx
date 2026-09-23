@@ -86,7 +86,7 @@ export default function ContactPage() {
         <div className="grid md:grid-cols-2 gap-8">
           {/* Direct Contact Cards */}
           <div className="space-y-6">
-            <div className="p-8 rounded-3xl border border-[var(--border-medium)] bg-[var(--bg-card)] transition-all duration-200 space-y-6 text-[var(--text-primary)] shadow-sm">
+            <div className="p-8 rounded-3xl bg-[var(--bg-card)] transition-all duration-200 space-y-6 text-[var(--text-primary)] shadow-xl">
               <h3 className="text-2xl font-bold font-heading text-[var(--text-primary)]">Direct Contact</h3>
               <p className="text-xs sm:text-sm leading-relaxed text-[var(--text-secondary)]">
                 Click on any contact item below to instantly copy details to your clipboard.
@@ -96,10 +96,10 @@ export default function ContactPage() {
                 {/* Email Item (Coral Accent) */}
                 <div
                   onClick={() => handleCopy("111abhiabhi@gmail.com", "Email")}
-                  className="p-4 rounded-2xl border border-[var(--border-medium)] bg-[var(--bg-surface)] hover:border-[var(--accent-primary)] transition-all duration-150 cursor-pointer flex items-center justify-between group shadow-sm"
+                  className="p-4 rounded-2xl bg-[var(--bg-surface)] hover:bg-[var(--bg-card-hover)] transition-all duration-150 cursor-pointer flex items-center justify-between group shadow-md"
                 >
                   <div className="flex items-center gap-3.5">
-                    <div className="w-10 h-10 rounded-xl bg-[var(--accent-primary-subtle)] text-[var(--accent-primary)] flex items-center justify-center text-base font-bold border border-[var(--accent-primary-border)]">
+                    <div className="w-10 h-10 rounded-xl bg-[var(--accent-primary-subtle)] text-[var(--accent-primary)] flex items-center justify-center text-base font-bold shadow-sm">
                       <i className="fa-solid fa-envelope"></i>
                     </div>
                     <div>
@@ -113,10 +113,10 @@ export default function ContactPage() {
                 {/* Phone Item (Teal/Sage Accent) */}
                 <div
                   onClick={() => handleCopy("+919497747142", "Phone number")}
-                  className="p-4 rounded-2xl border border-[var(--border-medium)] bg-[var(--bg-surface)] hover:border-[var(--accent-secondary-bright)] transition-all duration-150 cursor-pointer flex items-center justify-between group shadow-sm"
+                  className="p-4 rounded-2xl bg-[var(--bg-surface)] hover:bg-[var(--bg-card-hover)] transition-all duration-150 cursor-pointer flex items-center justify-between group shadow-md"
                 >
                   <div className="flex items-center gap-3.5">
-                    <div className="w-10 h-10 rounded-xl bg-[var(--accent-secondary-subtle)] text-[var(--accent-secondary-bright)] flex items-center justify-center text-base font-bold border border-[var(--accent-secondary-border)]">
+                    <div className="w-10 h-10 rounded-xl bg-[var(--accent-secondary-subtle)] text-[var(--accent-secondary-bright)] flex items-center justify-center text-base font-bold shadow-sm">
                       <i className="fa-solid fa-phone"></i>
                     </div>
                     <div>
@@ -132,10 +132,10 @@ export default function ContactPage() {
                   href="https://github.com/Dev-Abhijithmp"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-4 rounded-2xl border border-[var(--border-medium)] bg-[var(--bg-surface)] hover:border-[var(--accent-primary)] transition-all duration-150 flex items-center justify-between group shadow-sm"
+                  className="p-4 rounded-2xl bg-[var(--bg-surface)] hover:bg-[var(--bg-card-hover)] transition-all duration-150 flex items-center justify-between group shadow-md"
                 >
                   <div className="flex items-center gap-3.5">
-                    <div className="w-10 h-10 rounded-xl bg-[var(--accent-primary-subtle)] text-[var(--accent-primary)] flex items-center justify-center text-base font-bold border border-[var(--accent-primary-border)]">
+                    <div className="w-10 h-10 rounded-xl bg-[var(--accent-primary-subtle)] text-[var(--accent-primary)] flex items-center justify-center text-base font-bold shadow-sm">
                       <i className="fa-brands fa-github"></i>
                     </div>
                     <div>
@@ -147,9 +147,9 @@ export default function ContactPage() {
                 </a>
 
                 {/* Location Item (Teal/Sage Accent) */}
-                <div className="p-4 rounded-2xl border border-[var(--border-medium)] bg-[var(--bg-surface)] shadow-sm">
+                <div className="p-4 rounded-2xl bg-[var(--bg-surface)] shadow-md">
                   <div className="flex items-start gap-3.5">
-                    <div className="w-10 h-10 rounded-xl bg-[var(--accent-secondary-subtle)] text-[var(--accent-secondary-bright)] flex items-center justify-center text-base font-bold border border-[var(--accent-secondary-border)] mt-0.5">
+                    <div className="w-10 h-10 rounded-xl bg-[var(--accent-secondary-subtle)] text-[var(--accent-secondary-bright)] flex items-center justify-center text-base font-bold mt-0.5 shadow-sm">
                       <i className="fa-solid fa-location-dot"></i>
                     </div>
                     <div>
@@ -167,11 +167,11 @@ export default function ContactPage() {
           </div>
 
           {/* Interactive Form Card */}
-          <div className="p-8 rounded-3xl border border-[var(--border-medium)] bg-[var(--bg-card)] transition-all duration-200 space-y-6 text-[var(--text-primary)] shadow-sm">
+          <div className="p-8 rounded-3xl bg-[var(--bg-card)] transition-all duration-200 space-y-6 text-[var(--text-primary)] shadow-xl">
             <h3 className="text-2xl font-bold font-heading text-[var(--text-primary)]">Send an Inquiry</h3>
 
             {submitted && (
-              <div className="p-4 bg-[var(--accent-primary-subtle)] border border-[var(--accent-primary-border)] text-[var(--accent-primary)] rounded-2xl text-xs font-semibold flex items-center gap-2">
+              <div className="p-4 bg-[var(--accent-primary-subtle)] text-[var(--accent-primary)] rounded-2xl text-xs font-semibold flex items-center gap-2">
                 <i className="fa-solid fa-circle-check text-base"></i> Thank you! Your message has been received. I will reply promptly.
               </div>
             )}
@@ -187,10 +187,10 @@ export default function ContactPage() {
                       type="button"
                       key={type}
                       onClick={() => setFormData({ ...formData, projectType: type })}
-                      className={`px-3 py-1.5 rounded-xl text-[11px] font-semibold transition-all duration-150 ${
+                      className={`px-3 py-1.5 rounded-xl text-[11px] font-semibold transition-all duration-150 shadow-sm ${
                         formData.projectType === type
-                          ? "bg-[var(--accent-primary)] text-[var(--accent-primary-text)] font-bold shadow-md scale-105"
-                          : "bg-[var(--bg-surface)] text-[var(--text-secondary)] border border-[var(--border-medium)] hover:border-[var(--accent-secondary-bright)] hover:text-[var(--text-primary)]"
+                          ? "bg-[var(--accent-primary)] text-[var(--accent-primary-text)] font-bold scale-105"
+                          : "bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:bg-[var(--bg-card-hover)] hover:text-[var(--text-primary)]"
                       }`}
                     >
                       {type}
@@ -210,7 +210,7 @@ export default function ContactPage() {
                   onChange={handleChange}
                   placeholder="e.g. Alex Henderson"
                   required
-                  className="w-full px-4 py-2.5 rounded-xl text-xs border border-[var(--border-medium)] bg-[var(--bg-surface)] text-[var(--text-primary)] placeholder-[var(--text-muted)] outline-none transition duration-150 focus:border-[var(--accent-primary)]"
+                  className="w-full px-4 py-2.5 rounded-xl text-xs bg-[var(--bg-surface)] text-[var(--text-primary)] placeholder-[var(--text-muted)] outline-none transition duration-150 shadow-inner focus:ring-1 focus:ring-[var(--accent-primary)]"
                 />
               </div>
 
@@ -225,7 +225,7 @@ export default function ContactPage() {
                   onChange={handleChange}
                   placeholder="alex@company.com"
                   required
-                  className="w-full px-4 py-2.5 rounded-xl text-xs border border-[var(--border-medium)] bg-[var(--bg-surface)] text-[var(--text-primary)] placeholder-[var(--text-muted)] outline-none transition duration-150 focus:border-[var(--accent-primary)]"
+                  className="w-full px-4 py-2.5 rounded-xl text-xs bg-[var(--bg-surface)] text-[var(--text-primary)] placeholder-[var(--text-muted)] outline-none transition duration-150 shadow-inner focus:ring-1 focus:ring-[var(--accent-primary)]"
                 />
               </div>
 
@@ -239,7 +239,7 @@ export default function ContactPage() {
                   value={formData.phone}
                   onChange={handleChange}
                   placeholder="+91 / International phone"
-                  className="w-full px-4 py-2.5 rounded-xl text-xs border border-[var(--border-medium)] bg-[var(--bg-surface)] text-[var(--text-primary)] placeholder-[var(--text-muted)] outline-none transition duration-150 focus:border-[var(--accent-primary)]"
+                  className="w-full px-4 py-2.5 rounded-xl text-xs bg-[var(--bg-surface)] text-[var(--text-primary)] placeholder-[var(--text-muted)] outline-none transition duration-150 shadow-inner focus:ring-1 focus:ring-[var(--accent-primary)]"
                 />
               </div>
 
@@ -254,7 +254,7 @@ export default function ContactPage() {
                   onChange={handleChange}
                   placeholder="Share details about your Android (Kotlin / Compose) app, Flutter mobile solution, Next.js web portal, or audio engine requirements..."
                   required
-                  className="w-full px-4 py-2.5 rounded-xl text-xs border border-[var(--border-medium)] bg-[var(--bg-surface)] text-[var(--text-primary)] placeholder-[var(--text-muted)] outline-none transition duration-150 focus:border-[var(--accent-primary)]"
+                  className="w-full px-4 py-2.5 rounded-xl text-xs bg-[var(--bg-surface)] text-[var(--text-primary)] placeholder-[var(--text-muted)] outline-none transition duration-150 shadow-inner focus:ring-1 focus:ring-[var(--accent-primary)]"
                 ></textarea>
               </div>
 

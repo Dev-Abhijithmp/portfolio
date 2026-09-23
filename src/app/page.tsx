@@ -19,7 +19,8 @@ interface TerminalLog {
 
 interface TechBadge {
   name: string;
-  type: "primary" | "secondary" | "tertiary";
+  category: "primary" | "secondary" | "neutral";
+  iconName: "kotlin" | "compose" | "flutter" | "nextjs" | "supabase" | "shopify" | "oboe";
 }
 
 interface CoreDomain {
@@ -133,17 +134,15 @@ export default function Home() {
     },
   ];
 
+  // Specific 7 technologies requested by user with rich palette styling
   const techBadges: TechBadge[] = [
-    { name: "Kotlin", type: "primary" },
-    { name: "Jetpack Compose", type: "primary" },
-    { name: "Flutter", type: "secondary" },
-    { name: "Next.js", type: "secondary" },
-    { name: "Supabase", type: "secondary" },
-    { name: "Shopify", type: "secondary" },
-    { name: "Android NDK (Oboe)", type: "primary" },
-    { name: "Coroutines & Flow", type: "tertiary" },
-    { name: "ESP32 IoT", type: "tertiary" },
-    { name: "Local LLMs (Ollama)", type: "tertiary" },
+    { name: "Kotlin", category: "primary", iconName: "kotlin" },
+    { name: "Jetpack Compose", category: "primary", iconName: "compose" },
+    { name: "Flutter", category: "secondary", iconName: "flutter" },
+    { name: "Next.js", category: "secondary", iconName: "nextjs" },
+    { name: "Supabase", category: "secondary", iconName: "supabase" },
+    { name: "Shopify", category: "primary", iconName: "shopify" },
+    { name: "Android NDK (Oboe)", category: "primary", iconName: "oboe" },
   ];
 
   const quickStats: QuickStat[] = [
@@ -158,11 +157,10 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative max-w-7xl mx-auto px-6 pt-12 pb-14 md:pt-16 md:pb-20 w-full">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12 relative z-10">
-          {/* Profile Picture Card */}
+          {/* Profile Picture Card - Borderless Velvet Card */}
           <div className="flex-1 flex justify-center order-2 lg:order-1">
             <div className="relative group">
-              {/* Profile Image Card */}
-              <div className="relative p-2 rounded-3xl border border-[var(--border-medium)] bg-[var(--bg-card)] shadow-2xl transition duration-300">
+              <div className="relative p-2.5 rounded-3xl bg-[var(--bg-card)] shadow-2xl transition duration-300">
                 <img
                   src="/abhijith.jpg"
                   alt="Abhijith M P profile"
@@ -170,13 +168,13 @@ export default function Home() {
                 />
 
                 {/* Floating Status Badge */}
-                <div className="absolute -bottom-3.5 -right-2 bg-[var(--accent-primary)] text-[var(--accent-primary-text)] text-[11px] font-bold px-3.5 py-1.5 rounded-full shadow-lg flex items-center gap-2">
+                <div className="absolute -bottom-3.5 -right-2 bg-[var(--accent-primary)] text-[var(--accent-primary-text)] text-[11px] font-bold px-3.5 py-1.5 rounded-full shadow-xl flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-[var(--accent-primary-text)] animate-pulse"></span>
                   Kotlin & Compose Specialist
                 </div>
 
                 {/* Top Badge */}
-                <div className="absolute -top-3 -left-3 px-3 py-1 rounded-xl text-[10px] font-mono font-bold flex items-center gap-1.5 shadow-md border border-[var(--accent-secondary-border)] bg-[var(--accent-secondary)] text-[var(--accent-primary)]">
+                <div className="absolute -top-3 -left-3 px-3 py-1 rounded-xl text-[10px] font-mono font-bold flex items-center gap-1.5 shadow-md bg-[var(--accent-secondary)] text-[var(--accent-primary)]">
                   <AndroidIcon className="w-3.5 h-3.5" /> Native Android + NDK
                 </div>
               </div>
@@ -186,7 +184,7 @@ export default function Home() {
           {/* Hero Content */}
           <div className="flex-1 text-center lg:text-left space-y-6 order-1 lg:order-2">
             {/* Tagline Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wide border border-[var(--accent-secondary-border)] bg-[var(--accent-secondary)] text-[var(--accent-primary)] shadow-sm">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wide bg-[var(--accent-secondary)] text-[var(--accent-primary)] shadow-sm">
               <KotlinIcon className="w-3.5 h-3.5 text-[var(--accent-primary)]" />
               <span>Senior Android, Mobile & Systems Engineer</span>
             </div>
@@ -203,10 +201,10 @@ export default function Home() {
               Architecting native Android applications with <strong className="text-[var(--accent-primary)] font-semibold">Kotlin & Jetpack Compose</strong>, cross-platform mobile apps with <strong className="text-[var(--accent-secondary-bright)] font-semibold">Flutter & Supabase</strong>, web platforms with <strong className="text-[var(--text-primary)] font-semibold">Next.js & Shopify</strong>, and low-latency audio engines with <strong className="text-[var(--accent-primary)] font-semibold">Google Oboe C++ NDK</strong>.
             </p>
 
-            {/* Interactive Tech Stack Filter Pills featuring palette colors */}
-            <div className="space-y-2.5 pt-1">
+            {/* Interactive Tech Stack Filter Pills featuring palette colors - No white borders */}
+            <div className="space-y-3 pt-1">
               <div className="flex items-center justify-between text-xs font-mono text-[var(--text-muted)]">
-                <span className="uppercase tracking-wider">Engineering Tech Stack:</span>
+                <span className="uppercase tracking-wider font-semibold">Core Competency Matrix:</span>
                 {selectedTech && (
                   <button
                     onClick={() => setSelectedTech(null)}
@@ -216,30 +214,31 @@ export default function Home() {
                   </button>
                 )}
               </div>
-              <div className="flex flex-wrap gap-2 justify-center lg:justify-start">
+              
+              <div className="flex flex-wrap gap-2.5 justify-center lg:justify-start">
                 {techBadges.map((badge) => {
                   const isSelected = selectedTech === badge.name;
                   return (
                     <button
                       key={badge.name}
                       onClick={() => setSelectedTech(isSelected ? null : badge.name)}
-                      className={`px-3 py-1.5 rounded-xl text-xs font-semibold border transition-all duration-150 flex items-center gap-1.5 ${
+                      className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all duration-150 flex items-center gap-2 shadow-sm ${
                         isSelected
-                          ? "bg-[var(--accent-primary)] text-[var(--accent-primary-text)] border-[var(--accent-primary)] shadow-md scale-105 font-bold"
-                          : badge.type === "primary"
-                          ? "bg-[var(--accent-primary-subtle)] border-[var(--accent-primary-border)] text-[var(--accent-primary)] hover:bg-[var(--accent-primary)] hover:text-[var(--accent-primary-text)]"
-                          : badge.type === "secondary"
-                          ? "bg-[var(--accent-secondary-subtle)] border-[var(--accent-secondary-border)] text-[var(--accent-secondary-bright)] hover:bg-[var(--accent-secondary)] hover:text-[var(--text-primary)]"
-                          : "bg-[var(--bg-card)] border-[var(--border-medium)] text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                          ? "bg-[var(--accent-primary)] text-[var(--accent-primary-text)] shadow-md scale-105"
+                          : badge.category === "primary"
+                          ? "bg-[var(--accent-primary-subtle)] text-[var(--accent-primary)] hover:bg-[var(--accent-primary)] hover:text-[var(--accent-primary-text)]"
+                          : "bg-[var(--accent-secondary-subtle)] text-[var(--accent-secondary-bright)] hover:bg-[var(--accent-secondary)] hover:text-[var(--text-primary)]"
                       }`}
                     >
-                      {badge.name === "Kotlin" && <KotlinIcon className="w-3 h-3 text-[var(--accent-primary)]" />}
-                      {badge.name === "Jetpack Compose" && <ComposeIcon className="w-3 h-3 text-[var(--accent-primary)]" />}
-                      {badge.name === "Flutter" && <FlutterIcon className="w-3 h-3 text-[var(--accent-secondary-bright)]" />}
-                      {badge.name === "Next.js" && <NextJsIcon className="w-3 h-3 text-[var(--accent-secondary-bright)]" />}
-                      {badge.name === "Shopify" && <ShopifyIcon className="w-3 h-3 text-[var(--accent-secondary-bright)]" />}
+                      {badge.iconName === "kotlin" && <KotlinIcon className="w-3.5 h-3.5 text-current" />}
+                      {badge.iconName === "compose" && <ComposeIcon className="w-3.5 h-3.5 text-current" />}
+                      {badge.iconName === "flutter" && <FlutterIcon className="w-3.5 h-3.5 text-current" />}
+                      {badge.iconName === "nextjs" && <NextJsIcon className="w-3.5 h-3.5 text-current" />}
+                      {badge.iconName === "supabase" && <i className="fa-solid fa-bolt text-current text-xs"></i>}
+                      {badge.iconName === "shopify" && <ShopifyIcon className="w-3.5 h-3.5 text-current" />}
+                      {badge.iconName === "oboe" && <AndroidIcon className="w-3.5 h-3.5 text-current" />}
                       <span>{badge.name}</span>
-                      {isSelected && <span className="text-[10px]">✕</span>}
+                      {isSelected && <span className="text-[10px] ml-0.5">✕</span>}
                     </button>
                   );
                 })}
@@ -257,7 +256,7 @@ export default function Home() {
               </Link>
               <Link
                 href="/contactus"
-                className="px-6 py-3.5 bg-[var(--accent-secondary)] hover:bg-[var(--accent-secondary-hover)] border border-[var(--accent-secondary-border)] text-[var(--text-primary)] font-semibold rounded-2xl shadow-md transition duration-150 text-center text-sm"
+                className="px-6 py-3.5 bg-[var(--accent-secondary)] hover:bg-[var(--accent-secondary-hover)] text-[var(--text-primary)] font-semibold rounded-2xl shadow-md transition duration-150 text-center text-sm"
               >
                 Get In Touch
               </Link>
@@ -265,12 +264,12 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Quick Stats Grid with alternating color accents */}
+        {/* Quick Stats Grid - Borderless velvet cards with top color line */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16">
           {quickStats.map((stat, idx) => (
             <div
               key={idx}
-              className={`p-4 rounded-2xl border border-[var(--border-medium)] bg-[var(--bg-card)] transition-all duration-200 shadow-sm border-t-2 ${
+              className={`p-5 rounded-2xl bg-[var(--bg-card)] transition-all duration-200 shadow-md border-t-2 ${
                 stat.accent === "primary" ? "border-t-[var(--accent-primary)]" : "border-t-[var(--accent-secondary-bright)]"
               }`}
             >
@@ -289,7 +288,7 @@ export default function Home() {
       {/* Featured Live Jetpack Compose & Kotlin Showcase Component */}
       <section className="max-w-7xl mx-auto px-6 py-10 w-full">
         <div className="text-center space-y-2 mb-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-mono font-bold uppercase tracking-wider bg-[var(--accent-primary-subtle)] text-[var(--accent-primary)] border border-[var(--accent-primary-border)]">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-mono font-bold uppercase tracking-wider bg-[var(--accent-primary-subtle)] text-[var(--accent-primary)]">
             <ComposeIcon className="w-3.5 h-3.5 text-[var(--accent-primary)]" /> Interactive Android Studio Playground
           </div>
           <h2 className="text-3xl font-extrabold font-heading text-[var(--text-primary)]">Jetpack Compose & Kotlin Multiplatform in Action</h2>
@@ -301,11 +300,11 @@ export default function Home() {
         <ComposeShowcase />
       </section>
 
-      {/* Interactive Developer CLI Terminal */}
+      {/* Interactive Developer CLI Terminal - Borderless Card */}
       <section className="max-w-7xl mx-auto px-6 py-8 w-full">
-        <div className="rounded-3xl border border-[var(--border-medium)] bg-[var(--bg-card)] shadow-2xl overflow-hidden transition-all duration-200">
+        <div className="rounded-3xl bg-[var(--bg-card)] shadow-2xl overflow-hidden transition-all duration-200">
           {/* Terminal Window Header */}
-          <div className="bg-[var(--bg-surface)] px-5 py-3 border-b border-[var(--border-medium)] flex items-center justify-between">
+          <div className="bg-[var(--bg-surface)] px-5 py-3 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <span className="w-3 h-3 rounded-full bg-rose-500/90 inline-block"></span>
               <span className="w-3 h-3 rounded-full bg-amber-500/90 inline-block"></span>
@@ -317,7 +316,7 @@ export default function Home() {
                 <button
                   key={quickCmd}
                   onClick={() => handleTerminalCmd(quickCmd)}
-                  className="px-2 py-0.5 bg-[var(--accent-secondary)] border border-[var(--accent-secondary-border)] hover:border-[var(--accent-primary)] text-[var(--accent-primary)] hover:text-white text-[11px] font-mono rounded-md transition font-semibold"
+                  className="px-2 py-0.5 bg-[var(--accent-secondary)] text-[var(--accent-primary)] hover:text-white text-[11px] font-mono rounded-md transition font-semibold"
                 >
                   {quickCmd}
                 </button>
@@ -359,8 +358,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Engineering Focus Pillars with alternating color identities */}
-      <section className="py-16 border-t border-[var(--border-medium)] bg-[var(--bg-surface)]">
+      {/* Engineering Focus Pillars - Borderless Cards */}
+      <section className="py-16 bg-[var(--bg-surface)]">
         <div className="max-w-7xl mx-auto px-6 space-y-10">
           <div className="text-center space-y-2">
             <h2 className="text-3xl font-extrabold font-heading text-[var(--text-primary)]">Core Engineering Domains</h2>
@@ -379,16 +378,16 @@ export default function Home() {
               return (
                 <div
                   key={domain.id}
-                  className={`p-6 rounded-3xl border transition-all duration-200 space-y-4 group relative ${
+                  className={`p-6 rounded-3xl transition-all duration-200 space-y-4 group relative shadow-md hover:shadow-2xl hover:-translate-y-1 ${
                     isMatch
-                      ? "bg-[var(--bg-card)] border-[var(--border-medium)] hover:border-[var(--accent-primary)] shadow-sm"
+                      ? "bg-[var(--bg-card)]"
                       : "opacity-40 grayscale"
                   }`}
                 >
                   <div className={`w-12 h-12 rounded-2xl flex items-center justify-center text-xl transition duration-200 ${
                     domain.themeStyle === "primary"
-                      ? "bg-[var(--accent-primary-subtle)] border border-[var(--accent-primary-border)] text-[var(--accent-primary)]"
-                      : "bg-[var(--accent-secondary-subtle)] border border-[var(--accent-secondary-border)] text-[var(--accent-secondary-bright)]"
+                      ? "bg-[var(--accent-primary-subtle)] text-[var(--accent-primary)]"
+                      : "bg-[var(--accent-secondary-subtle)] text-[var(--accent-secondary-bright)]"
                   }`}>
                     {domain.customIcon === "compose" ? (
                       <ComposeIcon className="w-6 h-6 text-current" />
@@ -402,10 +401,10 @@ export default function Home() {
                   </div>
 
                   <div>
-                    <span className={`text-[10px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-full font-bold border ${
+                    <span className={`text-[10px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-full font-bold ${
                       domain.themeStyle === "primary"
-                        ? "bg-[var(--accent-primary-subtle)] text-[var(--accent-primary)] border-[var(--accent-primary-border)]"
-                        : "bg-[var(--accent-secondary-subtle)] text-[var(--accent-secondary-bright)] border-[var(--accent-secondary-border)]"
+                        ? "bg-[var(--accent-primary-subtle)] text-[var(--accent-primary)]"
+                        : "bg-[var(--accent-secondary-subtle)] text-[var(--accent-secondary-bright)]"
                     }`}>
                       {domain.tag}
                     </span>

@@ -158,10 +158,10 @@ export default function ProjectsPage() {
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-150 flex items-center gap-1.5 ${
+                className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-150 flex items-center gap-1.5 shadow-sm ${
                   selectedCategory === cat
-                    ? "bg-[var(--accent-primary)] text-[var(--accent-primary-text)] shadow-md font-bold scale-105"
-                    : "bg-[var(--bg-card)] border border-[var(--border-medium)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--accent-secondary-bright)]"
+                    ? "bg-[var(--accent-primary)] text-[var(--accent-primary-text)] font-bold scale-105"
+                    : "bg-[var(--bg-card)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)]"
                 }`}
               >
                 {cat === "Kotlin & Compose" && <ComposeIcon className="w-3.5 h-3.5 text-current" />}
@@ -180,7 +180,7 @@ export default function ProjectsPage() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search Kotlin, Flutter, Supabase, Next.js..."
-              className="w-full pl-9 pr-8 py-2 rounded-xl text-xs border border-[var(--border-medium)] bg-[var(--bg-card)] text-[var(--text-primary)] placeholder-[var(--text-muted)] outline-none transition duration-150 focus:border-[var(--accent-primary)]"
+              className="w-full pl-9 pr-8 py-2 rounded-xl text-xs bg-[var(--bg-card)] text-[var(--text-primary)] placeholder-[var(--text-muted)] outline-none transition duration-150 shadow-sm focus:ring-1 focus:ring-[var(--accent-primary)]"
             />
             {searchQuery && (
               <button
@@ -214,11 +214,7 @@ export default function ProjectsPage() {
               <div
                 key={project.id}
                 onClick={() => setActiveModalProject(project)}
-                className={`p-7 rounded-3xl border border-[var(--border-medium)] bg-[var(--bg-card)] transition-all duration-200 flex flex-col justify-between cursor-pointer group relative shadow-md ${
-                  project.themeStyle === "primary"
-                    ? "hover:border-[var(--accent-primary)]"
-                    : "hover:border-[var(--accent-secondary-bright)]"
-                }`}
+                className="p-7 rounded-3xl bg-[var(--bg-card)] hover:bg-[var(--bg-card-hover)] transition-all duration-200 flex flex-col justify-between cursor-pointer group relative shadow-xl hover:shadow-2xl hover:-translate-y-1"
               >
                 {/* Featured Badge */}
                 {project.featured && (
@@ -232,8 +228,8 @@ export default function ProjectsPage() {
                   <div className="flex items-center justify-between">
                     <div className={`w-12 h-12 rounded-2xl flex items-center justify-center text-xl font-bold transition duration-200 ${
                       project.themeStyle === "primary"
-                        ? "bg-[var(--accent-primary-subtle)] border border-[var(--accent-primary-border)] text-[var(--accent-primary)]"
-                        : "bg-[var(--accent-secondary-subtle)] border border-[var(--accent-secondary-border)] text-[var(--accent-secondary-bright)]"
+                        ? "bg-[var(--accent-primary-subtle)] text-[var(--accent-primary)]"
+                        : "bg-[var(--accent-secondary-subtle)] text-[var(--accent-secondary-bright)]"
                     }`}>
                       {project.badgeType === "compose" ? (
                         <ComposeIcon className="w-6 h-6 text-current" />
@@ -246,10 +242,10 @@ export default function ProjectsPage() {
                       )}
                     </div>
                     {project.metrics && (
-                      <span className={`text-[11px] font-mono font-bold px-2.5 py-1 rounded-lg border flex items-center gap-1 ${
+                      <span className={`text-[11px] font-mono font-bold px-2.5 py-1 rounded-lg flex items-center gap-1 ${
                         project.themeStyle === "primary"
-                          ? "bg-[var(--accent-secondary)] text-[var(--accent-secondary-bright)] border-[var(--accent-secondary-border)]"
-                          : "bg-[var(--accent-primary-subtle)] text-[var(--accent-primary)] border-[var(--accent-primary-border)]"
+                          ? "bg-[var(--accent-secondary)] text-[var(--accent-secondary-bright)]"
+                          : "bg-[var(--accent-primary-subtle)] text-[var(--accent-primary)]"
                       }`}>
                         {project.tags.includes("Shopify Storefront API") && <ShopifyIcon className="w-3.5 h-3.5 text-current" />}
                         {project.metrics}
@@ -265,12 +261,12 @@ export default function ProjectsPage() {
                         {project.category}
                       </span>
                       {project.tags.includes("Next.js") && (
-                        <span className="text-[10px] font-mono font-bold text-[var(--accent-secondary-bright)] bg-[var(--accent-secondary)] px-2 py-0.5 rounded-md border border-[var(--accent-secondary-border)]">
+                        <span className="text-[10px] font-mono font-bold text-[var(--accent-secondary-bright)] bg-[var(--accent-secondary)] px-2 py-0.5 rounded-md">
                           Next.js
                         </span>
                       )}
                       {project.tags.includes("Supabase Backend") && (
-                        <span className="text-[10px] font-mono font-bold text-[var(--accent-primary)] bg-[var(--accent-primary-subtle)] px-2 py-0.5 rounded-md border border-[var(--accent-primary-border)]">
+                        <span className="text-[10px] font-mono font-bold text-[var(--accent-primary)] bg-[var(--accent-primary-subtle)] px-2 py-0.5 rounded-md">
                           Supabase
                         </span>
                       )}
@@ -293,12 +289,12 @@ export default function ProjectsPage() {
                       return (
                         <span
                           key={tag}
-                          className={`px-2.5 py-0.5 text-[10px] font-mono rounded-lg font-semibold border ${
+                          className={`px-2.5 py-0.5 text-[10px] font-mono rounded-lg font-semibold ${
                             isPrimary
-                              ? "bg-[var(--accent-primary-subtle)] text-[var(--accent-primary)] border-[var(--accent-primary-border)]"
+                              ? "bg-[var(--accent-primary-subtle)] text-[var(--accent-primary)]"
                               : isSecondary
-                              ? "bg-[var(--accent-secondary-subtle)] text-[var(--accent-secondary-bright)] border-[var(--accent-secondary-border)]"
-                              : "bg-[var(--bg-surface)] text-[var(--text-secondary)] border-[var(--border-subtle)]"
+                              ? "bg-[var(--accent-secondary-subtle)] text-[var(--accent-secondary-bright)]"
+                              : "bg-[var(--bg-surface)] text-[var(--text-secondary)]"
                           }`}
                         >
                           {tag}
@@ -321,18 +317,18 @@ export default function ProjectsPage() {
       {/* Interactive Detail Modal */}
       {activeModalProject && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fadeIn">
-          <div className="w-full max-w-2xl p-8 rounded-3xl border border-[var(--border-medium)] bg-[var(--bg-surface)] shadow-2xl space-y-6 relative transition-all duration-200 text-[var(--text-primary)]">
+          <div className="w-full max-w-2xl p-8 rounded-3xl bg-[var(--bg-card)] shadow-2xl space-y-6 relative transition-all duration-200 text-[var(--text-primary)]">
             {/* Close Button */}
             <button
               onClick={() => setActiveModalProject(null)}
-              className="absolute top-5 right-5 w-8 h-8 rounded-full bg-[var(--bg-card)] hover:bg-[var(--border-medium)] border border-[var(--border-medium)] text-[var(--text-secondary)] flex items-center justify-center text-sm transition"
+              className="absolute top-5 right-5 w-8 h-8 rounded-full bg-[var(--bg-surface)] hover:bg-[var(--accent-secondary)] text-[var(--text-secondary)] hover:text-white flex items-center justify-center text-sm transition shadow-sm"
             >
               ✕
             </button>
 
             {/* Modal Header */}
             <div className="flex items-center gap-4">
-              <div className="w-14 h-14 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-medium)] flex items-center justify-center text-2xl font-bold text-[var(--accent-primary)]">
+              <div className="w-14 h-14 rounded-2xl bg-[var(--bg-surface)] flex items-center justify-center text-2xl font-bold text-[var(--accent-primary)] shadow-sm">
                 {activeModalProject.badgeType === "compose" ? (
                   <ComposeIcon className="w-8 h-8 text-[var(--accent-primary)]" />
                 ) : activeModalProject.badgeType === "flutter" ? (
@@ -363,7 +359,7 @@ export default function ProjectsPage() {
               </div>
 
               {activeModalProject.architecture && (
-                <div className="p-4 rounded-2xl border border-[var(--accent-secondary-border)] bg-[var(--accent-secondary-subtle)]">
+                <div className="p-4 rounded-2xl bg-[var(--bg-surface)] shadow-inner">
                   <h4 className="font-bold text-[var(--accent-primary)] uppercase tracking-wider text-[11px] mb-1 flex items-center gap-1.5">
                     <i className="fa-solid fa-microchip"></i> System Architecture Highlights
                   </h4>
@@ -379,7 +375,7 @@ export default function ProjectsPage() {
                   {activeModalProject.tags.map((t) => (
                     <span
                       key={t}
-                      className="px-3 py-1 rounded-xl text-xs font-mono font-semibold border border-[var(--accent-secondary-border)] bg-[var(--accent-secondary)] text-[var(--text-primary)]"
+                      className="px-3 py-1 text-xs font-mono rounded-xl bg-[var(--bg-surface)] text-[var(--accent-secondary-bright)] font-semibold shadow-sm"
                     >
                       {t}
                     </span>
