@@ -1,5 +1,7 @@
+"use client";
+
 import React, { useState } from "react";
-import { useTheme } from "../ThemeContext";
+import { useTheme } from "./ThemeContext";
 import { KotlinIcon, ComposeIcon } from "./TechIcons";
 
 export default function ComposeShowcase() {

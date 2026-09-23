@@ -1,8 +1,15 @@
-import { useState } from "react";
-import { useTheme } from "./ThemeContext";
-import { ComposeIcon, FlutterIcon, NextJsIcon, ShopifyIcon } from "./components/TechIcons";
+"use client";
 
-function Projects() {
+import { useState } from "react";
+import { useTheme } from "../../components/ThemeContext";
+import {
+  ComposeIcon,
+  FlutterIcon,
+  NextJsIcon,
+  ShopifyIcon,
+} from "../../components/TechIcons";
+
+export default function ProjectsPage() {
   const { darkMode } = useTheme();
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
@@ -112,21 +119,21 @@ function Projects() {
 
   return (
     <div className="min-h-screen py-12 px-6 relative">
-      {/* Background radial glows */}
-      <div className="absolute top-20 left-1/4 w-80 h-80 bg-kotlin/10 rounded-full blur-[100px] pointer-events-none"></div>
-      <div className="absolute top-96 right-1/4 w-80 h-80 bg-compose/10 rounded-full blur-[100px] pointer-events-none"></div>
+      {/* Background ambient glows */}
+      <div className="absolute top-20 left-1/4 w-80 h-80 bg-indigo-500/[0.06] rounded-full blur-[110px] pointer-events-none"></div>
+      <div className="absolute top-96 right-1/4 w-80 h-80 bg-compose/[0.06] rounded-full blur-[110px] pointer-events-none"></div>
 
       <div className="max-w-6xl mx-auto space-y-10 relative z-10">
         {/* Header */}
         <div className="text-center space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-kotlin/10 border border-kotlin/30 text-kotlin-light text-xs font-semibold rounded-full uppercase tracking-wider shadow-sm">
-            <ComposeIcon className="w-3.5 h-3.5" /> Engineered Software Showcase
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-white/[0.04] border border-white/[0.08] text-gray-300 text-xs font-semibold rounded-full uppercase tracking-wider shadow-sm">
+            <ComposeIcon className="w-3.5 h-3.5" /> Engineered Systems & Products
           </div>
           <h2 className="text-4xl sm:text-5xl font-extrabold font-heading">Featured Projects & Systems</h2>
           <p className={`max-w-2xl mx-auto text-xs sm:text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
             Production applications featuring <strong className="text-kotlin-light font-bold">Kotlin & Jetpack Compose</strong>, <strong className="text-sky-400 font-bold">Flutter & Supabase</strong>, and <strong className="text-emerald-400 font-bold">Next.js & Shopify</strong>.
           </p>
-          <div className="w-16 h-1 bg-gradient-to-r from-kotlin to-compose mx-auto rounded-full"></div>
+          <div className="w-16 h-1 bg-gradient-to-r from-kotlin via-indigo-500 to-compose mx-auto rounded-full"></div>
         </div>
 
         {/* Filter Tabs & Search Bar */}
@@ -139,10 +146,10 @@ function Projects() {
                 onClick={() => setSelectedCategory(cat)}
                 className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-200 flex items-center gap-1.5 ${
                   selectedCategory === cat
-                    ? "bg-gradient-to-r from-kotlin to-compose text-white shadow-md shadow-kotlin/25 scale-105"
+                    ? "bg-gradient-to-r from-kotlin via-indigo-600 to-compose text-white shadow-md shadow-kotlin/25 scale-105"
                     : darkMode
-                    ? "bg-[#0D1424] text-gray-300 hover:bg-white/10 hover:text-white border border-white/10"
-                    : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-200 shadow-sm"
+                    ? "bg-[#0E1017] text-gray-400 hover:bg-white/[0.08] hover:text-white border border-white/[0.08]"
+                    : "bg-white text-gray-700 hover:bg-slate-100 border border-slate-200 shadow-sm"
                 }`}
               >
                 {cat === "Kotlin & Compose" && <ComposeIcon className="w-3.5 h-3.5" />}
@@ -163,8 +170,8 @@ function Projects() {
               placeholder="Search Kotlin, Flutter, Supabase, Next.js..."
               className={`w-full pl-9 pr-8 py-2 rounded-xl text-xs border outline-none transition duration-200 ${
                 darkMode
-                  ? "bg-[#0D1424] border-white/10 text-gray-200 placeholder-gray-500 focus:border-kotlin"
-                  : "bg-white border-gray-200 text-gray-800 placeholder-gray-400 focus:border-kotlin shadow-sm"
+                  ? "bg-[#0E1017] border-white/[0.08] text-gray-200 placeholder-gray-500 focus:border-kotlin"
+                  : "bg-white border-slate-200 text-gray-800 placeholder-gray-400 focus:border-kotlin shadow-sm"
               }`}
             />
             {searchQuery && (
@@ -201,13 +208,13 @@ function Projects() {
                 onClick={() => setActiveModalProject(project)}
                 className={`p-7 rounded-3xl border transition-all duration-300 flex flex-col justify-between cursor-pointer group relative ${
                   darkMode
-                    ? "bg-[#0D1424] border-white/10 hover:border-kotlin/50 hover:shadow-2xl hover:shadow-kotlin/10"
-                    : "bg-white border-gray-200 hover:border-kotlin/50 hover:shadow-2xl hover:shadow-kotlin/10 shadow-sm"
+                    ? "bg-[#0E1017] border-white/[0.08] hover:border-white/[0.2] hover:shadow-2xl hover:shadow-indigo-500/10"
+                    : "bg-white border-slate-200 hover:border-indigo-400/50 hover:shadow-2xl hover:shadow-indigo-500/10 shadow-sm"
                 }`}
               >
                 {/* Featured Badge */}
                 {project.featured && (
-                  <div className="absolute top-5 right-5 bg-gradient-to-r from-kotlin to-compose text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-md flex items-center gap-1">
+                  <div className="absolute top-5 right-5 bg-gradient-to-r from-kotlin via-indigo-600 to-compose text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-md flex items-center gap-1">
                     <span className="w-1.5 h-1.5 rounded-full bg-white animate-ping"></span>
                     Featured Build
                   </div>
@@ -215,7 +222,7 @@ function Projects() {
 
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-kotlin/10 to-compose/10 text-kotlin-light flex items-center justify-center text-xl font-bold border border-kotlin/20 group-hover:scale-110 transition duration-300">
+                    <div className="w-12 h-12 rounded-2xl bg-white/[0.04] text-gray-300 flex items-center justify-center text-xl font-bold border border-white/[0.08] group-hover:scale-110 transition duration-300">
                       {project.badgeType === "compose" ? (
                         <ComposeIcon className="w-6 h-6 text-compose" />
                       ) : project.badgeType === "flutter" ? (
@@ -240,7 +247,7 @@ function Projects() {
                         {project.category}
                       </span>
                       {project.tags.includes("Next.js") && (
-                        <span className="text-[10px] font-mono font-bold text-gray-300 bg-white/10 px-2 py-0.5 rounded-md border border-white/10">
+                        <span className="text-[10px] font-mono font-bold text-gray-300 bg-white/[0.06] px-2 py-0.5 rounded-md border border-white/[0.08]">
                           Next.js
                         </span>
                       )}
@@ -275,8 +282,8 @@ function Projects() {
                             : tag.includes("Supabase") || tag.includes("Shopify")
                             ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-400 font-bold"
                             : darkMode
-                            ? "bg-white/5 border-white/10 text-gray-300"
-                            : "bg-slate-100 border-gray-200 text-gray-700"
+                            ? "bg-white/[0.03] border-white/[0.06] text-gray-400"
+                            : "bg-slate-100 border-slate-200 text-gray-700"
                         }`}
                       >
                         {tag}
@@ -284,7 +291,7 @@ function Projects() {
                     ))}
                   </div>
 
-                  <div className="flex items-center justify-between text-xs font-bold text-kotlin-light pt-1 group-hover:translate-x-1 transition-transform">
+                  <div className="flex items-center justify-between text-xs font-bold text-gray-400 group-hover:text-white pt-1 group-hover:translate-x-1 transition-transform">
                     <span>Inspect System Specs</span>
                     <i className="fa-solid fa-arrow-right text-[10px]"></i>
                   </div>
@@ -300,20 +307,20 @@ function Projects() {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn">
           <div
             className={`w-full max-w-2xl p-8 rounded-3xl border shadow-2xl space-y-6 relative transition-all duration-300 ${
-              darkMode ? "bg-[#0D1424] border-white/20 text-gray-100" : "bg-white border-gray-200 text-gray-900"
+              darkMode ? "bg-[#0E1017] border-white/[0.15] text-gray-100" : "bg-white border-slate-200 text-gray-900"
             }`}
           >
             {/* Close Button */}
             <button
               onClick={() => setActiveModalProject(null)}
-              className="absolute top-5 right-5 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-gray-300 flex items-center justify-center text-sm transition"
+              className="absolute top-5 right-5 w-8 h-8 rounded-full bg-white/[0.06] hover:bg-white/[0.12] text-gray-300 flex items-center justify-center text-sm transition"
             >
               ✕
             </button>
 
             {/* Modal Header */}
             <div className="flex items-center gap-4">
-              <div className="w-14 h-14 rounded-2xl bg-kotlin/10 text-kotlin-light flex items-center justify-center text-2xl font-bold border border-kotlin/25">
+              <div className="w-14 h-14 rounded-2xl bg-white/[0.04] text-gray-300 flex items-center justify-center text-2xl font-bold border border-white/[0.08]">
                 {activeModalProject.badgeType === "compose" ? (
                   <ComposeIcon className="w-8 h-8 text-compose" />
                 ) : activeModalProject.badgeType === "flutter" ? (
@@ -344,7 +351,7 @@ function Projects() {
               </div>
 
               {activeModalProject.architecture && (
-                <div className={`p-4 rounded-2xl border ${darkMode ? "bg-black/40 border-white/10 text-gray-300" : "bg-slate-50 border-gray-200 text-gray-700"}`}>
+                <div className={`p-4 rounded-2xl border ${darkMode ? "bg-black/30 border-white/[0.06] text-gray-300" : "bg-slate-50 border-slate-200 text-gray-700"}`}>
                   <h4 className="font-bold text-compose uppercase tracking-wider text-[11px] mb-1 flex items-center gap-1.5">
                     <i className="fa-solid fa-microchip"></i> System Architecture Highlights
                   </h4>
@@ -369,7 +376,7 @@ function Projects() {
                           ? "bg-white/15 border-white/30 text-white font-bold"
                           : t.includes("Supabase") || t.includes("Shopify")
                           ? "bg-emerald-500/15 border-emerald-500/30 text-emerald-400 font-bold"
-                          : "bg-white/5 border-white/10 text-gray-300"
+                          : "bg-white/[0.04] border-white/[0.08] text-gray-300"
                       }`}
                     >
                       {t}
@@ -383,7 +390,7 @@ function Projects() {
             <div className="pt-2 flex justify-end">
               <button
                 onClick={() => setActiveModalProject(null)}
-                className="px-5 py-2.5 bg-gradient-to-r from-kotlin to-compose hover:opacity-95 text-white font-bold rounded-xl text-xs transition shadow-md shadow-kotlin/20"
+                className="px-5 py-2.5 bg-gradient-to-r from-kotlin via-indigo-600 to-compose hover:opacity-95 text-white font-bold rounded-xl text-xs transition shadow-md shadow-kotlin/20"
               >
                 Close Specification
               </button>
@@ -394,5 +401,3 @@ function Projects() {
     </div>
   );
 }
-
-export default Projects;

@@ -1,8 +1,10 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: 'class',
   content: [
-    "./src/*.{js,jsx,ts,tsx}",
-    "./src/**/*.{js,jsx,ts,tsx}"
+    "./src/app/**/*.{js,jsx,ts,tsx}",
+    "./src/components/**/*.{js,jsx,ts,tsx}",
+    "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
     extend: {
@@ -12,7 +14,13 @@ module.exports = {
         heading: ['"Plus Jakarta Sans"', 'sans-serif'],
       },
       colors: {
-        bgblue: "#1A1A2E",
+        obsidian: {
+          DEFAULT: "#08090D",
+          surface: "#0E1017",
+          card: "#131620",
+          border: "rgba(255, 255, 255, 0.08)",
+          borderHover: "rgba(99, 102, 241, 0.4)",
+        },
         kotlin: {
           DEFAULT: "#7F52FF",
           light: "#A485FF",
@@ -22,15 +30,9 @@ module.exports = {
         },
         compose: {
           DEFAULT: "#00C782",
-          blue: "#4285F4",
-          dark: "#087F5B",
+          blue: "#38BDF8",
+          dark: "#059669",
         },
-        dark: {
-          bg: "#070B12",
-          card: "#0D1424",
-          surface: "#121C30",
-          border: "#1E2A42",
-        }
       },
     },
   },
