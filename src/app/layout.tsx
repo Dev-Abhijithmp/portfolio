@@ -53,7 +53,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="bg-[var(--bg-canvas)] text-[var(--text-primary)] min-h-screen flex flex-col justify-between selection:bg-[var(--accent)] selection:text-[var(--accent-text)]">
+      <body className="bg-[var(--bg-canvas)] text-[var(--text-primary)] min-h-screen flex flex-col justify-between selection:bg-[var(--accent-primary)] selection:text-[var(--accent-primary-text)]">
         <ThemeProvider>
           <div className="flex flex-col min-h-screen justify-between">
             <div>
