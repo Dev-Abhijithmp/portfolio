@@ -31,7 +31,7 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
+    <html lang="en" className="dark" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
         <link
           rel="stylesheet"
