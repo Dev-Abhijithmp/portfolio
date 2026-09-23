@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useTheme } from "./ThemeContext";
+import { KotlinIcon, ComposeIcon, AndroidIcon, FlutterIcon } from "./components/TechIcons";
 
 export default function About() {
   const { darkMode } = useTheme();
@@ -7,32 +8,109 @@ export default function About() {
 
   const skillCategories = [
     {
-      category: "Mobile & Audio",
-      title: "Mobile Architecture & Audio Engineering",
+      category: "Kotlin & Android Native",
+      title: "Modern Android, Kotlin & Jetpack Compose",
+      icon: "compose",
       skills: [
-        { name: "Flutter & Dart", level: "95%", desc: "Cross-platform mobile apps, BLoC, Provider, Riverpod architecture" },
-        { name: "Android C/C++ Audio (Google Oboe)", level: "88%", desc: "Native JNI audio buffers, low latency rendering" },
-        { name: "SIP & VoIP Protocols", level: "85%", desc: "Real-time call signaling, audio codecs, and stream sync" },
-        { name: "UI/UX Micro-Animations", level: "90%", desc: "Smooth 60fps Flutter transitions & layout design" },
+        {
+          name: "Kotlin 2.0+ & Coroutines",
+          level: "96%",
+          desc: "Idiomatic Kotlin, Structured Concurrency, StateFlow, SharedFlow & Flow transforms",
+          badge: "Kotlin Core",
+        },
+        {
+          name: "Jetpack Compose & Material 3",
+          level: "95%",
+          desc: "Declarative layouts, custom Modifiers, Canvas animations & Recomposition tuning",
+          badge: "Compose UI",
+        },
+        {
+          name: "Android Jetpack Architecture",
+          level: "92%",
+          desc: "Clean Architecture, MVI / MVVM, Hilt & Koin DI, Room DB, WorkManager",
+          badge: "Architecture",
+        },
+        {
+          name: "Compose Multiplatform (KMP)",
+          level: "88%",
+          desc: "Code sharing between Android and Desktop / iOS with Kotlin Multiplatform",
+          badge: "KMP Multiplatform",
+        },
       ],
     },
     {
-      category: "IoT & Systems",
-      title: "Embedded Hardware & Systems",
+      category: "Audio & Systems",
+      title: "Audio Engineering & Android NDK",
+      icon: "audio",
       skills: [
-        { name: "ESP32 Firmware & Provisioning", level: "82%", desc: "BLE/Wi-Fi provisioning, hardware sensor integration" },
-        { name: "Network Scan & Diagnostic Tools", level: "85%", desc: "Android Wi-Fi scan manager, RSSI signal diagnostics" },
-        { name: "Hardware Flashing & RG Tools", level: "80%", desc: "Download tool instructions and firmware validation" },
+        {
+          name: "Android C/C++ Audio (Google Oboe)",
+          level: "90%",
+          desc: "Native JNI audio streams, sub-20ms low latency hardware buffers, OpenSL ES fallback",
+          badge: "NDK / C++",
+        },
+        {
+          name: "SIP & VoIP Protocols",
+          level: "86%",
+          desc: "Real-time call signaling, audio codecs (Opus, PCMU), jitter buffers, and stream sync",
+          badge: "VoIP Engine",
+        },
+        {
+          name: "Android Hardware & Wi-Fi APIs",
+          level: "88%",
+          desc: "WifiManager scan routines, RSSI signal diagnostics, and BLE GATT clients",
+          badge: "Hardware APIs",
+        },
       ],
     },
     {
-      category: "Full-Stack & Cloud",
-      title: "Full-Stack Web & Edge AI",
+      category: "Cross-Platform & Web",
+      title: "Flutter, Next.js & Cloud Services",
+      icon: "flutter",
       skills: [
-        { name: "React.js & Tailwind CSS", level: "88%", desc: "Glassmorphic responsive dashboards & web portals" },
-        { name: "Local LLMs (Ollama, LiteRT)", level: "85%", desc: "On-device quantised AI model execution & APIs" },
-        { name: "Supabase & Firebase Backend", level: "90%", desc: "Realtime databases, Auth, & Storage" },
-        { name: "Go & REST Microservices", level: "80%", desc: "Lightweight backend microservices" },
+        {
+          name: "Flutter & Dart",
+          level: "94%",
+          desc: "Production mobile apps (DDTransport, Expense Tracker, WiFi Radar) with BLoC, Provider, and MethodChannels",
+          badge: "Flutter",
+        },
+        {
+          name: "Next.js & React (Shopify Headless)",
+          level: "90%",
+          desc: "Next.js App Router, SSR/ISR, Verbo web portal, and headless Shopify Storefront GraphQL integrations",
+          badge: "Next.js & Web",
+        },
+        {
+          name: "Supabase & PostgreSQL Backend",
+          level: "91%",
+          desc: "Realtime databases, Row Level Security (RLS), Auth, fleet telemetry sync, and edge storage",
+          badge: "Supabase / BaaS",
+        },
+      ],
+    },
+    {
+      category: "IoT & Edge AI",
+      title: "Embedded Systems & On-Device ML",
+      icon: "iot",
+      skills: [
+        {
+          name: "ESP32 Firmware & Provisioning",
+          level: "84%",
+          desc: "BLE/Wi-Fi provisioning protocols, sensor telemetry, and hardware download tools",
+          badge: "ESP32",
+        },
+        {
+          name: "Local LLMs (Ollama, LiteRT)",
+          level: "86%",
+          desc: "On-device quantized AI execution, zero-cloud API dependency, private data inference",
+          badge: "Local AI",
+        },
+        {
+          name: "MLKit & Computer Vision",
+          level: "85%",
+          desc: "On-device OCR receipt analyzer, barcode scanner, and text extraction pipelines",
+          badge: "Edge ML",
+        },
       ],
     },
   ];
@@ -40,21 +118,21 @@ export default function About() {
   const timelineEvents = [
     {
       year: "Present",
-      role: "Senior Mobile, IoT & Edge AI Developer",
-      desc: "Architecting enterprise VoIP communication suites with Flutter & C++ (Oboe), building local AI automation workflows, and deploying ESP32 IoT hardware tools.",
-      tech: ["Flutter", "Oboe C++", "Ollama AI", "ESP32"],
+      role: "Lead Android & Systems Engineer",
+      desc: "Architecting the Verbo VoIP communication suite with Kotlin & Jetpack Compose, the Verbo Next.js web portal, low-latency Google Oboe C++ audio engines, and BLE provisioning to ESP32 microcontrollers.",
+      tech: ["Kotlin", "Jetpack Compose", "Next.js", "Oboe C++", "ESP32", "Supabase"],
     },
     {
       year: "2023 - 2024",
-      role: "Cross-Platform Mobile App Lead",
-      desc: "Developed real-time fleet transport platforms (DDTransport), OCR transaction analyzers, and network diagnostic tools.",
-      tech: ["Flutter", "Dart", "Firebase", "Google Maps SDK"],
+      role: "Senior Mobile & Web Developer",
+      desc: "Developed the DDTransport fleet logistics platform with Flutter & Supabase real-time backend, the on-device OCR expense tracker in Flutter, and the Japamala headless Next.js Shopify e-commerce platform.",
+      tech: ["Flutter", "Supabase", "Next.js", "Shopify API", "MLKit OCR", "Dart"],
     },
     {
       year: "2022",
       role: "Full-Stack Web & Mobile Developer",
-      desc: "Built initial React web platforms, API integrations, and mobile utility applications.",
-      tech: ["React.js", "Tailwind CSS", "JavaScript", "REST APIs"],
+      desc: "Constructed web dashboard platforms with React and Tailwind CSS, implemented microservice APIs, and published utility applications.",
+      tech: ["React.js", "Tailwind CSS", "JavaScript", "REST APIs", "SQLite"],
     },
   ];
 
@@ -63,51 +141,91 @@ export default function About() {
   );
 
   return (
-    <div className="min-h-screen py-12 px-6">
-      <div className="max-w-5xl mx-auto space-y-12">
+    <div className="min-h-screen py-12 px-6 relative">
+      {/* Background radial glows */}
+      <div className="absolute top-20 right-1/4 w-80 h-80 bg-kotlin/10 rounded-full blur-[100px] pointer-events-none"></div>
+      <div className="absolute top-96 left-1/4 w-80 h-80 bg-compose/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+      <div className="max-w-5xl mx-auto space-y-12 relative z-10">
         {/* Header */}
         <div className="text-center space-y-3">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-semibold rounded-full uppercase tracking-wider">
-            <i className="fa-solid fa-user-gear"></i> Developer Bio & Capabilities
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-kotlin/10 border border-kotlin/30 text-kotlin-light text-xs font-semibold rounded-full uppercase tracking-wider shadow-sm">
+            <KotlinIcon className="w-3.5 h-3.5" /> Engineer Profile & Competencies
           </div>
-          <h2 className="text-4xl font-extrabold font-serif">About & Engineering Expertise</h2>
-          <p className={`max-w-2xl mx-auto text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
-            Cross-platform developer specializing in mobile audio engines, embedded ESP32 hardware, and on-device Local AI models.
+          <h2 className="text-4xl sm:text-5xl font-extrabold font-heading">About & Technical Expertise</h2>
+          <p className={`max-w-2xl mx-auto text-xs sm:text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
+            Specializing in modern Android with Kotlin & Jetpack Compose, low-latency C++ audio engines, embedded ESP32 hardware, and on-device Edge AI.
           </p>
-          <div className="w-16 h-1 bg-cyan-500 mx-auto rounded-full"></div>
+          <div className="w-16 h-1 bg-gradient-to-r from-kotlin to-compose mx-auto rounded-full"></div>
         </div>
 
-        {/* Bio Highlights */}
+        {/* Bio Highlights Card */}
         <div
-          className={`p-8 rounded-3xl border transition-all duration-300 space-y-4 ${
-            darkMode ? "bg-[#0F172A]/90 border-gray-800 text-gray-200" : "bg-white border-gray-200 text-gray-800 shadow-sm"
+          className={`p-8 rounded-3xl border transition-all duration-300 space-y-5 ${
+            darkMode ? "bg-[#0D1424]/90 border-white/10 text-gray-200" : "bg-white border-gray-200 text-gray-800 shadow-sm"
           }`}
         >
-          <h3 className="text-2xl font-bold font-serif text-cyan-500 flex items-center gap-2">
-            <i className="fa-solid fa-code-commit"></i> Systems & Mobile Developer Profile
-          </h3>
-          <p className="leading-relaxed text-sm sm:text-base">
-            I am <strong className={darkMode ? "text-white" : "text-gray-900"}>Abhijith M P</strong>, a software engineer based in Ernakulam, Kerala. Over years of active project development, I have focused on solving real-world challenges across mobile, embedded hardware, and AI domains.
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b pb-4 border-white/10">
+            <h3 className="text-2xl font-bold font-heading text-kotlin-light flex items-center gap-2.5">
+              <AndroidIcon className="w-6 h-6 text-compose" />
+              <span>Abhijith M P — Systems & Android Specialist</span>
+            </h3>
+            <span className="text-xs font-mono font-semibold px-3 py-1 rounded-full bg-compose/10 text-compose border border-compose/20 self-start sm:self-auto">
+              Ernakulam, Kerala, India
+            </span>
+          </div>
+
+          <p className="leading-relaxed text-xs sm:text-sm">
+            I am a mobile and systems engineer driven by creating high-performance, robust software architectures. My primary specialty centers on <strong className="text-kotlin-light font-bold">Modern Android Development</strong> using <strong className="text-compose font-bold">Kotlin & Jetpack Compose</strong>, adhering to clean MVI/MVVM design principles and non-blocking Coroutines/Flow pipelines.
           </p>
-          <p className="leading-relaxed text-sm sm:text-base">
-            My engineering stack combines <strong className={darkMode ? "text-white" : "text-gray-900"}>Flutter cross-platform apps</strong> with native C++ audio drivers (<strong className={darkMode ? "text-white" : "text-gray-900"}>Google Oboe</strong>), real-time <strong className={darkMode ? "text-white" : "text-gray-900"}>SIP/VoIP protocols</strong>, wireless signal analysis, and privacy-first local LLM integration via <strong className={darkMode ? "text-white" : "text-gray-900"}>Ollama & LiteRT</strong>.
+
+          <p className="leading-relaxed text-xs sm:text-sm">
+            Beyond standard UI engineering, I specialize in low-level Android audio pipelines using <strong className="text-cyan-400 font-bold">Google Oboe C++ NDK</strong> for sub-20ms audio buffer latency, real-time <strong className={darkMode ? "text-white" : "text-gray-900"}>SIP/VoIP protocols</strong>, wireless RF scanning, embedded <strong className={darkMode ? "text-white" : "text-gray-900"}>ESP32 IoT firmware</strong>, and on-device privacy-first <strong className={darkMode ? "text-white" : "text-gray-900"}>Local LLMs (Ollama)</strong>.
           </p>
+
+          {/* Quick Technical Badges */}
+          <div className="pt-2 flex flex-wrap gap-2">
+            {[
+              "Kotlin 2.0+",
+              "Jetpack Compose",
+              "Coroutines StateFlow",
+              "Compose Multiplatform (KMP)",
+              "Google Oboe C++",
+              "Android NDK / JNI",
+              "Flutter",
+              "ESP32 IoT",
+              "Ollama Local AI",
+            ].map((badge) => (
+              <span
+                key={badge}
+                className={`text-[11px] font-mono px-3 py-1 rounded-xl border ${
+                  badge.includes("Kotlin") || badge.includes("Compose")
+                    ? "bg-kotlin/10 border-kotlin/30 text-kotlin-light font-semibold"
+                    : darkMode
+                    ? "bg-white/5 border-white/10 text-gray-300"
+                    : "bg-gray-100 border-gray-200 text-gray-700"
+                }`}
+              >
+                {badge}
+              </span>
+            ))}
+          </div>
         </div>
 
-        {/* Interactive Skill Category Filters */}
+        {/* Technical Skill Matrix */}
         <div className="space-y-6">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <h3 className="text-2xl font-bold font-serif">Technical Skill Matrix</h3>
+            <h3 className="text-2xl font-bold font-heading">Engineering Skill Matrix</h3>
             <div className="flex flex-wrap gap-2">
-              {["All", "Mobile & Audio", "IoT & Systems", "Full-Stack & Cloud"].map((cat) => (
+              {["All", "Kotlin & Android Native", "Audio & Systems", "Cross-Platform & Web", "IoT & Edge AI"].map((cat) => (
                 <button
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
                   className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all duration-200 ${
                     activeCategory === cat
-                      ? "bg-cyan-600 text-white shadow-md shadow-cyan-500/20"
+                      ? "bg-gradient-to-r from-kotlin to-compose text-white shadow-md shadow-kotlin/20"
                       : darkMode
-                      ? "bg-gray-800/80 text-gray-300 hover:bg-gray-700 border border-gray-700"
+                      ? "bg-white/5 text-gray-300 hover:bg-white/10 border border-white/10"
                       : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-200 shadow-sm"
                   }`}
                 >
@@ -117,37 +235,56 @@ export default function About() {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-6">
             {filteredCategories.map((catGroup) => (
               <div
                 key={catGroup.title}
-                className={`p-6 rounded-2xl border transition-all duration-300 space-y-5 ${
-                  darkMode ? "bg-[#0F172A]/90 border-gray-800" : "bg-white border-gray-200/80 shadow-sm"
+                className={`p-6 rounded-3xl border transition-all duration-300 space-y-5 ${
+                  darkMode ? "bg-[#0D1424] border-white/10" : "bg-white border-gray-200 shadow-sm"
                 }`}
               >
-                <h4 className="font-bold text-base border-b pb-3 flex items-center justify-between border-gray-700/50">
-                  <span className="flex items-center gap-2 text-cyan-400">
-                    <i className="fa-solid fa-layer-group"></i> {catGroup.title}
-                  </span>
-                  <span className="text-[10px] font-mono uppercase bg-cyan-500/10 text-cyan-400 px-2 py-0.5 rounded">
+                <div className="border-b pb-3.5 flex items-center justify-between border-white/10">
+                  <div className="flex items-center gap-2.5">
+                    {catGroup.icon === "compose" ? (
+                      <ComposeIcon className="w-5 h-5 text-compose" />
+                    ) : catGroup.icon === "flutter" ? (
+                      <FlutterIcon className="w-5 h-5 text-sky-400" />
+                    ) : (
+                      <i className={`fa-solid ${catGroup.icon === "audio" ? "fa-wave-square text-cyan-400" : "fa-microchip text-emerald-400"} text-lg`}></i>
+                    )}
+                    <h4 className="font-bold text-sm sm:text-base">{catGroup.title}</h4>
+                  </div>
+                  <span className="text-[10px] font-mono uppercase bg-kotlin/10 text-kotlin-light px-2.5 py-0.5 rounded-md font-bold border border-kotlin/20">
                     {catGroup.category}
                   </span>
-                </h4>
+                </div>
 
                 <div className="space-y-4">
                   {catGroup.skills.map((skill) => (
                     <div key={skill.name} className="space-y-1.5">
-                      <div className="flex justify-between text-xs font-medium">
-                        <span className="font-semibold">{skill.name}</span>
-                        <span className="text-cyan-400 font-mono font-bold">{skill.level}</span>
+                      <div className="flex justify-between items-center text-xs font-medium">
+                        <span className="font-bold flex items-center gap-1.5">
+                          {skill.name}
+                        </span>
+                        <div className="flex items-center gap-2">
+                          <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-white/5 text-gray-400">
+                            {skill.badge}
+                          </span>
+                          <span className="text-kotlin-light font-mono font-extrabold">{skill.level}</span>
+                        </div>
                       </div>
-                      <div className={`w-full rounded-full h-2 ${darkMode ? "bg-gray-800" : "bg-gray-100"}`}>
+
+                      {/* Progress Bar */}
+                      <div className={`w-full rounded-full h-2 ${darkMode ? "bg-white/5" : "bg-gray-100"}`}>
                         <div
-                          className="bg-gradient-to-r from-cyan-500 to-blue-600 h-2 rounded-full transition-all duration-700"
+                          className="bg-gradient-to-r from-kotlin via-kotlin-pink to-compose h-2 rounded-full transition-all duration-700"
                           style={{ width: skill.level }}
                         ></div>
                       </div>
-                      <p className={`text-[11px] ${darkMode ? "text-gray-400" : "text-gray-500"}`}>{skill.desc}</p>
+
+                      <p className={`text-[11px] leading-relaxed ${darkMode ? "text-gray-400" : "text-gray-500"}`}>
+                        {skill.desc}
+                      </p>
                     </div>
                   ))}
                 </div>
@@ -156,27 +293,32 @@ export default function About() {
           </div>
         </div>
 
-        {/* Interactive Career Timeline */}
-        <div className="space-y-6">
-          <h3 className="text-2xl font-bold font-serif text-center">Engineering Evolution</h3>
+        {/* Career Evolution Timeline */}
+        <div className="space-y-6 pt-4">
+          <div className="text-center space-y-1">
+            <h3 className="text-2xl font-bold font-heading">Engineering Evolution</h3>
+            <p className={`text-xs ${darkMode ? "text-gray-400" : "text-gray-500"}`}>
+              Key milestones across Native Android, Audio Systems, and Hardware tooling.
+            </p>
+          </div>
 
-          <div className="relative border-l-2 border-cyan-500/30 pl-6 ml-4 sm:ml-8 space-y-8">
+          <div className="relative border-l-2 border-kotlin/30 pl-6 ml-4 sm:ml-8 space-y-8">
             {timelineEvents.map((evt, idx) => (
               <div key={idx} className="relative group">
-                <div className="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-cyan-500 border-4 border-slate-900 group-hover:scale-125 transition-transform duration-300"></div>
+                <div className="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-gradient-to-r from-kotlin to-compose border-4 border-slate-950 group-hover:scale-125 transition-transform duration-300"></div>
 
                 <div
-                  className={`p-6 rounded-2xl border transition-all duration-300 space-y-3 ${
+                  className={`p-6 rounded-3xl border transition-all duration-300 space-y-3 ${
                     darkMode
-                      ? "bg-[#0F172A]/90 border-gray-800 hover:border-cyan-500/40"
-                      : "bg-white border-gray-200/80 shadow-sm hover:border-cyan-500/40"
+                      ? "bg-[#0D1424] border-white/10 hover:border-kotlin/40"
+                      : "bg-white border-gray-200 shadow-sm hover:border-kotlin/40"
                   }`}
                 >
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-                    <span className="text-xs font-mono font-bold text-cyan-400 bg-cyan-500/10 px-2.5 py-0.5 rounded-md inline-block w-max">
+                    <span className="text-xs font-mono font-bold text-kotlin-light bg-kotlin/10 px-2.5 py-0.5 rounded-md inline-block w-max border border-kotlin/20">
                       {evt.year}
                     </span>
-                    <h4 className="text-lg font-bold">{evt.role}</h4>
+                    <h4 className="text-base sm:text-lg font-bold font-heading">{evt.role}</h4>
                   </div>
 
                   <p className={`text-xs sm:text-sm leading-relaxed ${darkMode ? "text-gray-300" : "text-gray-600"}`}>
@@ -187,8 +329,12 @@ export default function About() {
                     {evt.tech.map((t) => (
                       <span
                         key={t}
-                        className={`text-[10px] font-mono px-2 py-0.5 rounded ${
-                          darkMode ? "bg-gray-800 text-gray-300" : "bg-slate-100 text-gray-700"
+                        className={`text-[10px] font-mono px-2.5 py-0.5 rounded-lg border ${
+                          t.includes("Kotlin") || t.includes("Compose")
+                            ? "bg-kotlin/10 border-kotlin/30 text-kotlin-light font-bold"
+                            : darkMode
+                            ? "bg-white/5 border-white/10 text-gray-300"
+                            : "bg-slate-100 border-gray-200 text-gray-700"
                         }`}
                       >
                         #{t}
