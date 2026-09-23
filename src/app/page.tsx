@@ -1,7 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import React, { useState } from "react";
+import profilePhoto from "../../public/abhijith.jpg";
 import ComposeShowcase from "../components/ComposeShowcase";
 import {
   KotlinIcon,
@@ -173,9 +175,10 @@ export default function Home() {
           <div className="flex-1 flex justify-center order-2 lg:order-1">
             <div className="relative group">
               <div className="relative p-2.5 rounded-3xl card-gradient">
-                <img
-                  src="/abhijith.jpg"
+                <Image
+                  src={profilePhoto}
                   alt="Abhijith M P profile"
+                  priority
                   className="w-72 sm:w-80 md:w-88 h-auto rounded-2xl object-cover filter contrast-[1.03]"
                 />
 
