@@ -29,20 +29,20 @@ export default function Navbar() {
   };
 
   return (
-    <header className="sticky top-0 z-50 transition-colors duration-200 border-b border-[var(--border-medium)] bg-[var(--bg-surface)]/90 backdrop-blur-md">
+    <header className="sticky top-0 z-50 transition-colors duration-200 border-b border-[var(--border-medium)] bg-[var(--bg-surface)]/95 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo Identity */}
           <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="flex items-center justify-center w-9 h-9 rounded-xl bg-[var(--bg-card)] border border-[var(--border-medium)] group-hover:border-[var(--border-active)] transition-colors duration-200 p-1.5 shadow-sm">
-              <KotlinIcon className="w-4 h-4 text-[var(--accent)]" />
+            <div className="flex items-center justify-center w-9 h-9 rounded-xl bg-[var(--accent-secondary)] border border-[var(--accent-secondary-border)] group-hover:border-[var(--accent-primary)] transition-colors duration-200 p-1.5 shadow-sm">
+              <KotlinIcon className="w-4 h-4 text-[var(--accent-primary)]" />
             </div>
             <div className="flex flex-col">
-              <span className="font-heading font-bold text-sm sm:text-base tracking-tight text-[var(--text-primary)] group-hover:text-[var(--accent)] transition-colors">
+              <span className="font-heading font-bold text-sm sm:text-base tracking-tight text-[var(--text-primary)] group-hover:text-[var(--accent-primary)] transition-colors">
                 Abhijith M P
               </span>
-              <span className="text-[10px] font-mono tracking-wider text-[var(--text-muted)] -mt-0.5 flex items-center gap-1">
-                <ComposeIcon className="w-2.5 h-2.5 text-[var(--accent)]" />
+              <span className="text-[10px] font-mono tracking-wider text-[var(--accent-secondary-bright)] -mt-0.5 flex items-center gap-1 font-semibold">
+                <ComposeIcon className="w-2.5 h-2.5 text-[var(--accent-primary)]" />
                 Systems & Android
               </span>
             </div>
@@ -56,9 +56,9 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-xs font-semibold px-3 py-1.5 rounded-xl transition-all duration-200 ${
+                  className={`text-xs font-semibold px-3.5 py-1.5 rounded-xl transition-all duration-150 ${
                     active
-                      ? "bg-[var(--accent-subtle)] text-[var(--accent)] border border-[var(--border-active)] shadow-sm"
+                      ? "bg-[var(--accent-primary-subtle)] text-[var(--accent-primary)] border border-[var(--accent-primary-border)] shadow-sm font-bold"
                       : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card)]"
                   }`}
                 >
@@ -71,30 +71,30 @@ export default function Navbar() {
             <div className="h-4 w-px mx-2 bg-[var(--border-medium)]"></div>
 
             {/* Interactive Color Palette Selector */}
-            <div className="flex items-center bg-[var(--bg-card)] p-0.5 rounded-xl border border-[var(--border-medium)] shadow-sm">
+            <div className="flex items-center bg-[var(--bg-card)] p-1 rounded-xl border border-[var(--border-medium)] shadow-sm gap-1">
               <button
                 onClick={() => setPalette("slate")}
-                className={`px-2.5 py-1 text-[11px] font-mono font-bold rounded-lg flex items-center gap-1.5 transition-all duration-150 ${
+                className={`px-3 py-1 text-[11px] font-mono font-bold rounded-lg flex items-center gap-1.5 transition-all duration-150 ${
                   palette === "slate"
-                    ? "bg-[#FFA586] text-[#1b1e32] shadow-sm font-semibold"
-                    : "text-[var(--text-muted)] hover:text-[var(--text-primary)]"
+                    ? "bg-[#FFA586] text-[#1b1e32] shadow-sm font-bold scale-102"
+                    : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-surface)]"
                 }`}
-                title="Palette 1: Slate (#242740) & Warm Coral (#FFA586)"
+                title="Palette 1: Slate (#242740), Steel (#384358), Coral (#FFA586), Teal (#285160)"
               >
-                <span className="w-2 h-2 rounded-full bg-[#FFA586] border border-[#242740]/40"></span>
+                <span className="w-2.5 h-2.5 rounded-full bg-[#FFA586] border border-[#242740]/40"></span>
                 <span>Slate & Coral</span>
               </button>
 
               <button
                 onClick={() => setPalette("forest")}
-                className={`px-2.5 py-1 text-[11px] font-mono font-bold rounded-lg flex items-center gap-1.5 transition-all duration-150 ${
+                className={`px-3 py-1 text-[11px] font-mono font-bold rounded-lg flex items-center gap-1.5 transition-all duration-150 ${
                   palette === "forest"
-                    ? "bg-[#DAF1DE] text-[#051F20] shadow-sm font-semibold"
-                    : "text-[var(--text-muted)] hover:text-[var(--text-primary)]"
+                    ? "bg-[#DAF1DE] text-[#051F20] shadow-sm font-bold scale-102"
+                    : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-surface)]"
                 }`}
-                title="Palette 2: Nordic Forest (#051F20) & Sage (#8EB69B / #DAF1DE)"
+                title="Palette 2: Spruce (#051F20), Forest (#0B2B26), Pine (#235347), Sage (#8EB69B), Mint (#DAF1DE)"
               >
-                <span className="w-2 h-2 rounded-full bg-[#8EB69B] border border-[#051F20]/40"></span>
+                <span className="w-2.5 h-2.5 rounded-full bg-[#8EB69B] border border-[#051F20]/40"></span>
                 <span>Nordic Forest</span>
               </button>
             </div>
@@ -104,7 +104,7 @@ export default function Navbar() {
               href="https://github.com/Dev-Abhijithmp"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 ml-1 rounded-xl border border-[var(--border-medium)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card)] transition-colors"
+              className="p-2 ml-1 rounded-xl border border-[var(--border-medium)] bg-[var(--bg-card)] text-[var(--accent-secondary-bright)] hover:text-[var(--accent-primary)] hover:border-[var(--accent-primary)] transition-colors"
               title="GitHub Profile (Dev-Abhijithmp)"
               aria-label="GitHub Profile"
             >
@@ -114,7 +114,7 @@ export default function Navbar() {
             {/* Primary Action Button */}
             <Link
               href="/contactus"
-              className="ml-2 px-3.5 py-1.5 bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-[var(--accent-text)] font-semibold rounded-xl text-xs shadow-sm transition duration-150 flex items-center gap-1.5"
+              className="ml-2 px-3.5 py-1.5 bg-[var(--accent-primary)] hover:bg-[var(--accent-primary-hover)] text-[var(--accent-primary-text)] font-bold rounded-xl text-xs shadow-md transition duration-150 flex items-center gap-1.5"
             >
               <i className="fa-solid fa-paper-plane text-[10px]"></i> Get in Touch
             </Link>
@@ -125,18 +125,18 @@ export default function Navbar() {
             {/* Mobile Palette Switcher Toggle */}
             <button
               onClick={() => setPalette(palette === "slate" ? "forest" : "slate")}
-              className="px-2.5 py-1 rounded-xl border border-[var(--border-medium)] bg-[var(--bg-card)] text-[10px] font-mono font-bold flex items-center gap-1 text-[var(--accent)]"
+              className="px-2.5 py-1 rounded-xl border border-[var(--border-medium)] bg-[var(--bg-card)] text-[10px] font-mono font-bold flex items-center gap-1 text-[var(--accent-primary)]"
               title="Switch Color Palette"
             >
               <span className={`w-2 h-2 rounded-full ${palette === "slate" ? "bg-[#FFA586]" : "bg-[#8EB69B]"}`}></span>
-              <span>{palette === "slate" ? "Slate" : "Forest"}</span>
+              <span>{palette === "slate" ? "Slate Coral" : "Nordic Forest"}</span>
             </button>
 
             <a
               href="https://github.com/Dev-Abhijithmp"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-xl border border-[var(--border-medium)] bg-[var(--bg-card)] text-xs text-[var(--text-secondary)]"
+              className="p-2 rounded-xl border border-[var(--border-medium)] bg-[var(--bg-card)] text-xs text-[var(--accent-secondary-bright)]"
               aria-label="GitHub Profile"
             >
               <i className="fa-brands fa-github"></i>
@@ -164,7 +164,7 @@ export default function Navbar() {
                   onClick={() => setIsOpen(false)}
                   className={`text-xs font-semibold px-3 py-2 rounded-xl transition ${
                     active
-                      ? "bg-[var(--accent-subtle)] text-[var(--accent)] border border-[var(--border-active)]"
+                      ? "bg-[var(--accent-primary-subtle)] text-[var(--accent-primary)] border border-[var(--accent-primary-border)] font-bold"
                       : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
                   }`}
                 >

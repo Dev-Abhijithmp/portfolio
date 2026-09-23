@@ -21,6 +21,7 @@ interface SkillCategory {
   title: string;
   icon: "compose" | "flutter" | "audio" | "nextjs" | "iot";
   skills: Skill[];
+  colorType: "primary" | "secondary";
 }
 
 interface TimelineEvent {
@@ -28,6 +29,7 @@ interface TimelineEvent {
   role: string;
   desc: string;
   tech: string[];
+  colorType: "primary" | "secondary";
 }
 
 export default function AboutPage() {
@@ -38,6 +40,7 @@ export default function AboutPage() {
       category: "Kotlin & Android Native",
       title: "Modern Android, Kotlin & Jetpack Compose",
       icon: "compose",
+      colorType: "primary",
       skills: [
         {
           name: "Kotlin 2.0+ & Coroutines",
@@ -69,6 +72,7 @@ export default function AboutPage() {
       category: "Flutter & Cross-Platform",
       title: "Flutter & Supabase Mobile Engineering",
       icon: "flutter",
+      colorType: "secondary",
       skills: [
         {
           name: "Flutter & Dart",
@@ -94,6 +98,7 @@ export default function AboutPage() {
       category: "Audio & Systems (C++)",
       title: "Audio Engineering & Android NDK",
       icon: "audio",
+      colorType: "primary",
       skills: [
         {
           name: "Android C/C++ Audio (Google Oboe)",
@@ -119,6 +124,7 @@ export default function AboutPage() {
       category: "Next.js & Cloud",
       title: "Next.js Web & Shopify E-Commerce",
       icon: "nextjs",
+      colorType: "secondary",
       skills: [
         {
           name: "Next.js (App Router) & React",
@@ -135,7 +141,7 @@ export default function AboutPage() {
         {
           name: "Tailwind CSS & Design Systems",
           level: "95%",
-          desc: "Sophisticated glassmorphism, responsive architectural layouts, and dark/light palettes",
+          desc: "Sophisticated responsive architectural layouts, custom themes, and design tokens",
           badge: "Design Systems",
         },
       ],
@@ -144,6 +150,7 @@ export default function AboutPage() {
       category: "IoT & Edge AI",
       title: "Embedded Systems & On-Device ML",
       icon: "iot",
+      colorType: "primary",
       skills: [
         {
           name: "ESP32 Firmware & Provisioning",
@@ -167,18 +174,21 @@ export default function AboutPage() {
       role: "Lead Systems & Android Engineer",
       desc: "Architecting the Verbo VoIP communication suite with Kotlin & Jetpack Compose, the Verbo Next.js web portal, low-latency Google Oboe C++ audio engines, and BLE provisioning to ESP32 microcontrollers.",
       tech: ["Kotlin", "Jetpack Compose", "Next.js", "Oboe C++", "ESP32", "Supabase"],
+      colorType: "primary",
     },
     {
       year: "2023 - 2024",
       role: "Senior Mobile & Web Developer",
       desc: "Developed the DDTransport fleet logistics platform with Flutter & Supabase real-time backend, the on-device OCR expense tracker in Flutter, and the Japamala headless Next.js Shopify e-commerce platform.",
       tech: ["Flutter", "Supabase", "Next.js", "Shopify API", "MLKit OCR", "Dart"],
+      colorType: "secondary",
     },
     {
       year: "2022",
       role: "Full-Stack Web & Mobile Developer",
       desc: "Constructed web dashboard platforms with React and Tailwind CSS, implemented microservice APIs, and published utility applications.",
       tech: ["React.js", "Tailwind CSS", "JavaScript", "REST APIs", "SQLite"],
+      colorType: "primary",
     },
   ];
 
@@ -187,16 +197,16 @@ export default function AboutPage() {
   );
 
   return (
-    <div className="min-h-screen py-12 px-6 relative bg-grid-subtle">
+    <div className="min-h-screen py-12 px-6 relative">
       <div className="max-w-5xl mx-auto space-y-12 relative z-10">
         {/* Header */}
         <div className="text-center space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-[var(--accent-subtle)] border border-[var(--border-active)] text-[var(--accent)] text-xs font-semibold rounded-full uppercase tracking-wider shadow-sm">
-            <KotlinIcon className="w-3.5 h-3.5" /> Engineer Profile & Competencies
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-[var(--accent-secondary)] border border-[var(--accent-secondary-border)] text-[var(--accent-primary)] text-xs font-semibold rounded-full uppercase tracking-wider shadow-sm">
+            <KotlinIcon className="w-3.5 h-3.5 text-[var(--accent-primary)]" /> Engineer Profile & Competencies
           </div>
           <h2 className="text-4xl sm:text-5xl font-extrabold font-heading text-[var(--text-primary)]">About & Technical Expertise</h2>
           <p className="max-w-2xl mx-auto text-xs sm:text-sm text-[var(--text-secondary)]">
-            Specializing in modern Android with <strong className="text-[var(--accent)] font-semibold">Kotlin & Jetpack Compose</strong>, cross-platform mobile with <strong className="text-[var(--text-primary)] font-semibold">Flutter & Supabase</strong>, modern web with <strong className="text-[var(--text-primary)] font-semibold">Next.js & Shopify</strong>, and low-latency C++ audio engines.
+            Specializing in modern Android with <strong className="text-[var(--accent-primary)] font-semibold">Kotlin & Jetpack Compose</strong>, cross-platform mobile with <strong className="text-[var(--accent-secondary-bright)] font-semibold">Flutter & Supabase</strong>, modern web with <strong className="text-[var(--text-primary)] font-semibold">Next.js & Shopify</strong>, and low-latency C++ audio engines.
           </p>
         </div>
 
@@ -204,41 +214,45 @@ export default function AboutPage() {
         <div className="p-8 rounded-3xl border border-[var(--border-medium)] bg-[var(--bg-card)] transition-all duration-200 space-y-5 shadow-sm">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b pb-4 border-[var(--border-medium)]">
             <h3 className="text-2xl font-bold font-heading text-[var(--text-primary)] flex items-center gap-2.5">
-              <AndroidIcon className="w-6 h-6 text-[var(--accent)]" />
+              <AndroidIcon className="w-6 h-6 text-[var(--accent-primary)]" />
               <span>Abhijith M P — Systems & Mobile Engineer</span>
             </h3>
-            <span className="text-xs font-mono font-semibold px-3 py-1 rounded-full bg-[var(--bg-surface)] text-[var(--text-muted)] border border-[var(--border-subtle)] self-start sm:self-auto">
+            <span className="text-xs font-mono font-semibold px-3 py-1 rounded-full bg-[var(--accent-secondary)] text-[var(--accent-secondary-bright)] border border-[var(--accent-secondary-border)] self-start sm:self-auto">
               Ernakulam, Kerala, India
             </span>
           </div>
 
           <p className="leading-relaxed text-xs sm:text-sm text-[var(--text-secondary)]">
-            I am a mobile, systems, and full-stack software engineer driven by crafting production-grade software architectures. My core strength centers on <strong className="text-[var(--accent)] font-semibold">Modern Android Engineering</strong> using <strong className="text-[var(--accent)] font-semibold">Kotlin & Jetpack Compose</strong>, following clean MVI/MVVM design patterns, and asynchronous Coroutines/Flow pipelines.
+            I am a mobile, systems, and full-stack software engineer driven by crafting production-grade software architectures. My core strength centers on <strong className="text-[var(--accent-primary)] font-semibold">Modern Android Engineering</strong> using <strong className="text-[var(--accent-primary)] font-semibold">Kotlin & Jetpack Compose</strong>, following clean MVI/MVVM design patterns, and asynchronous Coroutines/Flow pipelines.
           </p>
 
           <p className="leading-relaxed text-xs sm:text-sm text-[var(--text-secondary)]">
-            Alongside native Android, I build scalable cross-platform mobile apps with <strong className="text-[var(--text-primary)] font-semibold">Flutter & Supabase</strong> (DDTransport, Expense Tracker), modern web portals and headless e-commerce with <strong className="text-[var(--text-primary)] font-semibold">Next.js & Shopify</strong> (Japamala, Verbo Web), low-level audio streaming with <strong className="text-[var(--accent)] font-semibold">Google Oboe C++ NDK</strong>, and embedded <strong className="text-[var(--text-primary)] font-semibold">ESP32 IoT BLE</strong> device provisioning.
+            Alongside native Android, I build scalable cross-platform mobile apps with <strong className="text-[var(--accent-secondary-bright)] font-semibold">Flutter & Supabase</strong> (DDTransport, Expense Tracker), modern web portals and headless e-commerce with <strong className="text-[var(--text-primary)] font-semibold">Next.js & Shopify</strong> (Japamala, Verbo Web), low-level audio streaming with <strong className="text-[var(--accent-primary)] font-semibold">Google Oboe C++ NDK</strong>, and embedded <strong className="text-[var(--accent-secondary-bright)] font-semibold">ESP32 IoT BLE</strong> device provisioning.
           </p>
 
-          {/* Quick Technical Badges */}
+          {/* Quick Technical Badges with rich palette styling */}
           <div className="pt-2 flex flex-wrap gap-2">
             {[
-              "Kotlin 2.0+",
-              "Jetpack Compose",
-              "Coroutines StateFlow",
-              "Flutter & Dart",
-              "Supabase Backend",
-              "Next.js (App Router)",
-              "Shopify Storefront",
-              "Google Oboe C++",
-              "ESP32 BLE",
-              "Ollama Local AI",
+              { name: "Kotlin 2.0+", type: "primary" },
+              { name: "Jetpack Compose", type: "primary" },
+              { name: "Coroutines StateFlow", type: "primary" },
+              { name: "Flutter & Dart", type: "secondary" },
+              { name: "Supabase Backend", type: "secondary" },
+              { name: "Next.js (App Router)", type: "secondary" },
+              { name: "Shopify Storefront", type: "secondary" },
+              { name: "Google Oboe C++", type: "primary" },
+              { name: "ESP32 BLE", type: "secondary" },
+              { name: "Ollama Local AI", type: "primary" },
             ].map((badge) => (
               <span
-                key={badge}
-                className="text-[11px] font-mono px-3 py-1 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--text-secondary)] font-medium"
+                key={badge.name}
+                className={`text-[11px] font-mono px-3 py-1 rounded-xl border font-bold ${
+                  badge.type === "primary"
+                    ? "bg-[var(--accent-primary-subtle)] text-[var(--accent-primary)] border-[var(--accent-primary-border)]"
+                    : "bg-[var(--accent-secondary-subtle)] text-[var(--accent-secondary-bright)] border-[var(--accent-secondary-border)]"
+                }`}
               >
-                {badge}
+                {badge.name}
               </span>
             ))}
           </div>
@@ -262,8 +276,8 @@ export default function AboutPage() {
                   onClick={() => setActiveCategory(cat)}
                   className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all duration-150 ${
                     activeCategory === cat
-                      ? "bg-[var(--accent)] text-[var(--accent-text)] shadow-sm font-bold scale-105"
-                      : "bg-[var(--bg-card)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border-medium)] hover:border-[var(--border-active)]"
+                      ? "bg-[var(--accent-primary)] text-[var(--accent-primary-text)] shadow-md font-bold scale-105"
+                      : "bg-[var(--bg-card)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border-medium)] hover:border-[var(--accent-secondary-bright)]"
                   }`}
                 >
                   {cat}
@@ -281,17 +295,21 @@ export default function AboutPage() {
                 <div className="border-b pb-3.5 flex items-center justify-between border-[var(--border-medium)]">
                   <div className="flex items-center gap-2.5">
                     {catGroup.icon === "compose" ? (
-                      <ComposeIcon className="w-5 h-5 text-[var(--accent)]" />
+                      <ComposeIcon className="w-5 h-5 text-[var(--accent-primary)]" />
                     ) : catGroup.icon === "flutter" ? (
-                      <FlutterIcon className="w-5 h-5 text-[var(--accent)]" />
+                      <FlutterIcon className="w-5 h-5 text-[var(--accent-secondary-bright)]" />
                     ) : catGroup.icon === "nextjs" ? (
-                      <NextJsIcon className="w-5 h-5 text-[var(--accent)]" />
+                      <NextJsIcon className="w-5 h-5 text-[var(--accent-secondary-bright)]" />
                     ) : (
-                      <i className={`fa-solid ${catGroup.icon === "audio" ? "fa-wave-square" : "fa-microchip"} text-[var(--accent)] text-lg`}></i>
+                      <i className={`fa-solid ${catGroup.icon === "audio" ? "fa-wave-square" : "fa-microchip"} text-[var(--accent-primary)] text-lg`}></i>
                     )}
                     <h4 className="font-bold text-sm sm:text-base text-[var(--text-primary)]">{catGroup.title}</h4>
                   </div>
-                  <span className="text-[10px] font-mono uppercase bg-[var(--bg-surface)] text-[var(--text-muted)] px-2.5 py-0.5 rounded-md font-bold border border-[var(--border-subtle)]">
+                  <span className={`text-[10px] font-mono uppercase px-2.5 py-0.5 rounded-md font-bold border ${
+                    catGroup.colorType === "primary"
+                      ? "bg-[var(--accent-primary-subtle)] text-[var(--accent-primary)] border-[var(--accent-primary-border)]"
+                      : "bg-[var(--accent-secondary-subtle)] text-[var(--accent-secondary-bright)] border-[var(--accent-secondary-border)]"
+                  }`}>
                     {catGroup.category}
                   </span>
                 </div>
@@ -304,17 +322,21 @@ export default function AboutPage() {
                           {skill.name}
                         </span>
                         <div className="flex items-center gap-2">
-                          <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[var(--bg-surface)] text-[var(--text-muted)]">
+                          <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[var(--accent-secondary)] text-[var(--accent-secondary-bright)] border border-[var(--accent-secondary-border)] font-semibold">
                             {skill.badge}
                           </span>
-                          <span className="text-[var(--accent)] font-mono font-bold">{skill.level}</span>
+                          <span className={`font-mono font-bold ${
+                            catGroup.colorType === "primary" ? "text-[var(--accent-primary)]" : "text-[var(--accent-secondary-bright)]"
+                          }`}>{skill.level}</span>
                         </div>
                       </div>
 
-                      {/* Progress Bar */}
+                      {/* Progress Bar with category color */}
                       <div className="w-full rounded-full h-1.5 bg-[var(--bg-surface)] overflow-hidden">
                         <div
-                          className="bg-[var(--accent)] h-1.5 rounded-full transition-all duration-500"
+                          className={`h-1.5 rounded-full transition-all duration-500 ${
+                            catGroup.colorType === "primary" ? "bg-[var(--accent-primary)]" : "bg-[var(--accent-secondary-bright)]"
+                          }`}
                           style={{ width: skill.level }}
                         ></div>
                       </div>
@@ -342,11 +364,17 @@ export default function AboutPage() {
           <div className="relative border-l-2 border-[var(--border-medium)] pl-6 ml-4 sm:ml-8 space-y-8">
             {timelineEvents.map((evt, idx) => (
               <div key={idx} className="relative group">
-                <div className="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-[var(--accent)] border-4 border-[var(--bg-canvas)] transition-transform duration-200"></div>
+                <div className={`absolute -left-[31px] top-1.5 w-4 h-4 rounded-full border-4 border-[var(--bg-canvas)] transition-transform duration-200 ${
+                  evt.colorType === "primary" ? "bg-[var(--accent-primary)]" : "bg-[var(--accent-secondary-bright)]"
+                }`}></div>
 
                 <div className="p-6 rounded-3xl border border-[var(--border-medium)] bg-[var(--bg-card)] hover:border-[var(--border-active)] transition-all duration-200 space-y-3 shadow-sm">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-                    <span className="text-xs font-mono font-bold text-[var(--accent)] bg-[var(--bg-surface)] px-2.5 py-0.5 rounded-md inline-block w-max border border-[var(--border-subtle)]">
+                    <span className={`text-xs font-mono font-bold px-2.5 py-0.5 rounded-md inline-block w-max border ${
+                      evt.colorType === "primary"
+                        ? "bg-[var(--accent-primary-subtle)] text-[var(--accent-primary)] border-[var(--accent-primary-border)]"
+                        : "bg-[var(--accent-secondary-subtle)] text-[var(--accent-secondary-bright)] border-[var(--accent-secondary-border)]"
+                    }`}>
                       {evt.year}
                     </span>
                     <h4 className="text-base sm:text-lg font-bold font-heading text-[var(--text-primary)]">{evt.role}</h4>
@@ -357,14 +385,21 @@ export default function AboutPage() {
                   </p>
 
                   <div className="flex flex-wrap gap-1.5 pt-1">
-                    {evt.tech.map((t) => (
-                      <span
-                        key={t}
-                        className="text-[10px] font-mono px-2.5 py-0.5 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--text-secondary)]"
-                      >
-                        #{t}
-                      </span>
-                    ))}
+                    {evt.tech.map((t) => {
+                      const isPrimary = t.includes("Kotlin") || t.includes("Compose") || t.includes("Oboe");
+                      return (
+                        <span
+                          key={t}
+                          className={`text-[10px] font-mono px-2.5 py-0.5 rounded-lg border font-semibold ${
+                            isPrimary
+                              ? "bg-[var(--accent-primary-subtle)] text-[var(--accent-primary)] border-[var(--accent-primary-border)]"
+                              : "bg-[var(--accent-secondary-subtle)] text-[var(--accent-secondary-bright)] border-[var(--accent-secondary-border)]"
+                          }`}
+                        >
+                          #{t}
+                        </span>
+                      );
+                    })}
                   </div>
                 </div>
               </div>

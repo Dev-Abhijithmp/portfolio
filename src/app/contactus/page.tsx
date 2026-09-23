@@ -63,10 +63,10 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen py-12 px-6 relative bg-grid-subtle">
+    <div className="min-h-screen py-12 px-6 relative">
       {/* Toast Notification */}
       {toastMessage && (
-        <div className="fixed bottom-6 right-6 z-50 bg-[var(--accent)] text-[var(--accent-text)] px-5 py-3 rounded-2xl shadow-xl text-xs font-bold flex items-center gap-2">
+        <div className="fixed bottom-6 right-6 z-50 bg-[var(--accent-primary)] text-[var(--accent-primary-text)] px-5 py-3 rounded-2xl shadow-xl text-xs font-bold flex items-center gap-2">
           <i className="fa-solid fa-circle-check"></i> {toastMessage}
         </div>
       )}
@@ -74,12 +74,12 @@ export default function ContactPage() {
       <div className="max-w-5xl mx-auto space-y-12 relative z-10">
         {/* Header */}
         <div className="text-center space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-[var(--accent-subtle)] border border-[var(--border-active)] text-[var(--accent)] text-xs font-semibold rounded-full uppercase tracking-wider shadow-sm">
-            <KotlinIcon className="w-3.5 h-3.5" /> Start a Conversation
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-[var(--accent-secondary)] border border-[var(--accent-secondary-border)] text-[var(--accent-primary)] text-xs font-semibold rounded-full uppercase tracking-wider shadow-sm">
+            <KotlinIcon className="w-3.5 h-3.5 text-[var(--accent-primary)]" /> Start a Conversation
           </div>
           <h2 className="text-4xl sm:text-5xl font-extrabold font-heading text-[var(--text-primary)]">Let's Build Something Exceptional</h2>
           <p className="max-w-2xl mx-auto text-xs sm:text-sm text-[var(--text-secondary)]">
-            Available for Android applications (<strong className="text-[var(--accent)] font-semibold">Kotlin & Compose</strong>), cross-platform mobile (<strong className="text-[var(--text-primary)] font-semibold">Flutter & Supabase</strong>), web platforms (<strong className="text-[var(--text-primary)] font-semibold">Next.js & Shopify</strong>), and low-latency audio engines.
+            Available for Android applications (<strong className="text-[var(--accent-primary)] font-semibold">Kotlin & Compose</strong>), cross-platform mobile (<strong className="text-[var(--accent-secondary-bright)] font-semibold">Flutter & Supabase</strong>), web platforms (<strong className="text-[var(--text-primary)] font-semibold">Next.js & Shopify</strong>), and low-latency audio engines.
           </p>
         </div>
 
@@ -93,63 +93,63 @@ export default function ContactPage() {
               </p>
 
               <div className="space-y-3.5 pt-2">
-                {/* Email Item */}
+                {/* Email Item (Coral Accent) */}
                 <div
                   onClick={() => handleCopy("111abhiabhi@gmail.com", "Email")}
-                  className="p-4 rounded-2xl border border-[var(--border-medium)] bg-[var(--bg-surface)] hover:border-[var(--border-active)] transition-all duration-150 cursor-pointer flex items-center justify-between group"
+                  className="p-4 rounded-2xl border border-[var(--border-medium)] bg-[var(--bg-surface)] hover:border-[var(--accent-primary)] transition-all duration-150 cursor-pointer flex items-center justify-between group shadow-sm"
                 >
                   <div className="flex items-center gap-3.5">
-                    <div className="w-10 h-10 rounded-xl bg-[var(--bg-card)] text-[var(--accent)] flex items-center justify-center text-base font-bold border border-[var(--border-subtle)]">
+                    <div className="w-10 h-10 rounded-xl bg-[var(--accent-primary-subtle)] text-[var(--accent-primary)] flex items-center justify-center text-base font-bold border border-[var(--accent-primary-border)]">
                       <i className="fa-solid fa-envelope"></i>
                     </div>
                     <div>
                       <h5 className="font-bold text-[10px] uppercase font-mono text-[var(--text-muted)]">Email Address</h5>
-                      <p className="text-xs sm:text-sm font-semibold text-[var(--text-primary)] group-hover:text-[var(--accent)] transition-colors">111abhiabhi@gmail.com</p>
+                      <p className="text-xs sm:text-sm font-semibold text-[var(--text-primary)] group-hover:text-[var(--accent-primary)] transition-colors">111abhiabhi@gmail.com</p>
                     </div>
                   </div>
-                  <i className="fa-regular fa-copy text-[var(--text-muted)] group-hover:text-[var(--accent)] text-sm"></i>
+                  <i className="fa-regular fa-copy text-[var(--text-muted)] group-hover:text-[var(--accent-primary)] text-sm"></i>
                 </div>
 
-                {/* Phone Item */}
+                {/* Phone Item (Teal/Sage Accent) */}
                 <div
                   onClick={() => handleCopy("+919497747142", "Phone number")}
-                  className="p-4 rounded-2xl border border-[var(--border-medium)] bg-[var(--bg-surface)] hover:border-[var(--border-active)] transition-all duration-150 cursor-pointer flex items-center justify-between group"
+                  className="p-4 rounded-2xl border border-[var(--border-medium)] bg-[var(--bg-surface)] hover:border-[var(--accent-secondary-bright)] transition-all duration-150 cursor-pointer flex items-center justify-between group shadow-sm"
                 >
                   <div className="flex items-center gap-3.5">
-                    <div className="w-10 h-10 rounded-xl bg-[var(--bg-card)] text-[var(--accent)] flex items-center justify-center text-base font-bold border border-[var(--border-subtle)]">
+                    <div className="w-10 h-10 rounded-xl bg-[var(--accent-secondary-subtle)] text-[var(--accent-secondary-bright)] flex items-center justify-center text-base font-bold border border-[var(--accent-secondary-border)]">
                       <i className="fa-solid fa-phone"></i>
                     </div>
                     <div>
                       <h5 className="font-bold text-[10px] uppercase font-mono text-[var(--text-muted)]">Phone Number</h5>
-                      <p className="text-xs sm:text-sm font-semibold text-[var(--text-primary)] group-hover:text-[var(--accent)] transition-colors">+91 94977 47142</p>
+                      <p className="text-xs sm:text-sm font-semibold text-[var(--accent-secondary-bright)] group-hover:underline">+91 94977 47142</p>
                     </div>
                   </div>
-                  <i className="fa-regular fa-copy text-[var(--text-muted)] group-hover:text-[var(--accent)] text-sm"></i>
+                  <i className="fa-regular fa-copy text-[var(--text-muted)] group-hover:text-[var(--accent-secondary-bright)] text-sm"></i>
                 </div>
 
-                {/* GitHub Item */}
+                {/* GitHub Item (Coral Accent) */}
                 <a
                   href="https://github.com/Dev-Abhijithmp"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-4 rounded-2xl border border-[var(--border-medium)] bg-[var(--bg-surface)] hover:border-[var(--border-active)] transition-all duration-150 flex items-center justify-between group"
+                  className="p-4 rounded-2xl border border-[var(--border-medium)] bg-[var(--bg-surface)] hover:border-[var(--accent-primary)] transition-all duration-150 flex items-center justify-between group shadow-sm"
                 >
                   <div className="flex items-center gap-3.5">
-                    <div className="w-10 h-10 rounded-xl bg-[var(--bg-card)] text-[var(--accent)] flex items-center justify-center text-base font-bold border border-[var(--border-subtle)]">
+                    <div className="w-10 h-10 rounded-xl bg-[var(--accent-primary-subtle)] text-[var(--accent-primary)] flex items-center justify-center text-base font-bold border border-[var(--accent-primary-border)]">
                       <i className="fa-brands fa-github"></i>
                     </div>
                     <div>
                       <h5 className="font-bold text-[10px] uppercase font-mono text-[var(--text-muted)]">GitHub Profile</h5>
-                      <p className="text-xs sm:text-sm font-semibold text-[var(--text-primary)] group-hover:text-[var(--accent)] transition-colors">github.com/Dev-Abhijithmp</p>
+                      <p className="text-xs sm:text-sm font-semibold text-[var(--text-primary)] group-hover:text-[var(--accent-primary)] transition-colors">github.com/Dev-Abhijithmp</p>
                     </div>
                   </div>
-                  <i className="fa-solid fa-arrow-up-right-from-square text-[var(--text-muted)] group-hover:text-[var(--accent)] text-xs"></i>
+                  <i className="fa-solid fa-arrow-up-right-from-square text-[var(--text-muted)] group-hover:text-[var(--accent-primary)] text-xs"></i>
                 </a>
 
-                {/* Location Item */}
-                <div className="p-4 rounded-2xl border border-[var(--border-medium)] bg-[var(--bg-surface)]">
+                {/* Location Item (Teal/Sage Accent) */}
+                <div className="p-4 rounded-2xl border border-[var(--border-medium)] bg-[var(--bg-surface)] shadow-sm">
                   <div className="flex items-start gap-3.5">
-                    <div className="w-10 h-10 rounded-xl bg-[var(--bg-card)] text-[var(--accent)] flex items-center justify-center text-base font-bold border border-[var(--border-subtle)] mt-0.5">
+                    <div className="w-10 h-10 rounded-xl bg-[var(--accent-secondary-subtle)] text-[var(--accent-secondary-bright)] flex items-center justify-center text-base font-bold border border-[var(--accent-secondary-border)] mt-0.5">
                       <i className="fa-solid fa-location-dot"></i>
                     </div>
                     <div>
@@ -171,7 +171,7 @@ export default function ContactPage() {
             <h3 className="text-2xl font-bold font-heading text-[var(--text-primary)]">Send an Inquiry</h3>
 
             {submitted && (
-              <div className="p-4 bg-[var(--accent-subtle)] border border-[var(--border-active)] text-[var(--accent)] rounded-2xl text-xs font-semibold flex items-center gap-2">
+              <div className="p-4 bg-[var(--accent-primary-subtle)] border border-[var(--accent-primary-border)] text-[var(--accent-primary)] rounded-2xl text-xs font-semibold flex items-center gap-2">
                 <i className="fa-solid fa-circle-check text-base"></i> Thank you! Your message has been received. I will reply promptly.
               </div>
             )}
@@ -189,8 +189,8 @@ export default function ContactPage() {
                       onClick={() => setFormData({ ...formData, projectType: type })}
                       className={`px-3 py-1.5 rounded-xl text-[11px] font-semibold transition-all duration-150 ${
                         formData.projectType === type
-                          ? "bg-[var(--accent)] text-[var(--accent-text)] font-bold shadow-sm scale-105"
-                          : "bg-[var(--bg-surface)] text-[var(--text-secondary)] border border-[var(--border-medium)] hover:border-[var(--border-active)] hover:text-[var(--text-primary)]"
+                          ? "bg-[var(--accent-primary)] text-[var(--accent-primary-text)] font-bold shadow-md scale-105"
+                          : "bg-[var(--bg-surface)] text-[var(--text-secondary)] border border-[var(--border-medium)] hover:border-[var(--accent-secondary-bright)] hover:text-[var(--text-primary)]"
                       }`}
                     >
                       {type}
@@ -210,7 +210,7 @@ export default function ContactPage() {
                   onChange={handleChange}
                   placeholder="e.g. Alex Henderson"
                   required
-                  className="w-full px-4 py-2.5 rounded-xl text-xs border border-[var(--border-medium)] bg-[var(--bg-surface)] text-[var(--text-primary)] placeholder-[var(--text-muted)] outline-none transition duration-150 focus:border-[var(--border-active)]"
+                  className="w-full px-4 py-2.5 rounded-xl text-xs border border-[var(--border-medium)] bg-[var(--bg-surface)] text-[var(--text-primary)] placeholder-[var(--text-muted)] outline-none transition duration-150 focus:border-[var(--accent-primary)]"
                 />
               </div>
 
@@ -225,7 +225,7 @@ export default function ContactPage() {
                   onChange={handleChange}
                   placeholder="alex@company.com"
                   required
-                  className="w-full px-4 py-2.5 rounded-xl text-xs border border-[var(--border-medium)] bg-[var(--bg-surface)] text-[var(--text-primary)] placeholder-[var(--text-muted)] outline-none transition duration-150 focus:border-[var(--border-active)]"
+                  className="w-full px-4 py-2.5 rounded-xl text-xs border border-[var(--border-medium)] bg-[var(--bg-surface)] text-[var(--text-primary)] placeholder-[var(--text-muted)] outline-none transition duration-150 focus:border-[var(--accent-primary)]"
                 />
               </div>
 
@@ -239,7 +239,7 @@ export default function ContactPage() {
                   value={formData.phone}
                   onChange={handleChange}
                   placeholder="+91 / International phone"
-                  className="w-full px-4 py-2.5 rounded-xl text-xs border border-[var(--border-medium)] bg-[var(--bg-surface)] text-[var(--text-primary)] placeholder-[var(--text-muted)] outline-none transition duration-150 focus:border-[var(--border-active)]"
+                  className="w-full px-4 py-2.5 rounded-xl text-xs border border-[var(--border-medium)] bg-[var(--bg-surface)] text-[var(--text-primary)] placeholder-[var(--text-muted)] outline-none transition duration-150 focus:border-[var(--accent-primary)]"
                 />
               </div>
 
@@ -254,13 +254,13 @@ export default function ContactPage() {
                   onChange={handleChange}
                   placeholder="Share details about your Android (Kotlin / Compose) app, Flutter mobile solution, Next.js web portal, or audio engine requirements..."
                   required
-                  className="w-full px-4 py-2.5 rounded-xl text-xs border border-[var(--border-medium)] bg-[var(--bg-surface)] text-[var(--text-primary)] placeholder-[var(--text-muted)] outline-none transition duration-150 focus:border-[var(--border-active)]"
+                  className="w-full px-4 py-2.5 rounded-xl text-xs border border-[var(--border-medium)] bg-[var(--bg-surface)] text-[var(--text-primary)] placeholder-[var(--text-muted)] outline-none transition duration-150 focus:border-[var(--accent-primary)]"
                 ></textarea>
               </div>
 
               <button
                 type="submit"
-                className="w-full py-3.5 bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-[var(--accent-text)] font-semibold rounded-2xl shadow-sm transition duration-150 text-xs flex items-center justify-center gap-2"
+                className="w-full py-3.5 bg-[var(--accent-primary)] hover:bg-[var(--accent-primary-hover)] text-[var(--accent-primary-text)] font-bold rounded-2xl shadow-lg transition duration-150 text-xs flex items-center justify-center gap-2"
               >
                 <span>Send Message</span>
                 <i className="fa-solid fa-paper-plane text-xs"></i>

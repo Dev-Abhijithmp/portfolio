@@ -3,64 +3,98 @@
 @tailwind utilities;
 
 :root {
-  /* Default: Palette 1 - Slate & Warm Coral */
+  /* Default: Palette 1 - Slate (#242740), Steel (#384358), Coral (#FFA586), Teal (#285160) */
   --bg-canvas: #242740;
-  --bg-surface: #2b304d;
-  --bg-card: #313756;
-  --bg-subtle: #384358;
-  --border-subtle: rgba(56, 67, 88, 0.6);
+  --bg-surface: #2b304f;
+  --bg-card: #2e3556;
+  --bg-card-hover: #363e63;
+  --border-subtle: rgba(56, 67, 88, 0.7);
   --border-medium: #384358;
   --border-active: #FFA586;
-  --accent: #FFA586;
-  --accent-hover: #ff936f;
-  --accent-text: #1b1e32;
-  --accent-subtle: rgba(255, 165, 134, 0.12);
+
+  /* Primary Accent: Warm Coral / Peach */
+  --accent-primary: #FFA586;
+  --accent-primary-hover: #ff936e;
+  --accent-primary-text: #1b1e32;
+  --accent-primary-subtle: rgba(255, 165, 134, 0.16);
+  --accent-primary-border: rgba(255, 165, 134, 0.45);
+
+  /* Secondary Accent: Deep Oceanic Slate Teal */
   --accent-secondary: #285160;
+  --accent-secondary-hover: #326578;
+  --accent-secondary-bright: #52B3D9;
   --accent-secondary-subtle: rgba(40, 81, 96, 0.45);
-  --accent-secondary-text: #e2e8f0;
+  --accent-secondary-border: rgba(82, 179, 217, 0.4);
+
+  /* Tertiary Accent: Steel Slate */
+  --accent-tertiary: #384358;
+  --accent-tertiary-subtle: rgba(56, 67, 88, 0.6);
+
+  /* High Legibility Typography */
   --text-primary: #F4F6FB;
-  --text-secondary: #BAC3D4;
-  --text-muted: #8995A9;
+  --text-secondary: #C8D1DF;
+  --text-muted: #8E9BAE;
 }
 
 [data-palette="slate"] {
   --bg-canvas: #242740;
-  --bg-surface: #2b304d;
-  --bg-card: #313756;
-  --bg-subtle: #384358;
-  --border-subtle: rgba(56, 67, 88, 0.6);
+  --bg-surface: #2b304f;
+  --bg-card: #2e3556;
+  --bg-card-hover: #363e63;
+  --border-subtle: rgba(56, 67, 88, 0.7);
   --border-medium: #384358;
   --border-active: #FFA586;
-  --accent: #FFA586;
-  --accent-hover: #ff936f;
-  --accent-text: #1b1e32;
-  --accent-subtle: rgba(255, 165, 134, 0.12);
+
+  --accent-primary: #FFA586;
+  --accent-primary-hover: #ff936e;
+  --accent-primary-text: #1b1e32;
+  --accent-primary-subtle: rgba(255, 165, 134, 0.16);
+  --accent-primary-border: rgba(255, 165, 134, 0.45);
+
   --accent-secondary: #285160;
+  --accent-secondary-hover: #326578;
+  --accent-secondary-bright: #52B3D9;
   --accent-secondary-subtle: rgba(40, 81, 96, 0.45);
-  --accent-secondary-text: #e2e8f0;
+  --accent-secondary-border: rgba(82, 179, 217, 0.4);
+
+  --accent-tertiary: #384358;
+  --accent-tertiary-subtle: rgba(56, 67, 88, 0.6);
+
   --text-primary: #F4F6FB;
-  --text-secondary: #BAC3D4;
-  --text-muted: #8995A9;
+  --text-secondary: #C8D1DF;
+  --text-muted: #8E9BAE;
 }
 
 [data-palette="forest"] {
-  /* Palette 2 - Nordic Forest & Sage */
+  /* Palette 2 - Spruce (#051F20), Forest (#0B2B26), Jade (#163832), Pine (#235347), Sage (#8EB69B), Mint (#DAF1DE) */
   --bg-canvas: #051F20;
   --bg-surface: #0B2B26;
   --bg-card: #163832;
-  --bg-subtle: #1c453e;
-  --border-subtle: rgba(35, 83, 71, 0.7);
+  --bg-card-hover: #1c473f;
+  --border-subtle: rgba(35, 83, 71, 0.8);
   --border-medium: #235347;
   --border-active: #8EB69B;
-  --accent: #DAF1DE;
-  --accent-hover: #c5e8cb;
-  --accent-text: #051F20;
-  --accent-subtle: rgba(218, 241, 222, 0.12);
+
+  /* Primary Accent: Pale Mint Cream */
+  --accent-primary: #DAF1DE;
+  --accent-primary-hover: #c5ebd0;
+  --accent-primary-text: #051F20;
+  --accent-primary-subtle: rgba(218, 241, 222, 0.18);
+  --accent-primary-border: rgba(218, 241, 222, 0.45);
+
+  /* Secondary Accent: Muted Sage Green */
   --accent-secondary: #8EB69B;
-  --accent-secondary-subtle: rgba(142, 182, 155, 0.2);
-  --accent-secondary-text: #DAF1DE;
+  --accent-secondary-hover: #9fc4ab;
+  --accent-secondary-bright: #8EB69B;
+  --accent-secondary-subtle: rgba(142, 182, 155, 0.25);
+  --accent-secondary-border: rgba(142, 182, 155, 0.5);
+
+  /* Tertiary Accent: Pine Forest */
+  --accent-tertiary: #235347;
+  --accent-tertiary-subtle: rgba(35, 83, 71, 0.7);
+
   --text-primary: #DAF1DE;
-  --text-secondary: #B4D3C0;
+  --text-secondary: #B8D8C3;
   --text-muted: #8EB69B;
 }
 
@@ -74,25 +108,9 @@
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     background-color: var(--bg-canvas);
     color: var(--text-primary);
-    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+    transition: background-color 0.2s ease, color 0.2s ease;
     overflow-x: hidden;
   }
-}
-
-/* Subtle, Disciplined Architectural Grid */
-.bg-grid-subtle {
-  background-size: 40px 40px;
-  background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
-}
-
-/* Glass Panels with Tonal Fill */
-.glass-header {
-  background: var(--bg-surface);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border-medium);
 }
 
 /* Custom Scrollbar */
@@ -102,7 +120,7 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: var(--bg-canvas);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -111,5 +129,5 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent);
+  background: var(--accent-primary);
 }

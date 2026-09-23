@@ -13,8 +13,8 @@ export default function Footer() {
             <span className="font-heading font-bold text-sm tracking-tight text-[var(--text-primary)]">
               Abhijith M P
             </span>
-            <span className="text-[var(--text-muted)]">•</span>
-            <span className="text-xs font-mono text-[var(--text-muted)] flex items-center gap-1">
+            <span className="text-[var(--accent-secondary-bright)] font-bold">•</span>
+            <span className="text-xs font-mono text-[var(--accent-secondary-bright)] flex items-center gap-1 font-semibold">
               Systems & Mobile Engineer
             </span>
           </div>
@@ -23,41 +23,41 @@ export default function Footer() {
           </p>
         </div>
 
-        {/* Center Technology Badges */}
+        {/* Center Technology Badges featuring both palette accents */}
         <div className="flex flex-wrap items-center justify-center gap-2 text-[11px] font-mono">
-          <span className="px-2.5 py-1 rounded-lg bg-[var(--bg-card)] text-[var(--text-primary)] border border-[var(--border-subtle)] flex items-center gap-1">
-            <KotlinIcon className="w-3.5 h-3.5 text-[var(--accent)]" /> Kotlin
+          <span className="px-2.5 py-1 rounded-lg bg-[var(--accent-primary-subtle)] text-[var(--accent-primary)] border border-[var(--accent-primary-border)] flex items-center gap-1 font-semibold">
+            <KotlinIcon className="w-3.5 h-3.5 text-current" /> Kotlin
           </span>
-          <span className="px-2.5 py-1 rounded-lg bg-[var(--bg-card)] text-[var(--text-primary)] border border-[var(--border-subtle)] flex items-center gap-1">
-            <ComposeIcon className="w-3.5 h-3.5 text-[var(--accent)]" /> Compose
+          <span className="px-2.5 py-1 rounded-lg bg-[var(--accent-primary-subtle)] text-[var(--accent-primary)] border border-[var(--accent-primary-border)] flex items-center gap-1 font-semibold">
+            <ComposeIcon className="w-3.5 h-3.5 text-current" /> Compose
           </span>
-          <span className="px-2.5 py-1 rounded-lg bg-[var(--bg-card)] text-[var(--text-primary)] border border-[var(--border-subtle)] flex items-center gap-1">
-            <FlutterIcon className="w-3.5 h-3.5 text-[var(--accent)]" /> Flutter
+          <span className="px-2.5 py-1 rounded-lg bg-[var(--accent-secondary-subtle)] text-[var(--accent-secondary-bright)] border border-[var(--accent-secondary-border)] flex items-center gap-1 font-semibold">
+            <FlutterIcon className="w-3.5 h-3.5 text-current" /> Flutter
           </span>
-          <span className="px-2.5 py-1 rounded-lg bg-[var(--bg-card)] text-[var(--text-primary)] border border-[var(--border-subtle)] flex items-center gap-1">
-            <NextJsIcon className="w-3.5 h-3.5 text-[var(--accent)]" /> Next.js
+          <span className="px-2.5 py-1 rounded-lg bg-[var(--accent-secondary-subtle)] text-[var(--accent-secondary-bright)] border border-[var(--accent-secondary-border)] flex items-center gap-1 font-semibold">
+            <NextJsIcon className="w-3.5 h-3.5 text-current" /> Next.js
           </span>
         </div>
 
         {/* Contact links */}
-        <div className="flex items-center gap-5 text-xs font-medium">
+        <div className="flex items-center gap-5 text-xs font-semibold">
           <a
             href="https://github.com/Dev-Abhijithmp"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-[var(--accent)] transition flex items-center gap-1.5"
+            className="text-[var(--accent-secondary-bright)] hover:text-[var(--accent-primary)] transition flex items-center gap-1.5"
           >
             <i className="fa-brands fa-github text-sm"></i> GitHub
           </a>
           <a
             href="mailto:111abhiabhi@gmail.com"
-            className="hover:text-[var(--accent)] transition flex items-center gap-1.5"
+            className="text-[var(--accent-secondary-bright)] hover:text-[var(--accent-primary)] transition flex items-center gap-1.5"
           >
             <i className="fa-solid fa-envelope text-xs"></i> Email
           </a>
           <a
             href="tel:+919497747142"
-            className="hover:text-[var(--accent)] transition flex items-center gap-1.5"
+            className="text-[var(--accent-secondary-bright)] hover:text-[var(--accent-primary)] transition flex items-center gap-1.5"
           >
             <i className="fa-solid fa-phone text-xs"></i> Phone
           </a>
