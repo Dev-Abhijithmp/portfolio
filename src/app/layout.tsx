@@ -37,7 +37,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark" data-scroll-behavior="smooth" suppressHydrationWarning>
+    <html lang="en" className="dark" data-palette="slate" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
         <link
           rel="stylesheet"
@@ -53,7 +53,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="bg-[#08090D] text-gray-100 min-h-screen flex flex-col justify-between selection:bg-kotlin/30 selection:text-white">
+      <body className="bg-[var(--bg-canvas)] text-[var(--text-primary)] min-h-screen flex flex-col justify-between selection:bg-[var(--accent)] selection:text-[var(--accent-text)]">
         <ThemeProvider>
           <div className="flex flex-col min-h-screen justify-between">
             <div>

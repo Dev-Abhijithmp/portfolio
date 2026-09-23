@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { useTheme } from "../../components/ThemeContext";
 import {
   KotlinIcon,
   ComposeIcon,
@@ -32,7 +31,6 @@ interface TimelineEvent {
 }
 
 export default function AboutPage() {
-  const { darkMode } = useTheme();
   const [activeCategory, setActiveCategory] = useState<string>("All");
 
   const skillCategories: SkillCategory[] = [
@@ -189,46 +187,37 @@ export default function AboutPage() {
   );
 
   return (
-    <div className="min-h-screen py-12 px-6 relative">
-      {/* Background ambient lighting */}
-      <div className="absolute top-20 right-1/4 w-80 h-80 bg-indigo-500/[0.06] rounded-full blur-[110px] pointer-events-none"></div>
-      <div className="absolute top-96 left-1/4 w-80 h-80 bg-compose/[0.06] rounded-full blur-[110px] pointer-events-none"></div>
-
+    <div className="min-h-screen py-12 px-6 relative bg-grid-subtle">
       <div className="max-w-5xl mx-auto space-y-12 relative z-10">
         {/* Header */}
         <div className="text-center space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-white/[0.04] border border-white/[0.08] text-gray-300 text-xs font-semibold rounded-full uppercase tracking-wider shadow-sm">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-[var(--accent-subtle)] border border-[var(--border-active)] text-[var(--accent)] text-xs font-semibold rounded-full uppercase tracking-wider shadow-sm">
             <KotlinIcon className="w-3.5 h-3.5" /> Engineer Profile & Competencies
           </div>
-          <h2 className="text-4xl sm:text-5xl font-extrabold font-heading">About & Technical Expertise</h2>
-          <p className={`max-w-2xl mx-auto text-xs sm:text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
-            Specializing in modern Android with <strong className="text-kotlin-light font-bold">Kotlin & Jetpack Compose</strong>, cross-platform mobile with <strong className="text-sky-400 font-bold">Flutter & Supabase</strong>, modern web with <strong className="text-white font-bold">Next.js & Shopify</strong>, and low-latency C++ audio engines.
+          <h2 className="text-4xl sm:text-5xl font-extrabold font-heading text-[var(--text-primary)]">About & Technical Expertise</h2>
+          <p className="max-w-2xl mx-auto text-xs sm:text-sm text-[var(--text-secondary)]">
+            Specializing in modern Android with <strong className="text-[var(--accent)] font-semibold">Kotlin & Jetpack Compose</strong>, cross-platform mobile with <strong className="text-[var(--text-primary)] font-semibold">Flutter & Supabase</strong>, modern web with <strong className="text-[var(--text-primary)] font-semibold">Next.js & Shopify</strong>, and low-latency C++ audio engines.
           </p>
-          <div className="w-16 h-1 bg-gradient-to-r from-kotlin via-indigo-500 to-compose mx-auto rounded-full"></div>
         </div>
 
         {/* Bio Highlights Card */}
-        <div
-          className={`p-8 rounded-3xl border transition-all duration-300 space-y-5 ${
-            darkMode ? "bg-[#0E1017] border-white/[0.08] text-gray-200" : "bg-white border-slate-200 text-gray-800 shadow-sm"
-          }`}
-        >
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b pb-4 border-white/[0.08]">
-            <h3 className="text-2xl font-bold font-heading text-white dark:text-gray-100 flex items-center gap-2.5">
-              <AndroidIcon className="w-6 h-6 text-compose" />
+        <div className="p-8 rounded-3xl border border-[var(--border-medium)] bg-[var(--bg-card)] transition-all duration-200 space-y-5 shadow-sm">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b pb-4 border-[var(--border-medium)]">
+            <h3 className="text-2xl font-bold font-heading text-[var(--text-primary)] flex items-center gap-2.5">
+              <AndroidIcon className="w-6 h-6 text-[var(--accent)]" />
               <span>Abhijith M P — Systems & Mobile Engineer</span>
             </h3>
-            <span className="text-xs font-mono font-semibold px-3 py-1 rounded-full bg-white/[0.06] text-gray-300 border border-white/[0.08] self-start sm:self-auto">
+            <span className="text-xs font-mono font-semibold px-3 py-1 rounded-full bg-[var(--bg-surface)] text-[var(--text-muted)] border border-[var(--border-subtle)] self-start sm:self-auto">
               Ernakulam, Kerala, India
             </span>
           </div>
 
-          <p className="leading-relaxed text-xs sm:text-sm">
-            I am a mobile, systems, and full-stack software engineer driven by crafting production-grade software architectures. My core strength centers on <strong className="text-kotlin-light font-bold">Modern Android Engineering</strong> using <strong className="text-compose font-bold">Kotlin & Jetpack Compose</strong>, following clean MVI/MVVM design patterns, and asynchronous Coroutines/Flow pipelines.
+          <p className="leading-relaxed text-xs sm:text-sm text-[var(--text-secondary)]">
+            I am a mobile, systems, and full-stack software engineer driven by crafting production-grade software architectures. My core strength centers on <strong className="text-[var(--accent)] font-semibold">Modern Android Engineering</strong> using <strong className="text-[var(--accent)] font-semibold">Kotlin & Jetpack Compose</strong>, following clean MVI/MVVM design patterns, and asynchronous Coroutines/Flow pipelines.
           </p>
 
-          <p className="leading-relaxed text-xs sm:text-sm">
-            Alongside native Android, I build scalable cross-platform mobile apps with <strong className="text-sky-400 font-bold">Flutter & Supabase</strong> (DDTransport, Expense Tracker), modern web portals and headless e-commerce with <strong className="text-white font-bold">Next.js & Shopify</strong> (Japamala, Verbo Web), low-level audio streaming with <strong className="text-compose font-bold">Google Oboe C++ NDK</strong>, and embedded <strong className="text-gray-200 font-bold">ESP32 IoT BLE</strong> device provisioning.
+          <p className="leading-relaxed text-xs sm:text-sm text-[var(--text-secondary)]">
+            Alongside native Android, I build scalable cross-platform mobile apps with <strong className="text-[var(--text-primary)] font-semibold">Flutter & Supabase</strong> (DDTransport, Expense Tracker), modern web portals and headless e-commerce with <strong className="text-[var(--text-primary)] font-semibold">Next.js & Shopify</strong> (Japamala, Verbo Web), low-level audio streaming with <strong className="text-[var(--accent)] font-semibold">Google Oboe C++ NDK</strong>, and embedded <strong className="text-[var(--text-primary)] font-semibold">ESP32 IoT BLE</strong> device provisioning.
           </p>
 
           {/* Quick Technical Badges */}
@@ -247,19 +236,7 @@ export default function AboutPage() {
             ].map((badge) => (
               <span
                 key={badge}
-                className={`text-[11px] font-mono px-3 py-1 rounded-xl border ${
-                  badge.includes("Kotlin") || badge.includes("Compose")
-                    ? "bg-kotlin/10 border-kotlin/30 text-kotlin-light font-semibold"
-                    : badge.includes("Flutter")
-                    ? "bg-sky-500/10 border-sky-500/30 text-sky-400 font-semibold"
-                    : badge.includes("Next.js")
-                    ? "bg-white/10 border-white/20 text-white font-semibold"
-                    : badge.includes("Supabase") || badge.includes("Shopify")
-                    ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-400 font-semibold"
-                    : darkMode
-                    ? "bg-white/[0.04] border-white/[0.08] text-gray-300"
-                    : "bg-gray-100 border-gray-200 text-gray-700"
-                }`}
+                className="text-[11px] font-mono px-3 py-1 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--text-secondary)] font-medium"
               >
                 {badge}
               </span>
@@ -270,7 +247,7 @@ export default function AboutPage() {
         {/* Technical Skill Matrix */}
         <div className="space-y-6">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <h3 className="text-2xl font-bold font-heading">Engineering Skill Matrix</h3>
+            <h3 className="text-2xl font-bold font-heading text-[var(--text-primary)]">Engineering Skill Matrix</h3>
             <div className="flex flex-wrap gap-2">
               {[
                 "All",
@@ -283,12 +260,10 @@ export default function AboutPage() {
                 <button
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
-                  className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all duration-200 ${
+                  className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all duration-150 ${
                     activeCategory === cat
-                      ? "bg-gradient-to-r from-kotlin via-indigo-600 to-compose text-white shadow-md shadow-kotlin/20"
-                      : darkMode
-                      ? "bg-white/[0.03] text-gray-400 hover:bg-white/[0.08] hover:text-white border border-white/[0.08]"
-                      : "bg-white text-gray-700 hover:bg-slate-100 border border-slate-200 shadow-sm"
+                      ? "bg-[var(--accent)] text-[var(--accent-text)] shadow-sm font-bold scale-105"
+                      : "bg-[var(--bg-card)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border-medium)] hover:border-[var(--border-active)]"
                   }`}
                 >
                   {cat}
@@ -301,24 +276,22 @@ export default function AboutPage() {
             {filteredCategories.map((catGroup) => (
               <div
                 key={catGroup.title}
-                className={`p-6 rounded-3xl border transition-all duration-300 space-y-5 ${
-                  darkMode ? "bg-[#0E1017] border-white/[0.08]" : "bg-white border-slate-200 shadow-sm"
-                }`}
+                className="p-6 rounded-3xl border border-[var(--border-medium)] bg-[var(--bg-card)] transition-all duration-200 space-y-5 shadow-sm"
               >
-                <div className="border-b pb-3.5 flex items-center justify-between border-white/[0.08]">
+                <div className="border-b pb-3.5 flex items-center justify-between border-[var(--border-medium)]">
                   <div className="flex items-center gap-2.5">
                     {catGroup.icon === "compose" ? (
-                      <ComposeIcon className="w-5 h-5 text-compose" />
+                      <ComposeIcon className="w-5 h-5 text-[var(--accent)]" />
                     ) : catGroup.icon === "flutter" ? (
-                      <FlutterIcon className="w-5 h-5 text-sky-400" />
+                      <FlutterIcon className="w-5 h-5 text-[var(--accent)]" />
                     ) : catGroup.icon === "nextjs" ? (
-                      <NextJsIcon className="w-5 h-5 text-white" />
+                      <NextJsIcon className="w-5 h-5 text-[var(--accent)]" />
                     ) : (
-                      <i className={`fa-solid ${catGroup.icon === "audio" ? "fa-wave-square text-cyan-400" : "fa-microchip text-emerald-400"} text-lg`}></i>
+                      <i className={`fa-solid ${catGroup.icon === "audio" ? "fa-wave-square" : "fa-microchip"} text-[var(--accent)] text-lg`}></i>
                     )}
-                    <h4 className="font-bold text-sm sm:text-base">{catGroup.title}</h4>
+                    <h4 className="font-bold text-sm sm:text-base text-[var(--text-primary)]">{catGroup.title}</h4>
                   </div>
-                  <span className="text-[10px] font-mono uppercase bg-white/[0.06] text-gray-300 px-2.5 py-0.5 rounded-md font-bold border border-white/[0.08]">
+                  <span className="text-[10px] font-mono uppercase bg-[var(--bg-surface)] text-[var(--text-muted)] px-2.5 py-0.5 rounded-md font-bold border border-[var(--border-subtle)]">
                     {catGroup.category}
                   </span>
                 </div>
@@ -327,26 +300,26 @@ export default function AboutPage() {
                   {catGroup.skills.map((skill) => (
                     <div key={skill.name} className="space-y-1.5">
                       <div className="flex justify-between items-center text-xs font-medium">
-                        <span className="font-bold flex items-center gap-1.5">
+                        <span className="font-bold text-[var(--text-primary)] flex items-center gap-1.5">
                           {skill.name}
                         </span>
                         <div className="flex items-center gap-2">
-                          <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-white/[0.04] text-gray-400">
+                          <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[var(--bg-surface)] text-[var(--text-muted)]">
                             {skill.badge}
                           </span>
-                          <span className="text-kotlin-light font-mono font-extrabold">{skill.level}</span>
+                          <span className="text-[var(--accent)] font-mono font-bold">{skill.level}</span>
                         </div>
                       </div>
 
                       {/* Progress Bar */}
-                      <div className={`w-full rounded-full h-1.5 ${darkMode ? "bg-white/[0.06]" : "bg-slate-100"}`}>
+                      <div className="w-full rounded-full h-1.5 bg-[var(--bg-surface)] overflow-hidden">
                         <div
-                          className="bg-gradient-to-r from-kotlin via-indigo-500 to-compose h-1.5 rounded-full transition-all duration-700"
+                          className="bg-[var(--accent)] h-1.5 rounded-full transition-all duration-500"
                           style={{ width: skill.level }}
                         ></div>
                       </div>
 
-                      <p className={`text-[11px] leading-relaxed ${darkMode ? "text-gray-400" : "text-gray-500"}`}>
+                      <p className="text-[11px] leading-relaxed text-[var(--text-secondary)]">
                         {skill.desc}
                       </p>
                     </div>
@@ -360,32 +333,26 @@ export default function AboutPage() {
         {/* Career Evolution Timeline */}
         <div className="space-y-6 pt-4">
           <div className="text-center space-y-1">
-            <h3 className="text-2xl font-bold font-heading">Engineering Evolution</h3>
-            <p className={`text-xs ${darkMode ? "text-gray-400" : "text-gray-500"}`}>
+            <h3 className="text-2xl font-bold font-heading text-[var(--text-primary)]">Engineering Evolution</h3>
+            <p className="text-xs text-[var(--text-secondary)]">
               Key milestones across Native Android, Cross-Platform Mobile, Web, and Systems tooling.
             </p>
           </div>
 
-          <div className="relative border-l-2 border-white/[0.1] pl-6 ml-4 sm:ml-8 space-y-8">
+          <div className="relative border-l-2 border-[var(--border-medium)] pl-6 ml-4 sm:ml-8 space-y-8">
             {timelineEvents.map((evt, idx) => (
               <div key={idx} className="relative group">
-                <div className="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-gradient-to-r from-kotlin to-compose border-4 border-[#08090D] group-hover:scale-125 transition-transform duration-300"></div>
+                <div className="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-[var(--accent)] border-4 border-[var(--bg-canvas)] transition-transform duration-200"></div>
 
-                <div
-                  className={`p-6 rounded-3xl border transition-all duration-300 space-y-3 ${
-                    darkMode
-                      ? "bg-[#0E1017] border-white/[0.08] hover:border-white/[0.2]"
-                      : "bg-white border-slate-200 shadow-sm hover:border-slate-300"
-                  }`}
-                >
+                <div className="p-6 rounded-3xl border border-[var(--border-medium)] bg-[var(--bg-card)] hover:border-[var(--border-active)] transition-all duration-200 space-y-3 shadow-sm">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-                    <span className="text-xs font-mono font-bold text-kotlin-light bg-white/[0.06] px-2.5 py-0.5 rounded-md inline-block w-max border border-white/[0.08]">
+                    <span className="text-xs font-mono font-bold text-[var(--accent)] bg-[var(--bg-surface)] px-2.5 py-0.5 rounded-md inline-block w-max border border-[var(--border-subtle)]">
                       {evt.year}
                     </span>
-                    <h4 className="text-base sm:text-lg font-bold font-heading">{evt.role}</h4>
+                    <h4 className="text-base sm:text-lg font-bold font-heading text-[var(--text-primary)]">{evt.role}</h4>
                   </div>
 
-                  <p className={`text-xs sm:text-sm leading-relaxed ${darkMode ? "text-gray-300" : "text-gray-600"}`}>
+                  <p className="text-xs sm:text-sm leading-relaxed text-[var(--text-secondary)]">
                     {evt.desc}
                   </p>
 
@@ -393,19 +360,7 @@ export default function AboutPage() {
                     {evt.tech.map((t) => (
                       <span
                         key={t}
-                        className={`text-[10px] font-mono px-2.5 py-0.5 rounded-lg border ${
-                          t.includes("Kotlin") || t.includes("Compose")
-                            ? "bg-kotlin/10 border-kotlin/30 text-kotlin-light font-bold"
-                            : t.includes("Flutter")
-                            ? "bg-sky-500/10 border-sky-500/30 text-sky-400 font-bold"
-                            : t.includes("Next.js")
-                            ? "bg-white/10 border-white/20 text-white font-bold"
-                            : t.includes("Supabase") || t.includes("Shopify")
-                            ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-400 font-bold"
-                            : darkMode
-                            ? "bg-white/[0.04] border-white/[0.08] text-gray-300"
-                            : "bg-slate-100 border-slate-200 text-gray-700"
-                        }`}
+                        className="text-[10px] font-mono px-2.5 py-0.5 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--text-secondary)]"
                       >
                         #{t}
                       </span>

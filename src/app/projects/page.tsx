@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { useTheme } from "../../components/ThemeContext";
 import {
   ComposeIcon,
   FlutterIcon,
@@ -24,7 +23,6 @@ interface Project {
 }
 
 export default function ProjectsPage() {
-  const { darkMode } = useTheme();
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [activeModalProject, setActiveModalProject] = useState<Project | null>(null);
@@ -132,22 +130,17 @@ export default function ProjectsPage() {
   });
 
   return (
-    <div className="min-h-screen py-12 px-6 relative">
-      {/* Background ambient glows */}
-      <div className="absolute top-20 left-1/4 w-80 h-80 bg-indigo-500/[0.06] rounded-full blur-[110px] pointer-events-none"></div>
-      <div className="absolute top-96 right-1/4 w-80 h-80 bg-compose/[0.06] rounded-full blur-[110px] pointer-events-none"></div>
-
+    <div className="min-h-screen py-12 px-6 relative bg-grid-subtle">
       <div className="max-w-6xl mx-auto space-y-10 relative z-10">
         {/* Header */}
         <div className="text-center space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-white/[0.04] border border-white/[0.08] text-gray-300 text-xs font-semibold rounded-full uppercase tracking-wider shadow-sm">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-[var(--accent-subtle)] border border-[var(--border-active)] text-[var(--accent)] text-xs font-semibold rounded-full uppercase tracking-wider shadow-sm">
             <ComposeIcon className="w-3.5 h-3.5" /> Engineered Systems & Products
           </div>
-          <h2 className="text-4xl sm:text-5xl font-extrabold font-heading">Featured Projects & Systems</h2>
-          <p className={`max-w-2xl mx-auto text-xs sm:text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
-            Production applications featuring <strong className="text-kotlin-light font-bold">Kotlin & Jetpack Compose</strong>, <strong className="text-sky-400 font-bold">Flutter & Supabase</strong>, and <strong className="text-emerald-400 font-bold">Next.js & Shopify</strong>.
+          <h2 className="text-4xl sm:text-5xl font-extrabold font-heading text-[var(--text-primary)]">Featured Projects & Systems</h2>
+          <p className="max-w-2xl mx-auto text-xs sm:text-sm text-[var(--text-secondary)]">
+            Production systems across <strong className="text-[var(--accent)] font-semibold">Kotlin & Jetpack Compose</strong>, <strong className="text-[var(--text-primary)] font-semibold">Flutter & Supabase</strong>, and <strong className="text-[var(--text-primary)] font-semibold">Next.js & Shopify</strong>.
           </p>
-          <div className="w-16 h-1 bg-gradient-to-r from-kotlin via-indigo-500 to-compose mx-auto rounded-full"></div>
         </div>
 
         {/* Filter Tabs & Search Bar */}
@@ -158,12 +151,10 @@ export default function ProjectsPage() {
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-200 flex items-center gap-1.5 ${
+                className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-150 flex items-center gap-1.5 ${
                   selectedCategory === cat
-                    ? "bg-gradient-to-r from-kotlin via-indigo-600 to-compose text-white shadow-md shadow-kotlin/25 scale-105"
-                    : darkMode
-                    ? "bg-[#0E1017] text-gray-400 hover:bg-white/[0.08] hover:text-white border border-white/[0.08]"
-                    : "bg-white text-gray-700 hover:bg-slate-100 border border-slate-200 shadow-sm"
+                    ? "bg-[var(--accent)] text-[var(--accent-text)] shadow-sm font-bold scale-105"
+                    : "bg-[var(--bg-card)] border border-[var(--border-medium)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--border-active)]"
                 }`}
               >
                 {cat === "Kotlin & Compose" && <ComposeIcon className="w-3.5 h-3.5" />}
@@ -176,22 +167,18 @@ export default function ProjectsPage() {
 
           {/* Search Input */}
           <div className="relative w-full md:w-80">
-            <i className="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-gray-400 text-xs"></i>
+            <i className="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-[var(--text-muted)] text-xs"></i>
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search Kotlin, Flutter, Supabase, Next.js..."
-              className={`w-full pl-9 pr-8 py-2 rounded-xl text-xs border outline-none transition duration-200 ${
-                darkMode
-                  ? "bg-[#0E1017] border-white/[0.08] text-gray-200 placeholder-gray-500 focus:border-kotlin"
-                  : "bg-white border-slate-200 text-gray-800 placeholder-gray-400 focus:border-kotlin shadow-sm"
-              }`}
+              className="w-full pl-9 pr-8 py-2 rounded-xl text-xs border border-[var(--border-medium)] bg-[var(--bg-card)] text-[var(--text-primary)] placeholder-[var(--text-muted)] outline-none transition duration-150 focus:border-[var(--border-active)]"
             />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery("")}
-                className="absolute right-3 top-2.5 text-gray-400 hover:text-white text-xs"
+                className="absolute right-3 top-2.5 text-[var(--text-muted)] hover:text-[var(--text-primary)] text-xs"
               >
                 ✕
               </button>
@@ -202,14 +189,14 @@ export default function ProjectsPage() {
         {/* Projects Grid */}
         {filteredProjects.length === 0 ? (
           <div className="text-center py-16 space-y-3">
-            <i className="fa-solid fa-folder-open text-4xl text-gray-500"></i>
-            <p className="text-gray-400 font-medium text-sm">No projects found matching "{searchQuery}".</p>
+            <i className="fa-solid fa-folder-open text-4xl text-[var(--text-muted)]"></i>
+            <p className="text-[var(--text-secondary)] font-medium text-sm">No projects found matching "{searchQuery}".</p>
             <button
               onClick={() => {
                 setSearchQuery("");
                 setSelectedCategory("All");
               }}
-              className="text-xs text-kotlin-light underline font-semibold"
+              className="text-xs text-[var(--accent)] underline font-semibold"
             >
               Reset Filters
             </button>
@@ -220,36 +207,32 @@ export default function ProjectsPage() {
               <div
                 key={project.id}
                 onClick={() => setActiveModalProject(project)}
-                className={`p-7 rounded-3xl border transition-all duration-300 flex flex-col justify-between cursor-pointer group relative ${
-                  darkMode
-                    ? "bg-[#0E1017] border-white/[0.08] hover:border-white/[0.2] hover:shadow-2xl hover:shadow-indigo-500/10"
-                    : "bg-white border-slate-200 hover:border-indigo-400/50 hover:shadow-2xl hover:shadow-indigo-500/10 shadow-sm"
-                }`}
+                className="p-7 rounded-3xl border border-[var(--border-medium)] bg-[var(--bg-card)] hover:border-[var(--border-active)] transition-all duration-200 flex flex-col justify-between cursor-pointer group relative shadow-sm"
               >
                 {/* Featured Badge */}
                 {project.featured && (
-                  <div className="absolute top-5 right-5 bg-gradient-to-r from-kotlin via-indigo-600 to-compose text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-md flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-white animate-ping"></span>
+                  <div className="absolute top-5 right-5 bg-[var(--accent)] text-[var(--accent-text)] text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-text)]"></span>
                     Featured Build
                   </div>
                 )}
 
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <div className="w-12 h-12 rounded-2xl bg-white/[0.04] text-gray-300 flex items-center justify-center text-xl font-bold border border-white/[0.08] group-hover:scale-110 transition duration-300">
+                    <div className="w-12 h-12 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-medium)] text-[var(--accent)] flex items-center justify-center text-xl font-bold transition duration-200">
                       {project.badgeType === "compose" ? (
-                        <ComposeIcon className="w-6 h-6 text-compose" />
+                        <ComposeIcon className="w-6 h-6 text-[var(--accent)]" />
                       ) : project.badgeType === "flutter" ? (
-                        <FlutterIcon className="w-6 h-6 text-sky-400" />
+                        <FlutterIcon className="w-6 h-6 text-[var(--accent)]" />
                       ) : project.badgeType === "nextjs" ? (
-                        <NextJsIcon className="w-6 h-6 text-white" />
+                        <NextJsIcon className="w-6 h-6 text-[var(--accent)]" />
                       ) : (
                         <i className={`fa-solid ${project.icon}`}></i>
                       )}
                     </div>
                     {project.metrics && (
-                      <span className="text-[11px] font-mono font-bold text-compose bg-compose/10 px-2.5 py-1 rounded-lg border border-compose/20 flex items-center gap-1">
-                        {project.tags.includes("Shopify Storefront API") && <ShopifyIcon className="w-3.5 h-3.5 text-emerald-400" />}
+                      <span className="text-[11px] font-mono font-bold text-[var(--accent)] bg-[var(--accent-subtle)] px-2.5 py-1 rounded-lg border border-[var(--border-active)] flex items-center gap-1">
+                        {project.tags.includes("Shopify Storefront API") && <ShopifyIcon className="w-3.5 h-3.5 text-[var(--accent)]" />}
                         {project.metrics}
                       </span>
                     )}
@@ -257,26 +240,26 @@ export default function ProjectsPage() {
 
                   <div>
                     <div className="flex items-center gap-2">
-                      <span className="text-[10px] font-mono font-bold text-kotlin-light uppercase tracking-wider">
+                      <span className="text-[10px] font-mono font-bold text-[var(--accent)] uppercase tracking-wider">
                         {project.category}
                       </span>
                       {project.tags.includes("Next.js") && (
-                        <span className="text-[10px] font-mono font-bold text-gray-300 bg-white/[0.06] px-2 py-0.5 rounded-md border border-white/[0.08]">
+                        <span className="text-[10px] font-mono font-semibold text-[var(--text-muted)] bg-[var(--bg-surface)] px-2 py-0.5 rounded-md border border-[var(--border-subtle)]">
                           Next.js
                         </span>
                       )}
                       {project.tags.includes("Supabase Backend") && (
-                        <span className="text-[10px] font-mono font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-md border border-emerald-500/20">
+                        <span className="text-[10px] font-mono font-semibold text-[var(--text-muted)] bg-[var(--bg-surface)] px-2 py-0.5 rounded-md border border-[var(--border-subtle)]">
                           Supabase
                         </span>
                       )}
                     </div>
-                    <h3 className="text-xl font-bold font-heading mt-1 group-hover:text-kotlin-light transition-colors">
+                    <h3 className="text-xl font-bold font-heading mt-1 text-[var(--text-primary)] group-hover:text-[var(--accent)] transition-colors">
                       {project.title}
                     </h3>
                   </div>
 
-                  <p className={`line-clamp-3 leading-relaxed text-xs sm:text-sm ${darkMode ? "text-gray-300" : "text-gray-600"}`}>
+                  <p className="line-clamp-3 leading-relaxed text-xs sm:text-sm text-[var(--text-secondary)]">
                     {project.description}
                   </p>
                 </div>
@@ -286,26 +269,14 @@ export default function ProjectsPage() {
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className={`px-2.5 py-0.5 text-[10px] font-mono rounded-lg font-medium border ${
-                          tag.includes("Kotlin") || tag.includes("Compose")
-                            ? "bg-kotlin/10 border-kotlin/30 text-kotlin-light font-bold"
-                            : tag.includes("Flutter")
-                            ? "bg-sky-500/10 border-sky-500/30 text-sky-400 font-bold"
-                            : tag.includes("Next.js")
-                            ? "bg-white/10 border-white/20 text-white font-bold"
-                            : tag.includes("Supabase") || tag.includes("Shopify")
-                            ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-400 font-bold"
-                            : darkMode
-                            ? "bg-white/[0.03] border-white/[0.06] text-gray-400"
-                            : "bg-slate-100 border-slate-200 text-gray-700"
-                        }`}
+                        className="px-2.5 py-0.5 text-[10px] font-mono rounded-lg font-medium border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--text-secondary)]"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
 
-                  <div className="flex items-center justify-between text-xs font-bold text-gray-400 group-hover:text-white pt-1 group-hover:translate-x-1 transition-transform">
+                  <div className="flex items-center justify-between text-xs font-semibold text-[var(--text-muted)] group-hover:text-[var(--accent)] pt-1 group-hover:translate-x-1 transition-transform">
                     <span>Inspect System Specs</span>
                     <i className="fa-solid fa-arrow-right text-[10px]"></i>
                   </div>
@@ -318,80 +289,66 @@ export default function ProjectsPage() {
 
       {/* Interactive Detail Modal */}
       {activeModalProject && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn">
-          <div
-            className={`w-full max-w-2xl p-8 rounded-3xl border shadow-2xl space-y-6 relative transition-all duration-300 ${
-              darkMode ? "bg-[#0E1017] border-white/[0.15] text-gray-100" : "bg-white border-slate-200 text-gray-900"
-            }`}
-          >
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm animate-fadeIn">
+          <div className="w-full max-w-2xl p-8 rounded-3xl border border-[var(--border-medium)] bg-[var(--bg-surface)] shadow-2xl space-y-6 relative transition-all duration-200 text-[var(--text-primary)]">
             {/* Close Button */}
             <button
               onClick={() => setActiveModalProject(null)}
-              className="absolute top-5 right-5 w-8 h-8 rounded-full bg-white/[0.06] hover:bg-white/[0.12] text-gray-300 flex items-center justify-center text-sm transition"
+              className="absolute top-5 right-5 w-8 h-8 rounded-full bg-[var(--bg-card)] hover:bg-[var(--border-medium)] border border-[var(--border-medium)] text-[var(--text-secondary)] flex items-center justify-center text-sm transition"
             >
               ✕
             </button>
 
             {/* Modal Header */}
             <div className="flex items-center gap-4">
-              <div className="w-14 h-14 rounded-2xl bg-white/[0.04] text-gray-300 flex items-center justify-center text-2xl font-bold border border-white/[0.08]">
+              <div className="w-14 h-14 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-medium)] flex items-center justify-center text-2xl font-bold text-[var(--accent)]">
                 {activeModalProject.badgeType === "compose" ? (
-                  <ComposeIcon className="w-8 h-8 text-compose" />
+                  <ComposeIcon className="w-8 h-8 text-[var(--accent)]" />
                 ) : activeModalProject.badgeType === "flutter" ? (
-                  <FlutterIcon className="w-8 h-8 text-sky-400" />
+                  <FlutterIcon className="w-8 h-8 text-[var(--accent)]" />
                 ) : activeModalProject.badgeType === "nextjs" ? (
-                  <NextJsIcon className="w-8 h-8 text-white" />
+                  <NextJsIcon className="w-8 h-8 text-[var(--accent)]" />
                 ) : (
                   <i className={`fa-solid ${activeModalProject.icon}`}></i>
                 )}
               </div>
               <div>
-                <span className="text-xs font-mono font-bold text-kotlin-light uppercase tracking-wider">
+                <span className="text-xs font-mono font-bold text-[var(--accent)] uppercase tracking-wider">
                   {activeModalProject.category}
                 </span>
-                <h3 className="text-2xl font-bold font-heading">{activeModalProject.title}</h3>
+                <h3 className="text-2xl font-bold font-heading text-[var(--text-primary)]">{activeModalProject.title}</h3>
               </div>
             </div>
 
             {/* Modal Body */}
             <div className="space-y-4 text-xs sm:text-sm leading-relaxed">
               <div>
-                <h4 className="font-bold text-gray-400 uppercase tracking-wider text-[11px] mb-1">
+                <h4 className="font-bold text-[var(--text-muted)] uppercase tracking-wider text-[11px] mb-1">
                   Project Overview
                 </h4>
-                <p className={darkMode ? "text-gray-300" : "text-gray-600"}>
+                <p className="text-[var(--text-secondary)]">
                   {activeModalProject.description}
                 </p>
               </div>
 
               {activeModalProject.architecture && (
-                <div className={`p-4 rounded-2xl border ${darkMode ? "bg-black/30 border-white/[0.06] text-gray-300" : "bg-slate-50 border-slate-200 text-gray-700"}`}>
-                  <h4 className="font-bold text-compose uppercase tracking-wider text-[11px] mb-1 flex items-center gap-1.5">
+                <div className="p-4 rounded-2xl border border-[var(--border-medium)] bg-[var(--bg-card)]">
+                  <h4 className="font-bold text-[var(--accent)] uppercase tracking-wider text-[11px] mb-1 flex items-center gap-1.5">
                     <i className="fa-solid fa-microchip"></i> System Architecture Highlights
                   </h4>
-                  <p>{activeModalProject.architecture}</p>
+                  <p className="text-[var(--text-secondary)]">{activeModalProject.architecture}</p>
                 </div>
               )}
 
               <div>
-                <h4 className="font-bold text-gray-400 uppercase tracking-wider text-[11px] mb-2">
+                <h4 className="font-bold text-[var(--text-muted)] uppercase tracking-wider text-[11px] mb-2">
                   Technologies & Libraries
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {activeModalProject.tags.map((t) => (
                     <span
                       key={t}
-                      className={`px-3 py-1 rounded-xl text-xs font-mono font-medium border ${
-                        t.includes("Kotlin") || t.includes("Compose")
-                          ? "bg-kotlin/15 border-kotlin/30 text-kotlin-light font-bold"
-                          : t.includes("Flutter")
-                          ? "bg-sky-500/15 border-sky-500/30 text-sky-400 font-bold"
-                          : t.includes("Next.js")
-                          ? "bg-white/15 border-white/30 text-white font-bold"
-                          : t.includes("Supabase") || t.includes("Shopify")
-                          ? "bg-emerald-500/15 border-emerald-500/30 text-emerald-400 font-bold"
-                          : "bg-white/[0.04] border-white/[0.08] text-gray-300"
-                      }`}
+                      className="px-3 py-1 rounded-xl text-xs font-mono font-medium border border-[var(--border-subtle)] bg-[var(--bg-card)] text-[var(--text-primary)]"
                     >
                       {t}
                     </span>
@@ -404,7 +361,7 @@ export default function ProjectsPage() {
             <div className="pt-2 flex justify-end">
               <button
                 onClick={() => setActiveModalProject(null)}
-                className="px-5 py-2.5 bg-gradient-to-r from-kotlin via-indigo-600 to-compose hover:opacity-95 text-white font-bold rounded-xl text-xs transition shadow-md shadow-kotlin/20"
+                className="px-5 py-2.5 bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-[var(--accent-text)] font-semibold rounded-xl text-xs transition shadow-sm"
               >
                 Close Specification
               </button>
